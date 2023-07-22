@@ -14,6 +14,7 @@ class Presenca extends Model
         'user_id',
         'name',
         'data_registro',
+        'codigoInserido',
         'subsetor',
         'entrada',
         'saida'

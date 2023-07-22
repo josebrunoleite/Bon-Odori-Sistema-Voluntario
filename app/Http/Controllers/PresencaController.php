@@ -17,52 +17,71 @@ class PresencaController extends Controller
     }
     public function index()
     {
-        return view('presenca.pontoflex');
+        $user_id = auth()->id();
+        $name = auth()->user()->name ?? auth()->user()->email;
+
+        $presenca = Presenca::where('user_id', $user_id)
+            ->where('name', $name)
+            ->whereDate('data_registro', Carbon::today())
+            ->first();
+
+        $presente = false;
+        $horarioEntrada = null;
+
+        if ($presenca && $presenca->entrada && !$presenca->saida) {
+            $presente = true;
+            $horarioEntrada = $presenca->entrada;
+        }
+
+        return view('presenca.pontoflex', compact('presente', 'horarioEntrada'));
     }
     public function registrarEntrada(Request $request)
     {
         $user_id = auth()->id();
         $name = auth()->user()->name ?? $name = auth()->user()->email;
         $subsetor = auth()->user()->subsetor ?? 'Geral';
-
+    
         $codigoInserido = $request->input('codiEnter');
-
-
+    
         $entrada = Presenca::where('user_id', $user_id)
             ->where('name', $name)
             ->where('subsetor', $subsetor)
             ->whereDate('data_registro', Carbon::today())
             ->first();
-
+    
         if ($entrada && $entrada->entrada !== null) {
             // Usuário já registrou a entrada hoje
-            return view('presenca.pontoflex')->with('error', 'Você já registrou a entrada hoje.');
+            $presente = true;
+            return view('presenca.pontoflex', compact('presente'))->with('error', 'Você já registrou a entrada hoje.');
         }
+    
         if (!$this->codigoValido($codigoInserido)) {
             return view('presenca.pontoflex')->with('error', 'Código inválido. A presença não foi registrada.');
         }
-
+    
         // Registrar a entrada
         Presenca::updateOrCreate(
             [
                 'user_id' => $user_id,
                 'name' => $name,
                 'subsetor' => $subsetor,
+                'codigoInserido'=> $codigoInserido,
                 'data_registro' => Carbon::today(),
             ],
             ['entrada' => Carbon::now()]
         );
-
-        return view('presenca.pontoflex')->with('success', 'Entrada registrada com sucesso.');
+    
+        $presente = true;
+        return view('presenca.pontoflex', compact('presente'))->with('success', 'Entrada registrada com sucesso.');
     }
-
-
+    
+    
     public function registrarSaida(Request $request)
     {
         $user_id = auth()->id();
-        $name = auth()->user()->name ?? $origin = auth()->user()->email;
+        $name = auth()->user()->name ?? $name = auth()->user()->email;
         $subsetor = auth()->user()->subsetor ?? 'Geral';
-
+    
         // Verificar se a entrada foi registrada hoje
         $entrada = Presenca::where('user_id', $user_id)
             ->where('name', $name)
@@ -70,12 +89,13 @@ class PresencaController extends Controller
             ->whereDate('data_registro', Carbon::today())
             ->whereNotNull('entrada')
             ->first();
-
+    
         if (!$entrada) {
             // Usuário não registrou a entrada hoje
-            return view('presenca.pontoflex')->with('error', 'Você precisa registrar a entrada antes de registrar a saída.');
+            $presente = false;
+            return view('presenca.pontoflex', compact('presente'))->with('error', 'Você precisa registrar a entrada antes de registrar a saída.');
         }
-
+    
         // Verificar se já foi registrada a saída hoje
         $saida = Presenca::where('user_id', $user_id)
             ->where('name', $name)
@@ -83,12 +103,13 @@ class PresencaController extends Controller
             ->whereDate('data_registro', Carbon::today())
             ->whereNotNull('saida')
             ->first();
-
+    
         if ($saida) {
             // Usuário já registrou a saída hoje
-            return view('presenca.pontoflex')->with('error', 'Você já registrou a saída hoje.');
+            $presente = true;
+            return view('presenca.pontoflex', compact('presente'))->with('error', 'Você já registrou a saída hoje.');
         }
-
+    
         // Registrar a saída
         Presenca::updateOrCreate(
             [
@@ -99,14 +120,17 @@ class PresencaController extends Controller
             ],
             ['saida' => Carbon::now()]
         );
-
-        return view('presenca.pontoflex')->with('success', 'Saída registrada com sucesso.');
+    
+        $presente = false;
+        return view('presenca.pontoflex', compact('presente'))->with('success', 'Saída registrada com sucesso.');
     }
+    
     private function codigoValido($codigo)
     {
-        $jsonFilePath = 'codigos_presenca.json';
+        $jsonFilePath = storage_path('app/codigos_presenca.json');
 
         if (!file_exists($jsonFilePath)) {
+            echo'Pop';
             return false; // Arquivo não encontrado, código inválido
         }
 

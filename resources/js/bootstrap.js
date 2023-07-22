@@ -1,3 +1,6 @@
+import toastr from 'toastr';
+
+window.toastr = toastr;
 window._ = require('lodash');
 
 try {
