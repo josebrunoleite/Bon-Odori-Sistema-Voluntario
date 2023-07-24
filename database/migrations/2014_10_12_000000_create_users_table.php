@@ -22,8 +22,10 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->string('role')->nullable();
-            $table->string('setor')->nullable();
-            $table->string('subsetor')->nullable();
+            $table->string('setor1')->nullable();
+            $table->string('subsetor1')->nullable();
+            $table->string('setor2')->nullable();
+            $table->string('subsetor2')->nullable();
             $table->string('on')->nullable();
         });
     }

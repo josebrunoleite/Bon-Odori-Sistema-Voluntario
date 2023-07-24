@@ -2,122 +2,64 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Foundation\Auth\User;
-use Illuminate\Support\Facades\Auth;
-class VoluntarioController  extends Controller
+use App\Models\User;
+
+class UserController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $users = DB::table('users')->get();
-    
-        
-        return view('tabelas.vontable', ['users' => $users]);
-        $logado = Auth::user();
-        return view('sua_view')->with('logado', $logado);
-
-    
+        // Exibe todos os usuários
+        $users = User::all();
+        return view('users.index', compact('users'));
     }
-    
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        $users = DB::table('users')->get();
- 
-        return view('user.index', ['users' => $users]);
+        // Exibe o formulário para criar um novo usuário
+        return view('users.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        // Salva um novo usuário no banco de dados
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:8',
+            // Adicione outras validações para os campos adicionais, se necessário
+        ]);
+
+        User::create($data);
+
+        return redirect()->route('users.index')->with('success', 'Usuário criado com sucesso!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function edit(User $user)
     {
-    $user = DB::table('users')->find($id);
-
-    if (!$user) {
-        return redirect()->route('form.modyfiV')->with('error', 'Usuário não encontrado');
+        // Exibe o formulário para editar um usuário específico
+        return view('users.edit', compact('user'));
     }
 
-    return view('tabelas.modyfiV', ['user' => $user]);
-    }
-
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function update(Request $request, User $user)
     {
-        //
+        // Atualiza os dados de um usuário específico no banco de dados
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            // Adicione outras validações para os campos adicionais, se necessário
+        ]);
+
+        $user->update($data);
+
+        return redirect()->route('users.index')->with('success', 'Usuário atualizado com sucesso!');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function destroy(User $user)
     {
-        //
-    }
-    public function test(Request $request, $id)
-    {
-        $user = DB::table('users')->find('1');
+        // Exclui um usuário específico do banco de dados
+        $user->delete();
 
-    
-        return view('tabelas.test', ['user' => $user]);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $user = DB::table('users')->where('id', $id)->first();
-    
-        if (!$user) {
-            return redirect()->route('user.index')->with('error', 'Usuário não encontrado');
-        }
-    
-        DB::table('users')->where('id', $id)->delete();
-    
-        return redirect()->route('user.index')->with('success', 'Usuário excluído com sucesso');
+        return redirect()->route('users.index')->with('success', 'Usuário excluído com sucesso!');
     }
 }

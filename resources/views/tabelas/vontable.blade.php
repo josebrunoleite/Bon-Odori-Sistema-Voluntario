@@ -94,22 +94,22 @@
             });
         });
     </script>
-    <script src="{{ asset('public/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('public/jsccs/jquery/dist/js/jquery.min.js') }}"></script>
     <!-- Bootstrap 4 -->
-    <script src="{{ asset('public/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('public/jsccs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- DataTables  & Plugins -->
-    <script src="{{ asset('vendor/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('vendor/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('vendor/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('vendor/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('vendor/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('vendor/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('vendor/jszip/jszip.min.js') }}"></script>
-    <script src="{{ asset('vendor/pdfmake/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('vendor/pdfmake/vfs_fonts.js') }}"></script>
-    <script src="{{ asset('vendor/datatables-buttons/js/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('vendor/datatables-buttons/js/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('vendor/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+    <script src="{{ asset('jsccs/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('jsccs/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('jsccs/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('jsccs/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('jsccs/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('jsccs/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('jsccs/jszip/jszip.min.js') }}"></script>
+    <script src="{{ asset('jsccs/pdfmake/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('jsccs/pdfmake/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('jsccs/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('jsccs/datatables-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('jsccs/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
     <!-- AdminLTE App -->
-    <script src="{{ asset('public/vendor/js/adminlte.min.js') }}"></script>
+    <script src="{{ asset('public/jsccs/js/adminlte.min.js') }}"></script>
 @stop

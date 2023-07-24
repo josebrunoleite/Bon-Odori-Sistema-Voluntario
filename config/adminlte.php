@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Bon Voluntario',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -30,8 +30,8 @@ return [
     |
     */
 
-    'use_ico_only' => false,
-    'use_full_favicon' => false,
+    'use_ico_only' => true,
+    'use_full_favicon' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Voluntario</b>Painel',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -84,7 +84,7 @@ return [
     */
 
     'auth_logo' => [
-        'enabled' => false,
+        'enabled' => true,
         'img' => [
             'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
             'alt' => 'Auth Logo',
@@ -107,7 +107,7 @@ return [
     */
 
     'preloader' => [
-        'enabled' => true,
+        'enabled' => false,
         'img' => [
             'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
             'alt' => 'AdminLTE Preloader Image',
@@ -167,12 +167,12 @@ return [
     |
     */
 
-    'classes_auth_card' => 'card-outline card-primary',
+    'classes_auth_card' => 'bg-gradient-dark',
     'classes_auth_header' => '',
-    'classes_auth_body' => '',
-    'classes_auth_footer' => '',
-    'classes_auth_icon' => '',
-    'classes_auth_btn' => 'btn-flat btn-primary',
+    'classes_auth_body' => 'bg-gradient-dark',
+    'classes_auth_footer' => 'text-center',
+    'classes_auth_icon' => 'fa-fw text-light',
+    'classes_auth_btn' => 'btn-flat btn-light',
 
     /*
     |--------------------------------------------------------------------------
@@ -329,19 +329,43 @@ return [
         [
             'text' => 'Ponto Online',
             'url'  => 'presenca',
+            'icon' => 'fas fa-fw fa-business-time',
+            'can'   =>''
+        ],
+        [
+            'text' => 'Sobre Você',
+            'url'  => '',
             'icon' => 'fas fa-fw fa-user',
+            'can'   =>''
+        ],
+        [
+            'text' => 'Informações',
+            'url'  => 'presenca',
+            'icon' => 'fas fa-fw fa-question',
             'can'   =>''
         ],
         [
             'text' => 'Horario de Eventos',
             'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fas fa-fw fa-clock',
         ],
         [
             'text' => 'Funções',
             'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fas fa-fw fa-at',
         ],
+        ['header' => 'Vonluntario Chamado'],
+        [
+            'text' => 'Abrir chamado',
+            'url'  => 'admin/settings',
+            'icon' => 'fas fa-fw fa-headset'    
+        ],
+        [
+            'text' => 'Visualizar',
+            'url'  => 'admin/settings',
+            'icon' => 'fas fa-fw fa-binoculars',
+        ],
+        ['header' => 'Vonluntario ADMIN'],
         [
             'text'    => 'Outras opçãoes',
             'icon'    => 'fas fa-fw fa-share',
@@ -353,6 +377,7 @@ return [
                 [
                     'text'    => 'Chamado',
                     'url'     => '#',
+                    'icon' => 'fas fa-fw fa-headset'
                 ],
                 [
                     'text' => 'level_one',

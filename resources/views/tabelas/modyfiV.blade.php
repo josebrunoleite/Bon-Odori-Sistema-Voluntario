@@ -21,11 +21,11 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputName">Nome</label>
-                            <input type="password" class="form-control" id="inputName" placeholder="Name">
+                            <input type="text" class="form-control" id="inputName" value="{{$user->email}}" placeholder="Name">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">Email</label>
-                            <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                            <input type="email" class="form-control" id="inputEmail" value="{{$user->email}}"placeholder="Email">
                         </div>
                     </div>
                     <div class="form-row">
