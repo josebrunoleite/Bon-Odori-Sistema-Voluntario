@@ -1,1 +1,1 @@
-@dd($user)
+@dd('data')

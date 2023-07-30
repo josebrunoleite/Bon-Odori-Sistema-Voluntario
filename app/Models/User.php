@@ -17,8 +17,10 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
-        'setor',
-        'subsetor',
+        'setor1',
+        'subsetor1',
+        'setor2',
+        'subsetor2',
         'on',
     ];
 

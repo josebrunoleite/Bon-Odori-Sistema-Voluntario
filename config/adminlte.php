@@ -129,7 +129,7 @@ return [
     |
     */
 
-    'usermenu_enabled' => true,
+    'usermenu_enabled' => false,
     'usermenu_header' => false,
     'usermenu_header_class' => 'bg-primary',
     'usermenu_image' => false,
@@ -192,7 +192,7 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
+    'classes_sidebar' => 'sidebar-dark-danger elevation-4',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
@@ -334,57 +334,75 @@ return [
         ],
         [
             'text' => 'Sobre Você',
-            'url'  => '',
+            'url'  => 'sobre-voce',
             'icon' => 'fas fa-fw fa-user',
             'can'   =>''
         ],
         [
             'text' => 'Informações',
-            'url'  => 'presenca',
+            'url'  => 'info',
             'icon' => 'fas fa-fw fa-question',
             'can'   =>''
         ],
         [
             'text' => 'Horario de Eventos',
-            'url'  => 'admin/settings',
+            'url'  => '404',
             'icon' => 'fas fa-fw fa-clock',
         ],
         [
             'text' => 'Funções',
-            'url'  => 'admin/settings',
+            'url'  => '404',
             'icon' => 'fas fa-fw fa-at',
         ],
-        ['header' => 'Vonluntario Chamado'],
+        /*['header' => 'Vonluntario Chamado_Desativado',
+        'can'   =>'isAdmin'
+         ],
         [
             'text' => 'Abrir chamado',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-headset'    
+            'url'  => 'import_excel',
+            'icon' => 'fas fa-fw fa-headset',
+            'class' => 'hidden',    
+        ],*/
+        ['header' => 'Vonluntario ADMIN',
+        'can'   =>'isAdmin',
         ],
         [
-            'text' => 'Visualizar',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-binoculars',
-        ],
-        ['header' => 'Vonluntario ADMIN'],
-        [
-            'text'    => 'Outras opçãoes',
-            'icon'    => 'fas fa-fw fa-share',
+            'text' => 'Planilha',
+            'icon' => 'fa fa-fw fa-file-excel',
+            'can'   =>'isAdmin',
             'submenu' => [
                 [
-                    'text' => 'Todos Vonluntarios',
-                    'url'  => 'vontable',
-                ],
-                [
-                    'text'    => 'Chamado',
-                    'url'     => '#',
-                    'icon' => 'fas fa-fw fa-headset'
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Planilha importa',
+                    'url'  => 'import_excel',
+                    'icon_color' => 'cyan',
+                    'icon' => 'fa fa-fw fa-file-excel',
                 ],
             ],
         ],
+        [
+            'text'    => 'Opção Voluntários',
+            'icon'    => 'fas fa-fw fa-share',
+            'can'   =>'isAdmin',
+            'submenu' => [
+                [
+                    'text' => 'Todos Voluntários',
+                    'url'  => 'vontable',
+                    'icon_color' => 'yellow',
+                ],
+                [
+                    'text' => 'Criar Voluntário',
+                    'url'  => 'createfiV',
+                    'icon_color' => 'yellow',
+                ],
+                [
+                    'text'    => 'Chamado_Desativado',
+                    'url'     => 'x',
+                    'icon' => 'fas fa-fw fa-headset',
+                    'icon_color' => 'yellow'
+
+                ],
+            ],
+        ],/*
         ['header' => 'labels'],
         [
             'text'       => 'Sobre',
@@ -400,7 +418,7 @@ return [
             'text'       => 'Contato',
             'icon_color' => 'cyan',
             'url'        => '#',
-        ],
+        ],*/
     ],
 
     /*

@@ -26,4 +26,14 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function sobreyou()
+    {   
+        $id = auth()->id();
+        $user = User::find($id);
+        return view('anothers.you', ['user' => $user]);
+    }
+    public function info()
+    {
+        return view('anothers.info');
+    }
 }
