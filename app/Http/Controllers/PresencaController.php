@@ -8,6 +8,9 @@ use App\Models\Presenca;
 use DB;
 use GuzzleHttp\Promise\Create;
 use App\Models\User;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
+
 
 class PresencaController extends Controller
 {
@@ -25,13 +28,8 @@ class PresencaController extends Controller
             ->whereDate('data_registro', Carbon::today())
             ->first();
 
-        $presente = false;
-        $horarioEntrada = null;
-
-        if ($presenca && $presenca->entrada && !$presenca->saida) {
-            $presente = true;
-            $horarioEntrada = $presenca->entrada;
-        }
+        $presente = $presenca && $presenca->entrada && !$presenca->saida;
+        $horarioEntrada = $presenca ? $presenca->entrada : null;
 
         return view('presenca.pontoflex', compact('presente', 'horarioEntrada'));
     }
@@ -52,11 +50,11 @@ class PresencaController extends Controller
         if ($entrada && $entrada->entrada !== null) {
             // Usuário já registrou a entrada hoje
             $presente = true;
-            return view('presenca.pontoflex', compact('presente'))->with('error', 'Você já registrou a entrada hoje.');
+            return Redirect::back()->with('error', 'Você já registrou a entrada hoje.');
         }
     
         if (!$this->codigoValido($codigoInserido)) {
-            return view('presenca.pontoflex')->with('error', 'Código inválido. A presença não foi registrada.');
+            return Redirect::back()->with('error', 'Código inválido. A presença não foi registrada.');
         }
     
         // Registrar a entrada
@@ -72,7 +70,7 @@ class PresencaController extends Controller
         );
     
         $presente = true;
-        return view('presenca.pontoflex', compact('presente'))->with('success', 'Entrada registrada com sucesso.');
+        return Redirect::back()->with('success', 'Entrada registrada com sucesso.');
     }
     
     
@@ -93,7 +91,7 @@ class PresencaController extends Controller
         if (!$entrada) {
             // Usuário não registrou a entrada hoje
             $presente = false;
-            return view('presenca.pontoflex', compact('presente'))->with('error', 'Você precisa registrar a entrada antes de registrar a saída.');
+            return Redirect::back()->with('error', 'Você precisa registrar a entrada antes de registrar a saída.');
         }
     
         // Verificar se já foi registrada a saída hoje
@@ -122,7 +120,7 @@ class PresencaController extends Controller
         );
     
         $presente = false;
-        return view('presenca.pontoflex', compact('presente'))->with('success', 'Saída registrada com sucesso.');
+        return Redirect::back()->with('success', 'Saída registrada com sucesso.');
     }
     
     private function codigoValido($codigo)

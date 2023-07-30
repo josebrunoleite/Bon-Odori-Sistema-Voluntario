@@ -3,9 +3,9 @@
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>DataTables</h1>
-                </div>
+                <!--<div class="col-sm-6">
+                    <h1>Tabela de Voluntarios</h1>
+                </div>-->
             </div>
         </div><!-- /.container-fluid -->
     </section>
@@ -16,11 +16,22 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">DataTable with default features</h3>
+                            @if (session('error'))
+                                <div class="alert alert-danger">
+                                    {{ session('error') }}
+                                </div>
+                            @endif
+                            <br>
+                            @if (session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+                            <h3 class="card-title">Tabela de Voluntarios</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="example2" class="table table-bordered table-striped">
+                            <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>Identificação</th>
@@ -40,7 +51,9 @@
                                             <td>{{ $user->role }}</td>
                                             <td>{{ $user->on }}</td>
                                             <td><a href="{{ url('modyfiV/' . $user->id) }}">editar</a>
-                                                <a href="{{ url('modyfiV/' . $user->id) }}">Excluir</a>
+                                               <!-- <a href="#" class="text-danger" data-bs-toggle="modal"
+                                                    data-bs-target="#confirmDeleteModal" id="deleteButton" data-bs-id="{{ $user->id }}">
+                                                    Excluir</a>-->
                                             </td>
 
                                         </tr>
@@ -81,7 +94,9 @@
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print"]
+                "paging": false,
+                "ordering": true,
+                /*"buttons": ["copy", "csv", "excel", "pdf", "print"]*/
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
                 "paging": true,
@@ -95,6 +110,8 @@
         });
     </script>
     <script src="{{ asset('public/jsccs/jquery/dist/js/jquery.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
     <!-- Bootstrap 4 -->
     <script src="{{ asset('public/jsccs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- DataTables  & Plugins -->
@@ -112,4 +129,6 @@
     <script src="{{ asset('jsccs/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('public/jsccs/js/adminlte.min.js') }}"></script>
+    
+    
 @stop

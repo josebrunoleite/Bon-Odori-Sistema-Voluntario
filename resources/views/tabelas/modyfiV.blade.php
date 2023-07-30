@@ -175,6 +175,11 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Atualizar</button>
                 </form>
+                <form id="deleteForm" action="{{ route('deletefiV', ['id' => $user->id]) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger float-right">Deletar!</button>
+                </form>
             </div>
             <!-- /.content -->
         </div>

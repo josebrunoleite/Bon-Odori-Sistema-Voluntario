@@ -321,8 +321,8 @@ return [
         ],
         ['header' => 'Bon odori Vonluntario'],
         [
-            'text' => 'Nandemonain',
-            'url'  => '',
+            'text' => 'Yoasobi?',
+            'url'  => 'test',
             'icon' => 'fas fa-fw fa-user',
             'can'   =>'isAdmin'
         ],

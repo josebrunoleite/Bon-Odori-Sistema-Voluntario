@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Validation\Rule;
+
 
 class VoluntarioController extends Controller
 {
@@ -62,38 +64,51 @@ class VoluntarioController extends Controller
 
     public function update(Request $request, $id)
     {
-        $user = User::findOrFail($id);
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => [
-                'required',
-                'email',
-                Rule::unique('users')->ignore($user->id),
-            ],
-            'role' => 'required|string|max:255',
-            'setor1' => 'required|string|max:255',
-            'subsetor1' => 'required|string|max:255',
-            'setor2' => 'required|string|max:255',
-            'subsetor2' => 'required|string|max:255',
-            'password' => 'nullable|string|max:20', // Senha agora é opcional
-        ]);
+        try {
+            $user = User::findOrFail($id);
             
-        $user->update($request->except('password'));
-        if ($request->filled('password')) {
-            $user->password = bcrypt($request->password);
-            $user->save();
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => [
+                    'required',
+                    'email',
+                    Rule::unique('users')->ignore($user->id),
+                ],
+                'role' => 'required|string|max:255',
+                'setor1' => 'required|string|max:255',
+                'subsetor1' => 'required|string|max:255',
+                'setor2' => 'required|string|max:255',
+                'subsetor2' => 'required|string|max:255',
+                'password' => 'nullable|string|max:20', // Senha agora é opcional
+            ]);
+    
+            $data = $request->except('password');
+    
+            if ($request->filled('password')) {
+                $data['password'] = Hash::make($request->password);
+            }
+    
+            $user->update($data);
+            
+            return redirect('vontable')->with('success', 'Alterado com sucesso!');
+        } catch (ValidationException $e) {
+            return redirect()->back()->withErrors($e->errors())->withInput();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Ocorreu um erro ao atualizar o usuário. Por favor, tente novamente mais tarde.');
         }
-        //@dd($user);
-        return redirect('vontable')->with('success', 'Usuário excluído com sucesso!');
     }
+    
 
 
-
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        // Exclui um usuário específico do banco de dados
-        $user->delete();
-
-        return redirect()->route('home')->with('success', 'Usuário excluído com sucesso!');
+        $user = User::find($id);
+    
+        if ($user) {
+            $user->delete();
+            return redirect()->route('vontable')->with('success', 'Usuário excluído com sucesso!');
+        } else {
+            return redirect()->route('vontable')->with('error', 'Usuário não encontrado!');
+        }
     }
 }

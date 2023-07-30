@@ -27,6 +27,9 @@ use App\Http\Controllers\ExcelController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/test', function () {
+    return view('test');
+});
 
 Auth::routes();
 /* Voluntario Padrão */
@@ -36,10 +39,11 @@ Route::GET('/info', [App\Http\Controllers\HomeController::class, 'info'])->name(
 Route::GET('/upload', [App\Http\Controllers\HomeController::class, 'info'])->name('home');
 Route::GET('/down', [App\Http\Controllers\HomeController::class, 'info'])->name('home');
 /* Voluntario Controller */
-Route::GET('/vontable', [App\Http\Controllers\VoluntarioController::class, 'index'])->name('index');
+Route::GET('/vontable', [App\Http\Controllers\VoluntarioController::class, 'index'])->name('vontable');
 Route::GET('/createfiV', [App\Http\Controllers\VoluntarioController::class, 'create'])->name('creat');
 Route::GET('/modyfiV/{id}', [App\Http\Controllers\VoluntarioController::class, 'edit'])->name('edit');
 Route::GET('/test/{id}', [App\Http\Controllers\VoluntarioController::class, 'edit'])->name('edit');
+Route::delete('/deletefiV/{id}', [App\Http\Controllers\VoluntarioController::class, 'destroy'])->name('deletefiV');
 Route::put('/voluntarioat/{id}', [App\Http\Controllers\VoluntarioController::class, 'update'])->name('voluntario.update');
 Route::put('/voluntarioca', [App\Http\Controllers\VoluntarioController::class, 'store'])->name('voluntario.store');
 /* Presença Controller */
