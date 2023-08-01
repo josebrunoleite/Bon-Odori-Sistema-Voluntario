@@ -37,20 +37,23 @@
                                         <th>Identificação</th>
                                         <th>Nome</th>
                                         <th>Email(s)</th>
-                                        <th>Cargo</th>
-                                        <th>Online</th>
-                                        <th>Editar/Deletar</th>
+                                        <th>Pagamentos Manhã</th>
+                                        <th>Pagamentos Tarde</th>
+                                        <th>Horarios</th>
+                                        <th>Editar/Pagamento</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($users as $user)
                                         <tr>
-                                            <td>{{ $user->id }}</td>
-                                            <td>{{ $user->name }}</td>
-                                            <td>{{ $user->email }}</td>
-                                            <td>{{ $user->role }}</td>
-                                            <td>{{ $user->on }}</td>
-                                            <td><a href="{{ url('modyfiV/' . $user->id) }}">editar</a>
+                                            <td>{{ $user->id ?? 'Error Contate José' }}</td>
+                                            <td>{{ $user->name ?? 'Error Contate José' }}</td>
+                                            <td>{{ $user->email ?? 'Error Contate José' }}</td>
+                                            <td>{{ $user->pagamento01 ?? '0' }}</td>
+                                            <td>{{ $user->pagamento02 ?? '0' }}</td>
+                                            <td>{{ $user->on ?? 'Error Contate José' }}</td>
+                                            <td><a href="{{ url('modyfiV/' . $user->id) }}">Editar</a>
+                                                <a href="{{ url('pagamentofiV/' . $user->id) }}">Pagmento</a>
                                                <!-- <a href="#" class="text-danger" data-bs-toggle="modal"
                                                     data-bs-target="#confirmDeleteModal" id="deleteButton" data-bs-id="{{ $user->id }}">
                                                     Excluir</a>-->
@@ -64,8 +67,10 @@
                                         <th>Identificação</th>
                                         <th>Nome</th>
                                         <th>Email(s)</th>
-                                        <th>Cargo</th>
-                                        <th>Online</th>
+                                        <th>Pagamentos Manhã</th>
+                                        <th>Pagamentos Tarde</th>
+                                        <th>Horarios</th>
+                                        <th>Editar/Pagamento</th>
                                     </tr>
                                 </tfoot>
                             </table>

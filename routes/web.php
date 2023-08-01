@@ -60,3 +60,6 @@ Route::post('/responder-pedido/{id}', [App\Http\Controllers\PedidoController::cl
 /*Import*/
 Route::GET('/import_excel', [App\Http\Controllers\ExcelController::class, 'importForm'])->name('Import Formulario');
 Route::POST('/import_excelFu', [App\Http\Controllers\ExcelController::class, 'import'])->name('Import');
+/*Import*/
+Route::GET('/pagamentofiV/{id}', [App\Http\Controllers\PagamentoController::class, 'index'])->name('pagamentofiV');
+Route::POST('/import_excelFu', [App\Http\Controllers\ExcelController::class, 'import'])->name('Import');
