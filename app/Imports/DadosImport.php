@@ -33,6 +33,7 @@ class DadosImport implements ToModel, WithHeadingRow
             $usuario = new User([
                 'name' => $row['nome'],
                 'email' =>  $row['email'],
+                'role' => $row['role'] ?? "user",
                 'setor1' => $row['setor1'],
                 'subsetor1' => $row['subsetor1'],
                 'setor2' => $row['setor2'],
