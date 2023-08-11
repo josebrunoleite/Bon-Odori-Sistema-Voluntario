@@ -37,8 +37,8 @@
                                         <th>Identificação</th>
                                         <th>Nome</th>
                                         <th>Email(s)</th>
-                                        <th>Pagamentos Manhã</th>
-                                        <th>Pagamentos Tarde</th>
+                                        <th>Setor Manhã</th>
+                                        <th>Setor Noite</th>
                                         <th>Horarios</th>
                                         <th>Editar/Pagamento</th>
                                     </tr>
@@ -49,8 +49,8 @@
                                             <td>{{ $user->id ?? 'Error Contate José' }}</td>
                                             <td>{{ $user->name ?? 'Error Contate José' }}</td>
                                             <td>{{ $user->email ?? 'Error Contate José' }}</td>
-                                            <td>{{ $user->pagamento01 ?? '0' }}</td>
-                                            <td>{{ $user->pagamento02 ?? '0' }}</td>
+                                            <td>{{ $user->setor1 ?? 'Error Contate José' }}</td>
+                                            <td>{{ $user->setor2 ?? 'Error Contate José' }}</td>
                                             <td>{{ $user->on ?? 'Error Contate José' }}</td>
                                             <td><a href="{{ url('modyfiV/' . $user->id) }}">Editar</a>
                                                 <a href="{{ url('pagamentofiV/' . $user->id) }}">Pagmento</a>
@@ -67,8 +67,8 @@
                                         <th>Identificação</th>
                                         <th>Nome</th>
                                         <th>Email(s)</th>
-                                        <th>Pagamentos Manhã</th>
-                                        <th>Pagamentos Tarde</th>
+                                        <th>Setor Manhã</th>
+                                        <th>Setor Noite</th>
                                         <th>Horarios</th>
                                         <th>Editar/Pagamento</th>
                                     </tr>

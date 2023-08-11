@@ -312,19 +312,19 @@ return [
             'topnav_right' => true,
         ],
         // Sidebar items:
-        [
+        /*[
             'text'        => 'Home',
             'url'         => '',
             'icon'        => 'far fa-fw fa-file',
             'label'       => 4,
             'label_color' => 'success',
-        ],
+        ],*/
         ['header' => 'Bon odori Vonluntario'],
         [
             'text' => 'Yoasobi?',
             'url'  => 'test',
             'icon' => 'fas fa-fw fa-user',
-            'can'   =>'isAdmin'
+            'can'   =>''
         ],
         [
             'text' => 'Ponto Online',
@@ -372,8 +372,14 @@ return [
             'can'   =>'isAdmin',
             'submenu' => [
                 [
-                    'text' => 'Planilha importa',
+                    'text' => 'Planilha Importa',
                     'url'  => 'import_excel',
+                    'icon_color' => 'cyan',
+                    'icon' => 'fa fa-fw fa-file-excel',
+                ],
+                [
+                    'text' => 'Planilha Exporta',
+                    'url'  => 'export_excel',
                     'icon_color' => 'cyan',
                     'icon' => 'fa fa-fw fa-file-excel',
                 ],

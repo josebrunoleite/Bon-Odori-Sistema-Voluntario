@@ -8,17 +8,17 @@
     @php( $password_reset_url = $password_reset_url ? url($password_reset_url) : '' )
 @endif
 
-@section('auth_header', __('adminlte::adminlte.password_reset_message'))
+@section('auth_header', 'Desativado!'))
 
 @section('auth_body')
-    <form action="{{ $password_reset_url }}" method="post">
+ {{--    <form action="{{ $password_reset_url }}" method="post">
         @csrf
-
+ --}}
         {{-- Token field --}}
-        <input type="hidden" name="token" value="{{ $token }}">
-
+{{--         <input type="hidden" name="token" value="{{ $token }}">
+ --}}
         {{-- Email field --}}
-        <div class="input-group mb-3">
+{{--         <div class="input-group mb-3">
             <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
                    value="{{ old('email') }}" placeholder="{{ __('adminlte::adminlte.email') }}" autofocus>
 
@@ -33,10 +33,10 @@
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
-        </div>
+        </div> --}}
 
         {{-- Password field --}}
-        <div class="input-group mb-3">
+{{--         <div class="input-group mb-3">
             <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"
                    placeholder="{{ __('adminlte::adminlte.password') }}">
 
@@ -51,10 +51,10 @@
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
-        </div>
+        </div> --}}
 
         {{-- Password confirmation field --}}
-        <div class="input-group mb-3">
+{{--         <div class="input-group mb-3">
             <input type="password" name="password_confirmation"
                    class="form-control @error('password_confirmation') is-invalid @enderror"
                    placeholder="{{ trans('adminlte::adminlte.retype_password') }}">
@@ -70,13 +70,13 @@
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
-        </div>
+        </div> --}}
 
         {{-- Confirm password reset button --}}
-        <button type="submit" class="btn btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat btn-primary') }}">
+{{--         <button type="submit" class="btn btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat btn-primary') }}">
             <span class="fas fa-sync-alt"></span>
             {{ __('adminlte::adminlte.reset_password') }}
-        </button>
+        </button> 
 
-    </form>
+</form> --}}
 @stop

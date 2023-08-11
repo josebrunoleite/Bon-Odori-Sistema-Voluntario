@@ -27,8 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('setor2')->nullable();
             $table->string('subsetor2')->nullable();
             $table->string('on')->nullable();
-            $table->string('pagamento01')->nullable();
-            $table->string('pagamento02')->nullable();
+            $table->json('options')->nullable();
         });
     }
 

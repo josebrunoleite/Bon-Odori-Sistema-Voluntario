@@ -17,6 +17,8 @@
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
+                <div class="card">
+                    <div class="card-body">
                 <form method="POST" action="{{ route('voluntario.update', ['id' => $user->id]) }}">
                     @csrf
                     @method('PUT')
@@ -175,6 +177,8 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Atualizar</button>
                 </form>
+                    </div>
+                </div>
                 <form id="deleteForm" action="{{ route('deletefiV', ['id' => $user->id]) }}" method="POST">
                     @csrf
                     @method('DELETE')

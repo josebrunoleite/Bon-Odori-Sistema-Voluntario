@@ -90,7 +90,7 @@ class VoluntarioController extends Controller
     
             $user->update($data);
             
-            return redirect('vontable')->with('success', 'Alterado com sucesso!');
+            return redirect()->back()->with('success', 'Alterado com sucesso!');
         } catch (ValidationException $e) {
             return redirect()->back()->withErrors($e->errors())->withInput();
         } catch (\Exception $e) {

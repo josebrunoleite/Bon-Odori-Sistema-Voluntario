@@ -18,23 +18,25 @@ class PagamentoController extends Controller
     }
     public function index($id)
     {
-        
-        //$name = auth()->user()->name ?? auth()->user()->email;
         $user = DB::table('users')->find($id);
-        return view('tabelas.pagamentofiV', compact('user'));
-
+        $checkboxData = json_decode($user->options ?? '[]', true);
+        return view('tabelas.pagamentofiV', compact('user', 'checkboxData'));
     }
-    public function pagamentoUpdate()
+    public function store(Request $request, $id)
     {
-        User::updateOrCreate(
-            [
-                'user_id' => $user_id,
-                'name' => $name,
-                'subsetor' => $subsetor,
-                'data_registro' => Carbon::today(),
-            ],
-            ['saida' => Carbon::now()]
-        );
+        try {
+            $user = DB::table('users')->find($id);
+    
+            $checkboxData = $request->input('checkbox_data', []);
+                DB::table('users')
+                ->where('id', $id)
+                ->update(['options' => json_encode($checkboxData)]);
+                $user->options = json_encode($checkboxData);
+    
+            return redirect()->back()->with('success', 'Dados do checkbox foram atualizados com sucesso!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Ocorreu um erro ao atualizar os dados do checkbox.');
+        }
     }
     
     
