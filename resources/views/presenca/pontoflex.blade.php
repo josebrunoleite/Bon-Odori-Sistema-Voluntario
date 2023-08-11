@@ -49,22 +49,21 @@
                         <video id="preview" style="display: none; z-index: 1;"></video>
                         <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
                         <script>
-                            const scanner = new Instascan.Scanner({
-                                video: document.getElementById('preview')
-                            });
+                            const scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
                             const startButton = document.getElementById('startButton');
                             const videoPreview = document.getElementById('preview');
-
+                            let currentCameraIndex = 0;
+                    
                             startButton.addEventListener('click', function() {
                                 videoPreview.style.display = 'block';
-                                scanner.addListener('scan', function(content) {
-                                    document.getElementById('result').value = content;
-                                    scanner.stop();
-                                    videoPreview.style.display = 'none';
-                                });
-
+                    
                                 Instascan.Camera.getCameras().then(function(cameras) {
-                                    if (cameras.length > 0) {
+                                    const frontCamera = cameras.find(camera => camera.name.toLowerCase().includes('front'));
+                    
+                                    if (frontCamera) {
+                                        currentCameraIndex = (currentCameraIndex + 1) % cameras.length; // Alterna entre as câmeras disponíveis
+                                        scanner.start(cameras[currentCameraIndex]);
+                                    } else if (cameras.length > 0) {
                                         scanner.start(cameras[0]);
                                     } else {
                                         console.error('No cameras found.');
