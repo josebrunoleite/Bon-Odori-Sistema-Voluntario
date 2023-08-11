@@ -54,7 +54,12 @@
                                         <tr>
                                             <td>{{ $item['codigo'] }}</td>
                                             <td>{{ $item['status'] }}</td>
-                                            <td>{{-- {{ $item['status'] } --}} Em Implementação</td>
+                                            <td>{{-- {{ $item['status'] } --}} Em Implementação
+                                                {{QrCode::generate($item['codigo']);}}
+                                                <div class="visible-print text-center">
+                                                    <div class="item-details" style="display: ;"></div>
+                                                </div>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -76,8 +81,24 @@
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
-
 @section('js')
+ <script>
+    const showButtons = document.querySelectorAll('.show-button');
+    
+    showButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const itemDiv = button.closest('.item');
+            const itemDetails = itemDiv.querySelector('.item-details');
+    
+            if (itemDetails.style.display === 'none') {
+                itemDetails.style.display = 'block';
+            } else {
+                itemDetails.style.display = 'none';
+            }
+        });
+    });
+    </script>
+    
     <script>
         $(function() {
             $("#example1").DataTable({

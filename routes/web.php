@@ -78,6 +78,7 @@ Route::get('/exporta-presenca', function () {
 /*pagamento*/
 Route::GET('/pagamentofiV/{id}', [App\Http\Controllers\PagamentoController::class, 'index'])->name('pagamentofiV');
 Route::put('/pagamentofiVpag/{id}', [App\Http\Controllers\PagamentoController::class, 'store'])->name('pagamentofiVStore');
+Route::GET('/pass', [App\Http\Controllers\VoluntarioController::class, 'showChangePasswordForm'])->name('showChangePasswordForm');
 
 Route::GET('/json', [App\Http\Controllers\HomeController::class, 'codigos'])->name('codigos');
 Route::get('/qrcode', [App\Http\Controllers\QRCodeController::class, 'generate'])->name('qrcode.generate');

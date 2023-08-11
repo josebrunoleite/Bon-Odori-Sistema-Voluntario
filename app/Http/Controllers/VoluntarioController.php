@@ -97,7 +97,30 @@ class VoluntarioController extends Controller
             return redirect()->back()->with('error', 'Ocorreu um erro ao atualizar o usuário. Por favor, tente novamente mais tarde.');
         }
     }
-    
+    public function showChangePasswordForm()
+    {
+        return view('auth.passwords.reset');
+    }
+
+    public function changePassword(Request $request)
+    {
+        $user = Auth::user();
+
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|min:8|confirmed',
+        ]);
+
+        if (!Hash::check($request->current_password, $user->password)) {
+            return redirect()->back()->with('error', 'A senha atual não corresponde.');
+        }
+
+        $user->update([
+            'password' => Hash::make($request->new_password),
+        ]);
+
+        return redirect()->route('home')->with('success', 'Senha alterada com sucesso.');
+    }
 
 
     public function destroy($id)

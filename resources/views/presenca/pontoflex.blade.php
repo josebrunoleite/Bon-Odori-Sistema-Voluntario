@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 @section('content')
-<img id="randomImage" class="" src="" alt="">
+    <img id="randomImage" class="" src="" alt="">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -19,8 +19,9 @@
                             <form action="{{ route('presenca.entrada') }}" method="post">
                                 @csrf
                                 <div class="mb-3">
+                                    
                                     <label for="codiEnter" class="form-label">Código de entrada:</label>
-                                    <input type="password" name="codiEnter" id="codiEnter" class="form-control"
+                                    <input type="password" name="codiEnter" id="codiEnter result" class="form-control"
                                         aria-labelledby="passwordHelpInline">
                                     @error('codiEnter')
                                         <div class="text-danger">{{ $message }}</div>
@@ -28,7 +29,7 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary">Registrar Entrada</button>
                             </form>
-                            </form>
+                            <button id="startButton">Iniciar Leitor</button>
                         @endif
                         <br>
                         <br>
@@ -43,6 +44,36 @@
                                 {{ session('success') }}
                             </div>
                         @endif
+                    </div>
+                    <div>            
+                        <video id="preview" style="display: none; z-index: 1;"></video>
+                        <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+                        <script>
+                            const scanner = new Instascan.Scanner({
+                                video: document.getElementById('preview')
+                            });
+                            const startButton = document.getElementById('startButton');
+                            const videoPreview = document.getElementById('preview');
+
+                            startButton.addEventListener('click', function() {
+                                videoPreview.style.display = 'block';
+                                scanner.addListener('scan', function(content) {
+                                    document.getElementById('result').value = content;
+                                    scanner.stop();
+                                    videoPreview.style.display = 'none';
+                                });
+
+                                Instascan.Camera.getCameras().then(function(cameras) {
+                                    if (cameras.length > 0) {
+                                        scanner.start(cameras[0]);
+                                    } else {
+                                        console.error('No cameras found.');
+                                    }
+                                }).catch(function(e) {
+                                    console.error(e);
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
             </div>
@@ -82,11 +113,10 @@
     }
 
     window.addEventListener('load', changeRandomImageSrc);
-    
 </script>
 
 <style>
-    img{
+    img {
         position: absolute;
         background-color: black;
         width: 250px;
@@ -95,7 +125,8 @@
         bottom: 12em;
         left: 44%;
     }
-    .card{
+
+    .card {
         position: relative;
         z-index: 0;
     }

@@ -21,6 +21,7 @@
         "sass-loader": "^11.0.1"
     },
     "dependencies": {
+        "instascan": "^1.0.0",
         "toastr": "^2.1.4"
     }
 }
