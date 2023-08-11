@@ -90,11 +90,11 @@ class VoluntarioController extends Controller
     
             $user->update($data);
             
-            return redirect()->back()->with('success', 'Alterado com sucesso!');
+            return redirect()->route('vontable')->with('success', 'Alterado com sucesso!');
         } catch (ValidationException $e) {
-            return redirect()->back()->withErrors($e->errors())->withInput();
+            return redirect()->route('vontable')->withErrors($e->errors())->withInput();
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Ocorreu um erro ao atualizar o usuário. Por favor, tente novamente mais tarde.');
+            return redirect()->route('vontable')->with('error', 'Ocorreu um erro ao atualizar o usuário. Por favor, tente novamente mais tarde.');
         }
     }
     
