@@ -4,8 +4,8 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <!--<div class="col-sm-6">
-                        <h1>Tabela de Voluntarios</h1>
-                    </div>-->
+                    <h1>Tabela de Voluntarios</h1>
+                </div>-->
             </div>
         </div><!-- /.container-fluid -->
     </section>
@@ -34,32 +34,30 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Editar/Pagamento</th>
-
+                                        <th>Identificação</th>
                                         <th>Nome</th>
                                         <th>Email(s)</th>
                                         <th>Setor Manhã</th>
                                         <th>Setor Noite</th>
                                         <th>Horarios</th>
-                                        <th>Identificação</th>
+                                        <th>Editar/Pagamento</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($users as $user)
                                         <tr>
-                                            <td><a href="{{ url('modyfiV/' . $user->id) }}">Editar</a>
-                                                <a href="{{ url('pagamentofiV/' . $user->id) }}">Pagmento</a>
-                                                <!-- <a href="#" class="text-danger" data-bs-toggle="modal"
-                                                        data-bs-target="#confirmDeleteModal" id="deleteButton" data-bs-id="{{ $user->id }}">
-                                                        Excluir</a>-->
-                                            </td>
+                                            <td>{{ $user->id ?? 'Error Contate José' }}</td>
                                             <td>{{ $user->name ?? 'Error Contate José' }}</td>
                                             <td>{{ $user->email ?? 'Error Contate José' }}</td>
                                             <td>{{ $user->setor1 ?? 'Error Contate José' }}</td>
                                             <td>{{ $user->setor2 ?? 'Error Contate José' }}</td>
                                             <td>{{ $user->on ?? 'Error Contate José' }}</td>
-                                            <td>{{ $user->id ?? 'Error Contate José' }}</td>
-
+                                            <td><a href="{{ url('modyfiV/' . $user->id) }}">Editar</a>
+                                                <a href="{{ url('pagamentofiV/' . $user->id) }}">Pagmento</a>
+                                               <!-- <a href="#" class="text-danger" data-bs-toggle="modal"
+                                                    data-bs-target="#confirmDeleteModal" id="deleteButton" data-bs-id="{{ $user->id }}">
+                                                    Excluir</a>-->
+                                            </td>
 
                                         </tr>
                                     @endforeach
@@ -136,6 +134,6 @@
     <script src="{{ asset('jsccs/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('public/jsccs/js/adminlte.min.js') }}"></script>
-
-
+    
+    
 @stop
