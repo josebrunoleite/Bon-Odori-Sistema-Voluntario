@@ -9,6 +9,8 @@ use App\Http\Controllers\ExcelController;
 use App\Exports\DadosExport;
 use App\Exports\PresencaExport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\QRCodeController;
+
 
 
 
@@ -30,9 +32,9 @@ use Maatwebsite\Excel\Facades\Excel;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/test', function () {
-    return view('test');
-});
+Route::get('/music', function () {
+    return view('music');
+}); 
 
 Auth::routes();
 /* Voluntario Padrão */
@@ -76,3 +78,6 @@ Route::get('/exporta-presenca', function () {
 /*pagamento*/
 Route::GET('/pagamentofiV/{id}', [App\Http\Controllers\PagamentoController::class, 'index'])->name('pagamentofiV');
 Route::put('/pagamentofiVpag/{id}', [App\Http\Controllers\PagamentoController::class, 'store'])->name('pagamentofiVStore');
+
+Route::GET('/json', [App\Http\Controllers\HomeController::class, 'codigos'])->name('codigos');
+Route::get('/qrcode', [App\Http\Controllers\QRCodeController::class, 'generate'])->name('qrcode.generate');

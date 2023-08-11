@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\File;
 
 class HomeController extends Controller
 {
@@ -27,7 +28,7 @@ class HomeController extends Controller
         return view('home');
     }
     public function sobreyou()
-    {   
+    {
         $id = auth()->id();
         $user = User::find($id);
         return view('anothers.you', ['user' => $user]);
@@ -36,4 +37,19 @@ class HomeController extends Controller
     {
         return view('anothers.info');
     }
+    public function codigos()
+    {
+        $jsonFilePath = storage_path('app/codigos_presenca.json');
+    
+        if (File::exists($jsonFilePath)) {
+            $jsonData = File::get($jsonFilePath);
+            $data = json_decode($jsonData, true);
+            /* @dd($data); */
+            return view('json', compact('data'));
+            /* return view('test', compact('data')); */
+        } else {
+            return view('json')->with('data', []); // Ou qualquer valor padrão que você queira usar
+        }
+    }
+    
 }

@@ -7,20 +7,20 @@
                 <div class="card">
                     <div class="card-header">Exporta</div>
                     <div class="card-body">
-                        @csrf
                         <div>
                             <a href="{{ route('exportTable') }}">
                                 <button type="button" class="btn btn-primary btn-lg">Exporta Usuario</button>
                             </a>
                         </div>
 
-                        @csrf
+                        <br>
+
                         <div>
                             <a href="{{ route('exportTablepresenca') }}">
                                 <button type="button" class="btn btn-primary btn-lg">Exporta Presença</button>
                             </a>
                         </div>
-                        
+
                         @if (session('error'))
                             <div class="alert alert-danger">
                                 {{ session('error') }}

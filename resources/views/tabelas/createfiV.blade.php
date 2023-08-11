@@ -155,22 +155,22 @@
                                 <input type="password" name="password" id="inputPassword6" class="form-control"
                                     aria-labelledby="passwordHelpInline">
                             </div>
-                            <div class="col-auto">
+  {{--                           <div class="col-auto">
                                 <span id="passwordHelpInline" class="form-text">
                                     Must be 8-20 characters long.
                                 </span>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
-                    <div class="form-group">
+{{--                     <div class="form-group">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="gridCheck">
                             <label class="form-check-label" for="gridCheck">
                                 Check me out
                             </label>
                         </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Sign in</button>
+                    </div> --}}
+                    <button type="submit" class="btn btn-primary">Criar</button>
                 </form>
             </div>
             <!-- /.content -->

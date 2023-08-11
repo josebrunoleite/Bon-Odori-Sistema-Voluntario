@@ -322,7 +322,7 @@ return [
         ['header' => 'Bon odori Vonluntario'],
         [
             'text' => 'Yoasobi?',
-            'url'  => 'test',
+            'url'  => 'music',
             'icon' => 'fas fa-fw fa-user',
             'can'   =>''
         ],
@@ -398,6 +398,11 @@ return [
                 [
                     'text' => 'Criar Voluntário',
                     'url'  => 'createfiV',
+                    'icon_color' => 'yellow',
+                ],
+                [
+                    'text' => 'Codigos',
+                    'url'  => 'json',
                     'icon_color' => 'yellow',
                 ],
                 [
