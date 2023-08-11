@@ -92,8 +92,8 @@
         width: 250px;
         height: auto;
         z-index: 1;
-        bottom: 10em;
-        left: 50%;
+        bottom: 12em;
+        left: 44%;
     }
     .card{
         position: relative;
