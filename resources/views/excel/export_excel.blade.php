@@ -7,18 +7,20 @@
                 <div class="card">
                     <div class="card-header">Exporta</div>
                     <div class="card-body">
-                        <form action="{{ route('exportTable') }}" method="get">
-                            @csrf
-                        <div>
-                            <button type="button" class="btn btn-primary btn-lg">Exporta Usuario</button>
-                        </div>
-                    </form>
-                    <form action="{{ route('exportTablepresenca') }}" method="get" >
                         @csrf
                         <div>
-                            <button type="button" class="btn btn-primary btn-lg">Exporta Presença</button>
+                            <a href="{{ route('exportTable') }}">
+                                <button type="button" class="btn btn-primary btn-lg">Exporta Usuario</button>
+                            </a>
                         </div>
-                    </form>
+
+                        @csrf
+                        <div>
+                            <a href="{{ route('exportTablepresenca') }}">
+                                <button type="button" class="btn btn-primary btn-lg">Exporta Presença</button>
+                            </a>
+                        </div>
+                        
                         @if (session('error'))
                             <div class="alert alert-danger">
                                 {{ session('error') }}

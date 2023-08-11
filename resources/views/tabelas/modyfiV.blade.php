@@ -18,6 +18,19 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="card">
+                    <div class="card-header">
+                        @if (session('error'))
+                                <div class="alert alert-danger">
+                                    {{ session('error') }}
+                                </div>
+                            @endif
+                            <br>
+                            @if (session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+                    </div>
                     <div class="card-body">
                 <form method="POST" action="{{ route('voluntario.update', ['id' => $user->id]) }}">
                     @csrf
