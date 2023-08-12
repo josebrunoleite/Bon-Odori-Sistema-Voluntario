@@ -9,10 +9,13 @@ class SessionTimeout
 {
     public function handle($request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->isAdmin()) {
-            config(['session.lifetime' => 1800]); // 30 minutos em segundos
+
+        $exception = $next($request);
+
+        if ($request->is('login') && $request->isMethod('POST')) {
+            config(['session.lifetime' => 1800]); 
         }
 
-        return $next($request);
+        return $exception;
     }
 }

@@ -107,7 +107,7 @@ return [
     */
 
     'preloader' => [
-        'enabled' => true,
+        'enabled' => false,
         'img' => [
             'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
             'alt' => 'AdminLTE Preloader Image',
@@ -255,7 +255,7 @@ return [
     'use_route_url' => false,
     'dashboard_url' => 'home',
     'logout_url' => 'logout',
-    'login_url' => 'login',
+    /* 'login_url' => 'login', */
     'register_url' => false,
     'password_reset_url' => false,
     'password_email_url' => false,
