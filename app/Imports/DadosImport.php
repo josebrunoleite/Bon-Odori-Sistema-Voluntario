@@ -12,11 +12,9 @@ class DadosImport implements ToModel, WithHeadingRow
     {
         $email = $row['email'];
 
-        // Localize o usuário com base no email
         $usuario = User::where('email', $email)->first();
 
         if ($usuario) {
-            // Se o usuário existir, atualize os campos desejados
             $setor1 = $row['setor1'];
             $subsetor1 = $row['subsetor1'];
             $setor2 = $row['setor2'];
@@ -29,7 +27,6 @@ class DadosImport implements ToModel, WithHeadingRow
 
             $usuario->save();
         } else {
-            // Se o usuário não existir, crie um novo registro com os dados do Excel
             $usuario = new User([
                 'name' => $row['nome'],
                 'email' =>  $row['email'],
@@ -39,7 +36,7 @@ class DadosImport implements ToModel, WithHeadingRow
                 'setor2' => $row['setor2'],
                 'subsetor2' => $row['subsetor2'],
                 'on' => $row['on'],
-                'password' => bcrypt($row['telefone']), // Criptografa a senha com bcrypt()
+                'password' => bcrypt($row['telefone']), 
             ]);
 
             $usuario->save();

@@ -146,4 +146,43 @@ class PresencaController extends Controller
 
         return false; // Código inválido
     }
+    public function registrarEntradaQrCode($qrcode)
+    {
+        $user_id = auth()->id();
+        $name = auth()->user()->name ?? $name = auth()->user()->email;
+        $subsetor = auth()->user()->subsetor ?? 'Geral';
+    
+        $codigoInserido = $qrcode;
+    
+        $entrada = Presenca::where('user_id', $user_id)
+            ->where('name', $name)
+            ->where('subsetor', $subsetor)
+            ->whereDate('data_registro', Carbon::today())
+            ->first();
+    
+        if ($entrada && $entrada->entrada !== null) {
+            // Usuário já registrou a entrada hoje
+            $presente = true;
+            return Redirect::back()->with('error', 'Você já registrou a entrada hoje.');
+        }
+    
+        if (!$this->codigoValido($codigoInserido)) {
+            return Redirect::back()->with('error', 'Código inválido. A presença não foi registrada.');
+        }
+    
+        // Registrar a entrada
+        Presenca::updateOrCreate(
+            [
+                'user_id' => $user_id,
+                'name' => $name,
+                'subsetor' => $subsetor,
+                'codigoInserido'=> $codigoInserido,
+                'data_registro' => Carbon::today(),
+            ],
+            ['entrada' => Carbon::now()]
+        );
+    
+        $presente = true;
+        return Redirect::back()->with('success', 'Entrada registrada com sucesso.');
+    }
 }

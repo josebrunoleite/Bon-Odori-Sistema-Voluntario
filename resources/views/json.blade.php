@@ -55,10 +55,10 @@
                                             <td>{{ $item['codigo'] }}</td>
                                             <td>{{ $item['status'] }}</td>
                                             <td>{{-- {{ $item['status'] } --}} Em Implementação
-                                                {{QrCode::generate($item['codigo']);}}
+                                                {{-- {{QrCode::generate($item['codigo']);}}
                                                 <div class="visible-print text-center">
                                                     <div class="item-details" style="display: ;"></div>
-                                                </div>
+                                                </div> --}}
                                             </td>
                                         </tr>
                                     @endforeach

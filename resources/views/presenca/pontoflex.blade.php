@@ -29,7 +29,7 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary">Registrar Entrada</button>
                             </form>
-                            <button id="startButton">Iniciar Leitor</button>
+                            {{-- <button id="startButton">Iniciar Leitor</button> --}}
                         @endif
                         <br>
                         <br>

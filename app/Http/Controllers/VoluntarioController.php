@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Validation\Rule;
+use Illuminate\Auth;
 
 
 class VoluntarioController extends Controller
@@ -102,7 +103,7 @@ class VoluntarioController extends Controller
         return view('auth.passwords.reset');
     }
 
-    public function changePassword(Request $request)
+    /* public function changePassword(Request $request)
     {
         $user = Auth::user();
 
@@ -120,7 +121,7 @@ class VoluntarioController extends Controller
         ]);
 
         return redirect()->route('home')->with('success', 'Senha alterada com sucesso.');
-    }
+    } */
 
 
     public function destroy($id)

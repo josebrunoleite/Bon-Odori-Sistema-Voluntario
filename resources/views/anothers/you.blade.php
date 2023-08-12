@@ -22,7 +22,7 @@
                     @if (strpos($user->setor2, '-') !== false)
                         Você não está cadastrado no horário da noite.
                     @else
-                        <h3>Seu setor será de manhã é {{ $user->setor2 ?? 'Ops você você não possui info' }} e seu
+                        <h3>Seu setor será de noite é {{ $user->setor2 ?? 'Ops você você não possui info' }} e seu
                             subsetor será {{ $user->subsetor2 ?? 'Ops você você não possui info' }} </h3>
                     @endif
                     <h5>Ultima atualização sua {{$user->updated_at}}</h5>

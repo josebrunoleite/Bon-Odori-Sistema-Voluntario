@@ -181,10 +181,10 @@
                         @else
                             <a href="{{ route('login') }}" class="nav-link fw-bold py-1 px-0 mx-2 link-light">Login</a>
 
-                            @if (Route::has('register'))
+                            {{-- @if (Route::has('register'))
                                 <a href="{{ route('register') }}"
                                     class="nav-link fw-bold py-1 px-0 mx-2 link-light">Registrar</a>
-                            @endif
+                            @endif --}}
                         @endauth
                     @endif
                 </div>

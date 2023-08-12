@@ -1,4 +1,4 @@
-<?php
+<!-- 
 
 namespace App\Http\Controllers;
 
@@ -29,4 +29,4 @@ class QRCodeController extends Controller
             'Content-Disposition' => 'inline; filename="qrcode.png"'
         ]);
     }
-}
+} -->
