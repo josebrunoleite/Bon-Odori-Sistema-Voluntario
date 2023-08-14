@@ -31,7 +31,9 @@ class HomeController extends Controller
     {
         $id = auth()->id();
         $user = User::find($id);
-        return view('anothers.you', ['user' => $user]);
+        $checkboxData = json_decode($user->days ?? '[]', true);
+
+        return view('anothers.you', compact('user', 'checkboxData'));
     }
     public function info()
     {

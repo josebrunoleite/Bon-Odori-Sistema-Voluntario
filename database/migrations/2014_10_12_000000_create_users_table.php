@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration
             $table->string('subsetor2')->nullable();
             $table->string('on')->nullable();
             $table->json('options')->nullable();
+            $table->json('days')->nullable();
         });
     }
 

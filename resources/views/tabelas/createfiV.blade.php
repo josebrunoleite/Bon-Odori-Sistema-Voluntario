@@ -1,6 +1,5 @@
 @extends('adminlte::page')
 @section('content')
-
     <!-- Main content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -17,6 +16,17 @@
 
         <!-- Main content -->
         <div class="content">
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
+            <br>
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
             <div class="container-fluid">
                 <form method="POST" action="{{ route('voluntario.store') }}">
                     @csrf
@@ -38,9 +48,18 @@
                         <div class="form-group col-md-4">
                             <label>Cargo</label>
                             <select class="custom-select" name="role" id="role">
-                                <option value="admin">admin</option>
-                                <option value="mod">mod</option>
                                 <option value="user">user</option>
+                                <option value="mod">mod</option>
+                                <option value="admin">admin</option>
+                            </select>
+                        </div>
+                        <!--Fuso Horario-->
+                        <div class="form-group col-md-4">
+                            <label>Fuso Horario</label>
+                            <select class="custom-select" name="on" id="on">
+                                <option value="admin">Manhã</option>
+                                <option value="mod">Noturno</option>
+                                <option value="user">Dobrar</option>
                             </select>
                         </div>
                         <!--Setor01-->
@@ -63,9 +82,9 @@
                             <label>SubSetor</label>
                             <select class="custom-select" name="subsetor1" id="subsetor1">
                                 <option value="Subsetor">Subsetor</option>
-                                <option value="Mochila" >Mochila</option>
+                                <option value="Mochila">Mochila</option>
                                 <option value="Comercial">Comercial</option>
-                                <option value="Kirigami" >Kirigami</option>
+                                <option value="Kirigami">Kirigami</option>
                                 <option value="Praça Anime">Praça Anime</option>
                                 <option value="Palco Haru">Palco Haru</option>
                                 <option value="Sustentabilidade">Sustentabilidade</option>
@@ -145,24 +164,38 @@
                                 <option value="Altar Budista">Altar Budista</option>
                             </select>
                         </div>
+                        <div class="form-group col-md-12">
+                            <label>Sexta</label>
+                            <input type="checkbox" name="checkbox_data[]" value="sexta">
+                            <label>Sabado</label>
+                            <input type="checkbox" name="checkbox_data[]" value="sabado">
+                            <label>Domingo</label>
+                            <input type="checkbox" name="checkbox_data[]" value="domingo">
+                            <label>Ausente</label>
+                            <input type="checkbox" name="checkbox_data[]" value="ausente">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <div class="row g-3 align-items-center">
-                            <div class="col-auto">
-                                <label for="inputPassword" class="col-form-label">Senha</label>
-                            </div>
-                            <div class="col-auto">
-                                <input type="password" name="password" id="inputPassword6" class="form-control"
-                                    aria-labelledby="passwordHelpInline">
-                            </div>
-  {{--                           <div class="col-auto">
+                    <div class="form-row">
+
+                    </div>
+            </div>
+            <div class="form-group">
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="inputPassword" class="col-form-label">Senha</label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="password" name="password" id="inputPassword6" class="form-control"
+                            aria-labelledby="passwordHelpInline">
+                    </div>
+                    {{--                           <div class="col-auto">
                                 <span id="passwordHelpInline" class="form-text">
                                     Must be 8-20 characters long.
                                 </span>
                             </div> --}}
-                        </div>
-                    </div>
-{{--                     <div class="form-group">
+                </div>
+            </div>
+            {{--                     <div class="form-group">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="gridCheck">
                             <label class="form-check-label" for="gridCheck">
@@ -170,11 +203,11 @@
                             </label>
                         </div>
                     </div> --}}
-                    <button type="submit" class="btn btn-primary">Criar</button>
-                </form>
-            </div>
-            <!-- /.content -->
+            <button type="submit" class="btn btn-primary">Criar</button>
+            </form>
         </div>
-        <!-- /.content-wrapper -->
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
     </div>
 @endsection

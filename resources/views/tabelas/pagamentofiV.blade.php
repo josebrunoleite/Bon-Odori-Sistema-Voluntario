@@ -18,6 +18,19 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="card">
+                    <div class="card-header">
+                        @if (session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
+                        <br>
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                    </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('pagamentofiVStore', $user->id) }}">
                             @csrf
@@ -42,11 +55,11 @@
                                 <div class="form-group col-md-4">
                                     <h5>Pagamento Manhã</h5>
                                     <label>Comida</label>
-                                    <input type="checkbox" name="checkbox_data[]" value="opcao_comida1"
-                                        @if (in_array('opcao_comida1', $checkboxData)) checked @endif>
+                                    <input type="checkbox" name="checkbox_data[]" value="comida1"
+                                        @if (in_array('comida1', $checkboxData)) checked @endif>
                                     <label>&nbsp;Agua</label>
-                                    <input type="checkbox" name="checkbox_data[]" value="opcao_bebida1"
-                                        @if (in_array('opcao_bebida1', $checkboxData)) checked @endif>
+                                    <input type="checkbox" name="checkbox_data[]" value="bebida1"
+                                        @if (in_array('bebida1', $checkboxData)) checked @endif>
                                 </div>
                                 <!--Setor01-->
                                 <!--Pagamento Tarde
@@ -54,36 +67,39 @@
                                     <h5>Pagamento Tarde</h5>
                                     <label>Comida</label>
                                     <input type="checkbox" name="checkbox_data[]" value="opcao_comida2"
-                                        @if (in_array('opcao_comida2', $checkboxData)) checked @endif>
+                                        {{-- @if (in_array('opcao_comida2', $checkboxData)) checked @endif> --}}
                                     <label>&nbsp;Agua</label>
                                     <input type="checkbox" name="checkbox_data[]" value="opcao_bebida2"
-                                        @if (in_array('opcao_bebida2', $checkboxData)) checked @endif>
+                                       {{--  @if (in_array('opcao_bebida2', $checkboxData)) checked @endif> --}}
                                 </div>-->
                                 <div class="form-group col-md-4">
                                     <h5>Pagamento Noite</h5>
                                     <label>Comida</label>
-                                    <input type="checkbox" name="checkbox_data[]" value="opcao_comida3"
-                                        @if (in_array('opcao_comida3', $checkboxData)) checked @endif>
+                                    <input type="checkbox" name="checkbox_data[]" value="comida3"
+                                        @if (in_array('comida3', $checkboxData)) checked @endif>
                                     <label>&nbsp;Agua</label>
-                                    <input type="checkbox" name="checkbox_data[]" value="opcao_bebida3"
-                                        @if (in_array('opcao_bebida3', $checkboxData)) checked @endif>
+                                    <input type="checkbox" name="checkbox_data[]" value="bebida3"
+                                        @if (in_array('bebida3', $checkboxData)) checked @endif>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <h5>Extra</h5>
                                     <label>Agua</label>
-                                    <input type="checkbox"  name="checkbox_data[]" value="opcao_extra1"
-                                        @if (in_array('opcao_extra1', $checkboxData)) checked @endif>
+                                    <input type="checkbox"  name="checkbox_data[]" value="extra1"
+                                        @if (in_array('extra1', $checkboxData)) checked @endif>
                                         <label>Comida   </label>
-                                        <input type="checkbox"  name="checkbox_data[]" value="opcao_extra2"
-                                            @if (in_array('opcao_extra2', $checkboxData)) checked @endif>
+                                        <input type="checkbox"  name="checkbox_data[]" value="extra2"
+                                            @if (in_array('extra2', $checkboxData)) checked @endif>
                                     <label>&nbsp;Transporte</label>
-                                    <input type="checkbox" name="checkbox_data[]" value="opcao_extra3"
-                                        @if (in_array('opcao_extra3', $checkboxData)) checked @endif>
+                                    <input type="checkbox" name="checkbox_data[]" value="extra3"
+                                        @if (in_array('extra3', $checkboxData)) checked @endif>
+                                        <label>Hapi</label>
+                                        <input type="checkbox"  name="checkbox_data[]" value="hapi"
+                                            @if (in_array('hapi', $checkboxData)) checked @endif>
                                 </div>
                                 <!--Setor01-->
                             </div>
-                            <input type="checkbox" name="checkbox_data[]" value="opcao_a"
-                                @if (in_array('opcao_a', $checkboxData)) checked @endif>
+                            {{-- <input type="checkbox" name="checkbox_data[]" value="opcao_a"
+                                @if (in_array('opcao_a', $checkboxData)) checked @endif> --}}
 
                             <button type="submit" class="btn btn-primary">Atualizar</button>
                         </form>

@@ -16,7 +16,7 @@
     <style>
         body,
         .bd-placeholder-img {
-            background-image: url({{ asset('images/bonodori_waifu2x_art_noise1_scale.webp') }});
+            background-image: url(images/bonodori_waifu2x_art_noise1_scale.webp);
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
@@ -171,10 +171,10 @@
 
     <div class="cover-container  d-flex w-100 h-100 p-3 mx-auto flex-column">
         <header class="mb-auto">
-            <div>
+     <div>
                 <nav class="nav nav-masthead justify-content-center float-center">
                     <div class="na d-inline-flex">
-                    @if (Route::has('login'))
+<!--                     @if (Route::has('login'))
                         @auth
                             <a href="{{ url('/home') }}"
                                 class="nav-link fw-bold py-1 px-0 link-light mx-2">Home</a>
@@ -186,7 +186,8 @@
                                     class="nav-link fw-bold py-1 px-0 mx-2 link-light">Registrar</a>
                             @endif --}}
                         @endauth
-                    @endif
+                    @endif -->
+                <h3>Site em Manutenção!</h3>
                 </div>
                 </nav>
                 
@@ -196,15 +197,15 @@
         <main class="px-3">
             <h1>Bem-vindo, Voluntário!</h1>
             <p class="lead">Bem-vindos a mais um ano de Bon Odori! Espero que possamos nos ajudar a fazer mais um Excelente EVENTO!!.</p>
+            <h6>Previsão retorno quinta dia 17 / Entre em Contato com José sobre duvidas!</h6>
             <!--<p class="lead">
                 <a href="#" class="btn btn-lg btn-light fw-bold border-white bg-white">Learn more</a>
             </p>00-->
         </main>
 
         <footer class="mt-auto px-auto text-white-50">
-          <p class="text-white m-auto">Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }}) <br> Versão: 1.3.0 stable<br>Um Site Seinenkai/José Bruno!</p>
-</footer>
-
+                    <p class="text-white m-auto">Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }}) <br> Versão: 1.3.0 stable <br>Um Site Seinenkai/José Bruno!</p>
+        </footer>
     </div>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 

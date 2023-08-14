@@ -23,6 +23,7 @@ class User extends Authenticatable
         'subsetor2',
         'on',
         'options',
+        'days',
     ];
 
 

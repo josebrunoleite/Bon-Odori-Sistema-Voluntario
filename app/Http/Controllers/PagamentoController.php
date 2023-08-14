@@ -20,7 +20,9 @@ class PagamentoController extends Controller
     {
         $user = DB::table('users')->find($id);
         $checkboxData = json_decode($user->options ?? '[]', true);
+        //@dd($checkboxData);
         return view('tabelas.pagamentofiV', compact('user', 'checkboxData'));
+        
     }
     public function store(Request $request, $id)
     {
