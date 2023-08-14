@@ -37,7 +37,7 @@ class DadosImport implements ToModel, WithHeadingRow
                 $days[] = 'domingo';
             }
 
-            $existingDays = json_decode($usuario->days, true);
+            $existingDays = json_decode($usuario->days, true) ?? [];
 
             $mergedDays = array_merge($existingDays, $days);
 
@@ -73,7 +73,7 @@ class DadosImport implements ToModel, WithHeadingRow
                 'days' => json_encode($days),
             ]);
 
-            $existingDays = json_decode($usuario->days, true);
+            $existingDays = json_decode($usuario->days, true) ?? [];
 
             $mergedDays = array_merge($existingDays, $days);
 
