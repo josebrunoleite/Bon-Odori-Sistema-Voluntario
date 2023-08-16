@@ -4,8 +4,8 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <!--<div class="col-sm-6">
-                    <h1>Tabela de Voluntarios</h1>
-                </div>-->
+                        <h1>Tabela de Voluntarios</h1>
+                    </div>-->
             </div>
         </div><!-- /.container-fluid -->
     </section>
@@ -31,15 +31,15 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="example1" class="table table-bordered table-striped">
+                            <table id="example1" class="{{-- table-responsive --}}table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>Editar/Pagamento</th>
-                                        <th>Nome</th>
-                                        <th>Setor Manhã</th>
-                                        <th>Setor Noite</th>
-                                        <th>Horarios</th>
-                                        <th>Identificação</th>
+                                        <th class="d-md-table-cell">Nome</th>
+                                        <th class="d-none d-md-table-cell">Setor Manhã</th>
+                                        <th class="d-none d-md-table-cell">Setor Noite</th>
+                                        <th class="d-none d-md-table-cell">Horarios</th>
+                                        <th class="d-none d-md-table-cell">Identificação</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -47,15 +47,17 @@
                                         <tr>
                                             <td><a href="{{ url('modyfiV/' . $user->id) }}">Editar</a>
                                                 <a href="{{ url('pagamentofiV/' . $user->id) }}">Pagmento</a>
-                                               <!-- <a href="#" class="text-danger" data-bs-toggle="modal"
-                                                    data-bs-target="#confirmDeleteModal" id="deleteButton" data-bs-id="{{ $user->id }}">
-                                                    Excluir</a>-->
+                                                <!-- <a href="#" class="text-danger" data-bs-toggle="modal"
+                                                        data-bs-target="#confirmDeleteModal" id="deleteButton" data-bs-id="{{ $user->id }}">
+                                                        Excluir</a>-->
                                             </td>
-                                            <td>{{ $user->name ?? 'Error Contate José' }}</td>
-                                            <td>{{ $user->setor1 ?? 'Error Contate José' }}</td>
-                                            <td>{{ $user->setor2 ?? 'Error Contate José' }}</td>
-                                            <td>{{ $user->on ?? 'Error Contate José' }}</td>
-                                            <td>{{ $user->id ?? 'Error Contate José' }}</td>
+                                            <td class="d-md-table-cell">{{ $user->name ?? 'Error Contate José' }}</td>
+                                            <td class="d-none d-md-table-cell">{{ $user->setor1 ?? 'Error Contate José' }}
+                                            </td>
+                                            <td class="d-none d-md-table-cell">{{ $user->setor2 ?? 'Error Contate José' }}
+                                            </td>
+                                            <td class="d-none d-md-table-cell">{{ $user->on ?? 'Error Contate José' }}</td>
+                                            <td class="d-none d-md-table-cell">{{ $user->id ?? 'Error Contate José' }}</td>
 
 
                                         </tr>
@@ -64,11 +66,11 @@
                                 <tfoot>
                                     <tr>
                                         <th>Editar/Pagamento</th>
-                                        <th>Nome</th>
-                                        <th>Setor Manhã</th>
-                                        <th>Setor Noite</th>
-                                        <th>Horarios</th>
-                                        <th>Identificação</th>
+                                        <th class="d-md-table-cell">Nome</th>
+                                        <th class="d-none d-md-table-cell">Setor Manhã</th>
+                                        <th class="d-none d-md-table-cell">Setor Noite</th>
+                                        <th class="d-none d-md-table-cell">Horarios</th>
+                                        <th class="d-none d-md-table-cell">Identificação</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -95,12 +97,12 @@
         $(function() {
             $("#example1").DataTable({
                 "responsive": true,
-                "lengthChange": false,
+                "lengthChange": true,
                 "autoWidth": false,
-                "paging": false,
-                "ordering": true,
-                /*"buttons": ["copy", "csv", "excel", "pdf", "print"]*/
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+                "paging": true,
+                "ordering": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(2)');
             $('#example2').DataTable({
                 "paging": true,
                 "lengthChange": false,
@@ -132,6 +134,10 @@
     <script src="{{ asset('jsccs/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('public/jsccs/js/adminlte.min.js') }}"></script>
-    
-    
+    {{-- <style>
+        #example1_filter {
+            float: right
+        }
+    </style> --}}
+
 @stop

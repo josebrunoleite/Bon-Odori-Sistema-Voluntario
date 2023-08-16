@@ -1,5 +1,10 @@
 @extends('adminlte::page')
 @section('content')
+@php
+use Carbon\Carbon;
+    $dataRegistro = Carbon::now('America/Bahia');
+    $dataRegistro->format('Y-m-d H:i');
+@endphp
 
     <body class="d-flex h-100 text-center text-bg-white">
         <div class="container">

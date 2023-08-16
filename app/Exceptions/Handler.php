@@ -2,8 +2,14 @@
 
 namespace App\Exceptions;
 
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Exception;
+use Illuminate\Session\TokenMismatchException;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+
 
 class Handler extends ExceptionHandler
 {
@@ -38,4 +44,19 @@ class Handler extends ExceptionHandler
             //
         });
     }
+    public function render($request, Throwable $exception)
+    {
+        if ($exception instanceof TokenMismatchException) {
+            return redirect()->route('home')
+                ->withInput($request->except('password'))
+                ->with([
+                    'status' => 'Oops! Your Validation Token has expired. Please try again',
+                    'alert' => 'danger'
+                ]);
+        }
+
+        return parent::render($request, $exception);
+    }
+
+
 }

@@ -40,7 +40,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="example1" class="table table-bordered table-striped">
+                            <table id="example2" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>Codigo</th>
@@ -55,10 +55,10 @@
                                             <td>{{ $item['codigo'] }}</td>
                                             <td>{{ $item['status'] }}</td>
                                             <td>{{-- {{ $item['status'] } --}} Em Implementação
-                                                {{-- {{QrCode::generate($item['codigo']);}}
-                                                <div class="visible-print text-center">
+                                                 {!! QrCode::size(200)->generate('https://seinenkai.com.br/registrarEntradaQrCode/' . $item['codigo']) !!}
+                                             <div class="visible-print text-center">
                                                     <div class="item-details" style="display: ;"></div>
-                                                </div> --}}
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -107,7 +107,7 @@
                 "autoWidth": false,
                 "paging": true,
                 "ordering": true,
-                /*"buttons": ["copy", "csv", "excel", "pdf", "print"]*/
+                "buttons": ["copy", "csv", "excel", "pdf", "print"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
                 "paging": true,
@@ -120,6 +120,14 @@
             });
         });
     </script>
+       <style>
+        #example1_filter {
+            float: right;
+        }
+        .main-sidebar {
+            display: none;
+        }
+    </style>
     <script src="{{ asset('public/jsccs/jquery/dist/js/jquery.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
@@ -131,13 +139,7 @@
     <script src="{{ asset('jsccs/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('jsccs/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('jsccs/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('jsccs/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('jsccs/jszip/jszip.min.js') }}"></script>
-    <script src="{{ asset('jsccs/pdfmake/pdfmake.min.js') }}"></script>
     <script src="{{ asset('jsccs/pdfmake/vfs_fonts.js') }}"></script>
-    <script src="{{ asset('jsccs/datatables-buttons/js/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('jsccs/datatables-buttons/js/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('jsccs/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('public/jsccs/js/adminlte.min.js') }}"></script>
     

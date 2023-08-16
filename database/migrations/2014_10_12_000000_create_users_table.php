@@ -29,6 +29,7 @@ class CreateUsersTable extends Migration
             $table->string('on')->nullable();
             $table->json('options')->nullable();
             $table->json('days')->nullable();
+            $table->json('subsDay')->nullable();
         });
     }
 

@@ -255,7 +255,7 @@ return [
     'use_route_url' => false,
     'dashboard_url' => 'home',
     'logout_url' => 'logout',
-    /* 'login_url' => 'login', */
+    'login_url' => 'login',
     'register_url' => false,
     'password_reset_url' => false,
     'password_email_url' => false,
@@ -291,11 +291,11 @@ return [
 
     'menu' => [
         // Navbar items:
-        [
+        /* [
             'type'         => 'navbar-search',
             'text'         => 'search',
             'topnav_right' => true,
-        ],
+        ], */
         [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
@@ -364,7 +364,7 @@ return [
             'class' => 'hidden',    
         ],*/
         ['header' => 'Vonluntario ADMIN',
-        'can'   =>'isAdmin',
+        'can'   =>['isAdmin', 'isModer'],
         ],
         [
             'text' => 'Planilha',
@@ -374,12 +374,14 @@ return [
                 [
                     'text' => 'Planilha Importa',
                     'url'  => 'import_excel',
+                    'can'   =>'isAdmin',
                     'icon_color' => 'cyan',
                     'icon' => 'fa fa-fw fa-file-excel',
                 ],
                 [
                     'text' => 'Planilha Exporta',
                     'url'  => 'export_excel',
+                    'can'   =>'isAdmin',
                     'icon_color' => 'cyan',
                     'icon' => 'fa fa-fw fa-file-excel',
                 ],
@@ -388,26 +390,30 @@ return [
         [
             'text'    => 'Opção Voluntários',
             'icon'    => 'fas fa-fw fa-share',
-            'can'   =>'isAdmin',
+            'can'   =>['isAdmin', 'isModer'],
             'submenu' => [
                 [
                     'text' => 'Todos Voluntários',
                     'url'  => 'vontable',
+                    'can'   =>'isAdmin',
                     'icon_color' => 'yellow',
                 ],
                 [
                     'text' => 'Criar Voluntário',
                     'url'  => 'createfiV',
+                    'can'   =>'isAdmin',
                     'icon_color' => 'yellow',
                 ],
                 [
                     'text' => 'Codigos',
                     'url'  => 'json',
+                    'can'   =>['isAdmin', 'isModer'],
                     'icon_color' => 'yellow',
                 ],
                 [
                     'text'    => 'Chamado_Desativado',
                     'url'     => 'x',
+                    'can'   =>'isAdmin',
                     'icon' => 'fas fa-fw fa-headset',
                     'icon_color' => 'yellow'
 

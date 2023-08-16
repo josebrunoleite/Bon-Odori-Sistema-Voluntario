@@ -37,13 +37,12 @@ class PresencaController extends Controller
     {
         $user_id = auth()->id();
         $name = auth()->user()->name ?? $name = auth()->user()->email;
-        $subsetor = auth()->user()->subsetor ?? 'Geral';
+        $subsetor = auth()->user()->subsetor1 . ' / ' . auth()->user()->subsetor2;
     
         $codigoInserido = $request->input('codiEnter');
     
         $entrada = Presenca::where('user_id', $user_id)
             ->where('name', $name)
-            ->where('subsetor', $subsetor)
             ->whereDate('data_registro', Carbon::today())
             ->first();
     
@@ -78,12 +77,11 @@ class PresencaController extends Controller
     {
         $user_id = auth()->id();
         $name = auth()->user()->name ?? $name = auth()->user()->email;
-        $subsetor = auth()->user()->subsetor ?? 'Geral';
+        $subsetor = auth()->user()->subsetor1 . ' / ' . auth()->user()->subsetor2;
     
         // Verificar se a entrada foi registrada hoje
         $entrada = Presenca::where('user_id', $user_id)
             ->where('name', $name)
-            ->where('subsetor', $subsetor)
             ->whereDate('data_registro', Carbon::today())
             ->whereNotNull('entrada')
             ->first();
@@ -97,7 +95,6 @@ class PresencaController extends Controller
         // Verificar se já foi registrada a saída hoje
         $saida = Presenca::where('user_id', $user_id)
             ->where('name', $name)
-            ->where('subsetor', $subsetor)
             ->whereDate('data_registro', Carbon::today())
             ->whereNotNull('saida')
             ->first();
@@ -113,7 +110,6 @@ class PresencaController extends Controller
             [
                 'user_id' => $user_id,
                 'name' => $name,
-                'subsetor' => $subsetor,
                 'data_registro' => Carbon::today(),
             ],
             ['saida' => Carbon::now()]
@@ -146,17 +142,16 @@ class PresencaController extends Controller
 
         return false; // Código inválido
     }
-    public function registrarEntradaQrCode($qrcode)
+    public function registrarEntradaQrCode(Request $request)
     {
         $user_id = auth()->id();
         $name = auth()->user()->name ?? $name = auth()->user()->email;
-        $subsetor = auth()->user()->subsetor ?? 'Geral';
+        $subsetor = auth()->user()->subsetor1 . ' / ' . auth()->user()->subsetor2;
     
-        $codigoInserido = $qrcode;
+        $codigoInserido = $request->input('qrcode');
     
         $entrada = Presenca::where('user_id', $user_id)
             ->where('name', $name)
-            ->where('subsetor', $subsetor)
             ->whereDate('data_registro', Carbon::today())
             ->first();
     

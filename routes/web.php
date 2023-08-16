@@ -82,3 +82,4 @@ Route::GET('/pass', [App\Http\Controllers\VoluntarioController::class, 'showChan
 
 Route::GET('/json', [App\Http\Controllers\HomeController::class, 'codigos'])->name('codigos');
 Route::get('/qrcode', [App\Http\Controllers\QRCodeController::class, 'generate'])->name('qrcode.generate');
+Route::GET('/qrcodeleitor', [App\Http\Controllers\PresencaController::class, 'registrarEntradaQrCode'])->name('qrcode');
