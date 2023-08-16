@@ -24,7 +24,6 @@ class PresencaController extends Controller
         $name = auth()->user()->name ?? auth()->user()->email;
 
         $presenca = Presenca::where('user_id', $user_id)
-            ->where('name', $name)
             ->whereDate('data_registro', Carbon::today())
             ->first();
 
@@ -42,7 +41,6 @@ class PresencaController extends Controller
         $codigoInserido = $request->input('codiEnter');
     
         $entrada = Presenca::where('user_id', $user_id)
-            ->where('name', $name)
             ->whereDate('data_registro', Carbon::today())
             ->first();
     
@@ -81,7 +79,6 @@ class PresencaController extends Controller
     
         // Verificar se a entrada foi registrada hoje
         $entrada = Presenca::where('user_id', $user_id)
-            ->where('name', $name)
             ->whereDate('data_registro', Carbon::today())
             ->whereNotNull('entrada')
             ->first();
@@ -94,7 +91,6 @@ class PresencaController extends Controller
     
         // Verificar se já foi registrada a saída hoje
         $saida = Presenca::where('user_id', $user_id)
-            ->where('name', $name)
             ->whereDate('data_registro', Carbon::today())
             ->whereNotNull('saida')
             ->first();
@@ -151,7 +147,6 @@ class PresencaController extends Controller
         $codigoInserido = $request->input('qrcode');
     
         $entrada = Presenca::where('user_id', $user_id)
-            ->where('name', $name)
             ->whereDate('data_registro', Carbon::today())
             ->first();
     

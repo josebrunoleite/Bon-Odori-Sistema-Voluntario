@@ -25,7 +25,7 @@ class DadosImport implements ToModel, WithHeadingRow
             $usuario->setor2 = $setor2;
             $usuario->subsetor2 = $subsetor2;
 
-            $days = [];
+            /*$days = [];
 
             if (!empty($row['sexta'])) {
                 $days[] = 'sexta';
@@ -43,12 +43,12 @@ class DadosImport implements ToModel, WithHeadingRow
 
             $uniqueDays = array_values(array_unique($mergedDays));
 
-            $usuario->days = json_encode($uniqueDays);
+            $usuario->days = json_encode($uniqueDays);*/
 
             $usuario->save();
             //@dd($usuario);
         } else {
-            $days = [];
+            /*$days = [];
 
             if (!empty($row['sexta'])) {
                 $days[] = 'sexta';
@@ -58,7 +58,7 @@ class DadosImport implements ToModel, WithHeadingRow
             }
             if (!empty($row['domingo'])) {
                 $days[] = 'domingo';
-            }
+            }*/
 
             $usuario = new User([
                 'name' => $row['nome'],
@@ -70,16 +70,16 @@ class DadosImport implements ToModel, WithHeadingRow
                 'subsetor2' => $row['subsetor2'],
                 'on' => $row['on'],
                 'password' => bcrypt($row['telefone']),
-                'days' => json_encode($days),
+                /*'days' => json_encode($days),*/
             ]);
 
-            $existingDays = json_decode($usuario->days, true) ?? [];
+            /*$existingDays = json_decode($usuario->days, true) ?? [];
 
             $mergedDays = array_merge($existingDays, $days);
 
             $uniqueDays = array_values(array_unique($mergedDays));
 
-            $usuario->days = json_encode($uniqueDays);
+            $usuario->days = json_encode($uniqueDays);*/
             //@dd($days);
             $usuario->save();
         }
