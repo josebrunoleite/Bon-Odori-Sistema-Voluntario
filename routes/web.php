@@ -81,5 +81,5 @@ Route::put('/pagamentofiVpag/{id}', [App\Http\Controllers\PagamentoController::c
 Route::GET('/pass', [App\Http\Controllers\VoluntarioController::class, 'showChangePasswordForm'])->name('showChangePasswordForm');
 
 Route::GET('/json', [App\Http\Controllers\HomeController::class, 'codigos'])->name('codigos');
-Route::get('/qrcode', [App\Http\Controllers\QRCodeController::class, 'generate'])->name('qrcode.generate');
-Route::GET('/qrcodeleitor', [App\Http\Controllers\PresencaController::class, 'registrarEntradaQrCode'])->name('qrcode');
+Route::get('/qrcodeleitor', [App\Http\Controllers\QRCodeController::class, 'generate'])->name('qrcode.generate');
+Route::GET('/qrcode', [App\Http\Controllers\PresencaController::class, 'registrarEntradaQrCode'])->name('qrcode');
