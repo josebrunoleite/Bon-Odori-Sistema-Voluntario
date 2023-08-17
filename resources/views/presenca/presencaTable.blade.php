@@ -31,7 +31,7 @@
                 <div class="small-box bg-success">
                     <div class="inner">
                         <h3>{{ $usuariosSemSaida->count() }}{{-- <sup style="font-size: 20px">%</sup> --}}</h3>
-                        <p>Usuarios Com Saida Registrada Hoje!</p>
+                        <p>Usuarios Sem Saida Registrada Hoje!</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
