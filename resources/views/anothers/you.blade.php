@@ -12,7 +12,7 @@
                 <div class="col-md-10 ">
                     <div class="card p-3 text-center">
                         <div class="card-header">Olá voluntário!</div>
-                        <h1>Obrigado por participar do Bon Odori esse como voluntario, aqui está algumas informações para
+                        <h1>Obrigado por participar do Bon Odori como voluntario, aqui está algumas informações para
                             você</h1>
                         <h3>Olá, {{ $user->name }}</h3>
                         {{--                     <h3>Seu setor será de manhã é {{ $user->setor1 ?? 'Ops você você não possui info' }} e seu subsetor
@@ -34,7 +34,7 @@
                         <h3>Parabéns! Você está designado para os seguintes dias:</h3>
                         <div>
                             <h3>Ainda não Atualizado</h3>
-                            @if (in_array('sexta', $checkboxData))
+                           {{--  @if (in_array('sexta', $checkboxData))
                                 <h4>Sexta</h4>
                             @endif
                             @if (in_array('sabado', $checkboxData))
@@ -42,7 +42,7 @@
                             @endif
                             @if (in_array('domingo', $checkboxData))
                                 <h4>Domingo</h4>
-                            @endif
+                            @endif --}}
                         </div>
                         {{-- <div>
                             <h5>Ultima atualização sua {{ $user->updated_at }}</h5>

@@ -179,6 +179,9 @@
                                             <option value="Altar Budista"
                                                 {{ $user->subsetor1 === 'Altar Budista' ? 'selected' : '' }}>Altar Budista
                                             </option>
+                                            <option value="Passeio"
+                                                {{ $user->subsetor1 === 'Passeio' ? 'selected' : '' }}>Altar Budista
+                                            </option>
                                         </select>
                                     </div>
                                     <!--Setor02-->
@@ -284,6 +287,9 @@
                                             </option>
                                             <option value="Altar Budista"
                                                 {{ $user->subsetor2 === 'Altar Budista' ? 'selected' : '' }}>Altar Budista
+                                            </option>
+                                            <option value="Passeio"
+                                                {{ $user->subsetor1 === 'Passeio' ? 'selected' : '' }}>Altar Budista
                                             </option>
                                         </select>
                                     </div>
