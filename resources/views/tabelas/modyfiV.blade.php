@@ -100,6 +100,7 @@
                                                 {{ $user->setor1 === 'Espaço Pop' ? 'selected' : '' }}>Espaço Pop</option>
                                             <option value="Comercial"
                                                 {{ $user->setor1 === 'Comercial' ? 'selected' : '' }}>Comercial</option>
+                                            <option value="-" {{ $user->setor1 === '-' ? 'selected' : '' }}>-</option>
                                         </select>
                                     </div>
                                     <!--SubSetor01-->
@@ -180,7 +181,7 @@
                                                 {{ $user->subsetor1 === 'Altar Budista' ? 'selected' : '' }}>Altar Budista
                                             </option>
                                             <option value="Passeio"
-                                                {{ $user->subsetor1 === 'Passeio' ? 'selected' : '' }}>Altar Budista
+                                                {{ $user->subsetor1 === 'Passeio' ? 'selected' : '' }}>Passeio
                                             </option>
                                         </select>
                                     </div>
@@ -209,6 +210,7 @@
                                                 {{ $user->setor2 === 'Espaço Pop' ? 'selected' : '' }}>Espaço Pop</option>
                                             <option value="Comercial"
                                                 {{ $user->setor2 === 'Comercial' ? 'selected' : '' }}>Comercial</option>
+                                                <option value="-" {{ $user->setor2 === '-' ? 'selected' : '' }}>-</option>
                                         </select>
                                     </div>
                                     <!--SubSetor02-->
@@ -289,7 +291,7 @@
                                                 {{ $user->subsetor2 === 'Altar Budista' ? 'selected' : '' }}>Altar Budista
                                             </option>
                                             <option value="Passeio"
-                                                {{ $user->subsetor1 === 'Passeio' ? 'selected' : '' }}>Altar Budista
+                                                {{ $user->subsetor1 === 'Passeio' ? 'selected' : '' }}>Passeio
                                             </option>
                                         </select>
                                     </div>
@@ -323,19 +325,19 @@
                                                 class="form-control" aria-labelledby="passwordHelpInline">
                                         </div>
                                         <!-- <div class="col-auto">
-                                    <span id="passwordHelpInline" class="form-text">
-                                        
-                                    </span>-->
+                                        <span id="passwordHelpInline" class="form-text">
+                                            
+                                        </span>-->
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <!--<div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="gridCheck">
-                                <label class="form-check-label" for="gridCheck">
-                                    Check me out
-                                </label>
-                            </div>-->
+                                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                                    <label class="form-check-label" for="gridCheck">
+                                        Check me out
+                                    </label>
+                                </div>-->
                             </div>
                             <button type="submit" class="btn btn-primary">Atualizar</button>
                         </form>
