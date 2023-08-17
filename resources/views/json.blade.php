@@ -45,7 +45,7 @@
                                     <tr>
                                         <th>Codigo</th>
                                         <th>Status</th>
-                                        <th>Qr_Code</th>
+                                        <th>Qr_Code ~Em Implementação~</th>
 
                                     </tr>
                                 </thead>
@@ -54,8 +54,8 @@
                                         <tr>
                                             <td>{{ $item['codigo'] }}</td>
                                             <td>{{ $item['status'] }}</td>
-                                            <td>{{-- {{ $item['status'] } --}} Em Implementação
-                                                 {!! QrCode::size(200)->generate('https://seinenkai.com.br/qrcodeleitor/' . $item['codigo']) !!}
+                                            <td>{{-- {{ $item['status'] } --}}
+                                                 {!! QrCode::size(200)->generate('https://seinenkai.com.br/qrcode/' . $item['codigo']) !!}
                                              <div class="visible-print text-center">
                                                     <div class="item-details" style="display: ;"></div>
                                                 </div>

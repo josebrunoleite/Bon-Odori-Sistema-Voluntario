@@ -19,7 +19,8 @@ class CreatePresencasTable extends Migration
             $table->string('name')->nullable();
             $table->date('data_registro')->nullable();
             $table->string('codigoInserido')->nullable();
-            $table->string('subsetor')->nullable();
+            $table->string('subsetor1')->nullable();
+            $table->string('subsetor2')->nullable();
             $table->timestamp('entrada')->nullable();
             $table->timestamp('saida')->nullable();
             $table->timestamps();

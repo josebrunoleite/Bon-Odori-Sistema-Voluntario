@@ -345,15 +345,38 @@ return [
             'can'   =>''
         ],
         [
-            'text' => 'Horario de Eventos',
-            'url'  => '404',
-            'icon' => 'fas fa-fw fa-clock',
-        ],
-        [
             'text' => 'Funções',
             'url'  => '404',
             'icon' => 'fas fa-fw fa-at',
         ],
+        [
+            'text' => 'Palcos Horarios',
+            'icon' => 'fa fa-fw fa-file-pdf',
+            'submenu' => [
+                [
+                    'text' => 'Espaço Bon Odori',
+                    'url'  => 'http://www.bonodorisalvador.com.br/downloads/2023/Festival-Programacao-Espaco-bon-odori-2023-compressed.pdf',
+                    'target' => '_blank',
+                    'icon_color' => 'cyan',
+                    'icon' => 'fa fa-fw fa-file-pdf',
+                ],
+                [
+                    'text' => 'Palco Natsu',
+                    'url'  => 'http://www.bonodorisalvador.com.br/downloads/2023/Festival-Programacao-Palco-Natsu-2023-compressed.pdf',
+                    'target' => '_blank',
+                    'icon_color' => 'cyan',
+                    'icon' => 'fa fa-fw fa-file-pdf',
+                ],
+                [
+                    'text' => 'Palco Haru',
+                    'url'  => 'http://www.bonodorisalvador.com.br/downloads/2023/Festival-Programacao-Palco-Haru-2023.pdf',
+                    'target' => '_blank',
+                    'icon_color' => 'cyan',
+                    'icon' => 'fa fa-fw fa-file-pdf',
+                ],
+            ],
+        ],
+        
         /*['header' => 'Vonluntario Chamado_Desativado',
         'can'   =>'isAdmin'
          ],
@@ -408,6 +431,12 @@ return [
                     'text' => 'Codigos',
                     'url'  => 'json',
                     'can'   =>['isAdmin', 'isModer'],
+                    'icon_color' => 'yellow',
+                ],
+                [
+                    'text' => 'Presença Tabela. Não Recomendado abrir celular!',
+                    'url'  => 'presen/tablea',
+                    'can'   =>['isAdmin',],
                     'icon_color' => 'yellow',
                 ],
                 [

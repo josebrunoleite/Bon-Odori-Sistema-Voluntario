@@ -58,6 +58,9 @@ Route::GET('/presenca', [App\Http\Controllers\PresencaController::class, 'index'
 Route::POST('/presenca/entrada', [App\Http\Controllers\PresencaController::class, 'registrarEntrada'])->name('presenca.entrada');
 Route::POST('/presenca/saida', [App\Http\Controllers\PresencaController::class, 'registrarSaida'])->name('presenca.saida');
 Route::GET('/presenca/{codigo}', [App\Http\Controllers\PresencaController::class, 'codigovalido'])->name('presenca error');
+Route::GET('/presen/tablea', [App\Http\Controllers\PresencaController::class, 'tabela'])->name('presenca.presencaTable');
+Route::GET('/presen/waringpres/{id}', [App\Http\Controllers\PresencaController::class, 'waringpres'])->name('presenca.waringpres');
+
 /* Pedido 
 Route::get('/listar-pedidos', [App\Http\Controllers\PedidoController::class, 'index'])->name('listar_pedidos');
 Route::get('/criar-pedido', [App\Http\Controllers\PedidoController::class, 'create'])->name('criar_pedido');

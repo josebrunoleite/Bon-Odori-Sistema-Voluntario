@@ -13,12 +13,12 @@ return [
     |
     */
 
-    'btn_close' => 'Close',
-    'btn_close_active' => 'Close Active',
-    'btn_close_all' => 'Close All',
-    'btn_close_all_other' => 'Close Everything Else',
-    'tab_empty' => 'No tab selected!',
-    'tab_home' => 'Home',
-    'tab_loading' => 'Tab is loading',
+    'btn_close' => 'Fechar',
+	'btn_close_active' => 'Fechar outras',
+	'btn_close_all' => 'Fechar Todos',
+	'btn_close_all_other' => 'Fechar Todo o Restante',
+	'tab_empty' => 'Nenhuma aba selecionada!',
+	'tab_home' => 'Início',
+	'tab_loading' => 'A aba está carregando',
 
 ];

@@ -1,10 +1,10 @@
 @extends('adminlte::page')
 @section('content')
-@php
-use Carbon\Carbon;
-    $dataRegistro = Carbon::now('America/Bahia');
-    $dataRegistro->format('Y-m-d H:i');
-@endphp
+    @php
+        use Carbon\Carbon;
+        $dataRegistro = Carbon::now('America/Bahia');
+        $dataRegistro->format('Y-m-d H:i');
+    @endphp
 
     <body class="d-flex h-100 text-center text-bg-white">
         <div class="container">
@@ -31,7 +31,7 @@ use Carbon\Carbon;
                             <h4>Seu setor será de noite é {{ $user->setor2 ?? 'Ops você você não possui info' }} e seu
                                 subsetor será {{ $user->subsetor2 ?? 'Ops você você não possui info' }} </h4>
                         @endif
-                        <h2>Parabéns! Você está designado para os seguintes dias:</h2>
+                        <h3>Parabéns! Você está designado para os seguintes dias:</h3>
                         <div>
                             @if (in_array('sexta', $checkboxData))
                                 <h4>Sexta</h4>
@@ -43,13 +43,75 @@ use Carbon\Carbon;
                                 <h4>Domingo</h4>
                             @endif
                         </div>
-                        <h5>Ultima atualização sua {{ $user->updated_at }}</h5>
-                        <div class="card-body">
-                            {{-- @dd($user) --}}
-                        </div>
+                        {{-- <div>
+                            <h5>Ultima atualização sua {{ $user->updated_at }}</h5>
+                            <br>
+                            <h3 class="text-bold">Aonde usar o ticket</h3>
+                            <h4 class="text-danger"> Nós teremos o nosso próprio restaurante! O almoço e/ou o
+                                jantar será disponibilizado aos voluntários apenas neste restaurante, mediante apresentação
+                                do ticket! O ticket não dá acesso aos demais restaurantes do evento.</h4>
+                            <h3 class="text-bold">Sobre a entrada e crachá</h3>
+                            <h4 class="text-danger">Todos ganham crachá, entra mostrando documento de
+                                identificação com foto. Não pode perder o crachá de jeito nenhum !<br>
+                                - Só pode entrar no dia que se voluntariar.
+                            </h4>
+                            <br>
+                            <h3 class="text-bold">É Bon Odori</h3>
+                            <h4 class="text-danger">Vamos relaxar e nos divertir no evento que gostamos</h4>
+                        </div> --}}
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                              <h2 class="accordion-header">
+                                <button class="accordion-button collapsed text-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                Aonde usar o ticket
+                                </button>
+                              </h2>
+                              <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample" style="">
+                                <div class="accordion-body">
+                                Nós teremos o nosso próprio restaurante! O almoço e/ou o
+                                jantar será disponibilizado aos voluntários apenas neste restaurante, mediante apresentação
+                                do ticket! O ticket não dá acesso aos demais restaurantes do evento.
+                                </div>
+                              </div>
+                            </div>
+                            <div class="accordion-item">
+                              <h2 class="accordion-header">
+                                <button class="accordion-button collapsed text-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Sobre a entrada e crachá
+                                </button>
+                              </h2>
+                              <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample" style="">
+                                <div class="accordion-body">
+                                Todos ganham crachá, entra mostrando documento de
+                                                          identificação com foto. Não pode perder o crachá de jeito nenhum !<br>
+                                                          - Só pode entrar no dia que se voluntariar.
+                                </div>
+                              </div>
+                            </div>
+                            <div class="accordion-item">
+                              <h2 class="accordion-header">
+                                <button class="accordion-button collapsed text-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                É Bon Odori
+                                </button>
+                              </h2>
+                              <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample" style="">
+                                <div class="accordion-body">
+                                Vamos relaxar e nos divertir no evento que gostamos
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                     </div>
                 </div>
             </div>
         </div>
     </body>
 @endsection
+@section('css')
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+@stop
+
+@section('js')
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+@stop

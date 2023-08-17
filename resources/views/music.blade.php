@@ -1,5 +1,7 @@
 <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
-    <iframe src="" id="randomImage" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;"></iframe>
+    <iframe src="" id="randomImage" title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;"></iframe>
 </div>
 {{-- @dd('data') --}}
 <script>
@@ -8,8 +10,12 @@
         'https://www.youtube.com/embed/41EG3t-nwMY',
         'https://www.youtube.com/embed/3nlSDxvt6JU',
         'https://www.youtube.com/embed/D-V0EHF30rk',
-        'https://www.youtube.com/embed/fCpacv1cNZk',
-        'https://www.youtube.com/embed/ib4hCR2DRBk',
+        //'https://www.youtube.com/embed/fCpacv1cNZk',
+        'https://www.youtube.com/embed/6cx8OWP--aw',
+        'https://www.youtube.com/embed/HgSJMMhBDrM',
+        'https://www.youtube.com/embed/JPLCZK4ZuGg',
+        'https://www.youtube.com/embed/bGDQQnBVUsk',
+        'https://www.youtube.com/embed/F0F1rrVI7cQ',
         //ss
     ];
 
@@ -25,5 +31,4 @@
     }
 
     window.addEventListener('load', changeRandomImageSrc);
-    
 </script>

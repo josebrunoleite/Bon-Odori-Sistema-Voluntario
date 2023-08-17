@@ -36,91 +36,96 @@ class PresencaController extends Controller
     {
         $user_id = auth()->id();
         $name = auth()->user()->name ?? $name = auth()->user()->email;
-        $subsetor = auth()->user()->subsetor1 . ' / ' . auth()->user()->subsetor2;
-    
+        $subsetor01 = auth()->user()->subsetor1;
+        $subsetor02 = auth()->user()->subsetor2;
+
         $codigoInserido = $request->input('codiEnter');
-    
+
         $entrada = Presenca::where('user_id', $user_id)
             ->whereDate('data_registro', Carbon::today())
             ->first();
-    
+
         if ($entrada && $entrada->entrada !== null) {
             // Usuário já registrou a entrada hoje
             $presente = true;
             return Redirect::back()->with('error', 'Você já registrou a entrada hoje.');
         }
-    
+
         if (!$this->codigoValido($codigoInserido)) {
             return Redirect::back()->with('error', 'Código inválido. A presença não foi registrada.');
         }
-    
+
         // Registrar a entrada
         Presenca::updateOrCreate(
             [
                 'user_id' => $user_id,
                 'name' => $name,
-                'subsetor' => $subsetor,
-                'codigoInserido'=> $codigoInserido,
+                'subsetor1' => $subsetor01,
+                'subsetor2' => $subsetor02,
+                'codigoInserido' => $codigoInserido,
                 'data_registro' => Carbon::today(),
             ],
             ['entrada' => Carbon::now()]
         );
-    
+
         $presente = true;
         return Redirect::back()->with('success', 'Entrada registrada com sucesso.');
     }
-    
-    
+
+
     public function registrarSaida(Request $request)
     {
         $user_id = auth()->id();
         $name = auth()->user()->name ?? $name = auth()->user()->email;
-        $subsetor = auth()->user()->subsetor1 . ' / ' . auth()->user()->subsetor2;
-    
+        $subsetor01 = auth()->user()->subsetor1;
+        $subsetor02 = auth()->user()->subsetor2;
+
         // Verificar se a entrada foi registrada hoje
         $entrada = Presenca::where('user_id', $user_id)
             ->whereDate('data_registro', Carbon::today())
             ->whereNotNull('entrada')
             ->first();
-    
+
         if (!$entrada) {
             // Usuário não registrou a entrada hoje
             $presente = false;
             return Redirect::back()->with('error', 'Você precisa registrar a entrada antes de registrar a saída.');
         }
-    
+
         // Verificar se já foi registrada a saída hoje
         $saida = Presenca::where('user_id', $user_id)
             ->whereDate('data_registro', Carbon::today())
             ->whereNotNull('saida')
             ->first();
-    
+
         if ($saida) {
             // Usuário já registrou a saída hoje
             $presente = true;
             return view('presenca.pontoflex', compact('presente'))->with('error', 'Você já registrou a saída hoje.');
         }
-    
+
         // Registrar a saída
         Presenca::updateOrCreate(
             [
                 'user_id' => $user_id,
                 'name' => $name,
+                'subsetor1' => $subsetor01,
+                'subsetor2' => $subsetor02,
                 'data_registro' => Carbon::today(),
             ],
             ['saida' => Carbon::now()]
         );
-    
+
         $presente = false;
         return Redirect::back()->with('success', 'Saída registrada com sucesso.');
     }
-    
+
     private function codigoValido($codigo)
     {
         $jsonFilePath = storage_path('app/codigos_presenca.json');
 
         if (!file_exists($jsonFilePath)) {
-            echo'Pop';
+            echo 'Pop';
             return false; // Arquivo não encontrado, código inválido
         }
 
@@ -142,37 +147,70 @@ class PresencaController extends Controller
     {
         $user_id = auth()->id();
         $name = auth()->user()->name ?? $name = auth()->user()->email;
-        $subsetor = auth()->user()->subsetor1 . ' / ' . auth()->user()->subsetor2;
-    
+        $subsetor01 = auth()->user()->subsetor1;
+        $subsetor02 = auth()->user()->subsetor2;
+
         $codigoInserido = $request->input('qrcode');
-    
+
         $entrada = Presenca::where('user_id', $user_id)
             ->whereDate('data_registro', Carbon::today())
             ->first();
-    
+
         if ($entrada && $entrada->entrada !== null) {
             // Usuário já registrou a entrada hoje
             $presente = true;
-            return Redirect::back()->with('error', 'Você já registrou a entrada hoje.');
+            return redirect()->route('json')->with('error', 'Você já registrou a entrada hoje.');
         }
-    
+
         if (!$this->codigoValido($codigoInserido)) {
-            return Redirect::back()->with('error', 'Código inválido. A presença não foi registrada.');
+            return redirect()->route('json')->with('error', 'Código inválido. A presença não foi registrada.');
         }
-    
+
         // Registrar a entrada
         Presenca::updateOrCreate(
             [
                 'user_id' => $user_id,
                 'name' => $name,
-                'subsetor' => $subsetor,
-                'codigoInserido'=> $codigoInserido,
+                'subsetor1' => $subsetor01,
+                'subsetor2' => $subsetor02,
+                'codigoInserido' => $codigoInserido,
                 'data_registro' => Carbon::today(),
             ],
             ['entrada' => Carbon::now()]
         );
-    
+
         $presente = true;
-        return Redirect::back()->with('success', 'Entrada registrada com sucesso.');
+        return redirect()->route('json')->with('success', 'Entrada registrada com sucesso.');
     }
+    public function tabela()
+    {   
+        $dataAtual = Carbon::now();
+        $dataOntem = Carbon::yesterday();
+        $users = Presenca::all();
+        $usersdata = User::all()->count();
+        $usuariosSemSaida = Presenca::whereDate('entrada', $dataAtual)
+                                ->whereNull('saida');
+
+        $usuariosComSaida = Presenca::whereDate('entrada', $dataAtual)
+                                ->whereNotNull('saida');
+        
+        //Filtro 1
+        
+        //$registrosSaidaOntem = Presenca::whereDate('saida', $dataOntem)->get();
+        //FIltro 2
+        $registrosSaidaOntem = Presenca::whereDate('entrada', $dataOntem)
+                               ->whereNull('saida')
+                               ->get();
+    
+        return view('presenca.presencaTable', compact('users', 'usuariosSemSaida', 'usuariosComSaida', 'registrosSaidaOntem', 'usersdata'))
+               ->with('success', 'Não abra pelo celular!.');
+        }
+    public function waringpres($id)
+{
+    Presenca::where('id', $id)
+        ->update(['saida' => '2022-01-24 10:45']);
+       
+        return Redirect::back()->with('success', 'Advertencia Administrada.');
+
+}
 }

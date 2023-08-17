@@ -15,7 +15,8 @@ class Presenca extends Model
         'name',
         'data_registro',
         'codigoInserido',
-        'subsetor',
+        'subsetor1',
+        'subsetor2',
         'entrada',
         'saida'
     ];

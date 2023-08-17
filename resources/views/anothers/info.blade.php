@@ -24,7 +24,6 @@
         }
     </style>
 </head>
-
 <body class="d-flex h-100 text-center text-bg-dark">
     <img src="{{ asset('images/bonodori.jpg') }}">
     <!--<footer class="mt-auto px-auto text-white-50">
