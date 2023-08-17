@@ -33,6 +33,7 @@
                         @endif
                         <h3>Parabéns! Você está designado para os seguintes dias:</h3>
                         <div>
+                            <h3>Aonde não informado</h3>
                             @if (in_array('sexta', $checkboxData))
                                 <h4>Sexta</h4>
                             @endif
