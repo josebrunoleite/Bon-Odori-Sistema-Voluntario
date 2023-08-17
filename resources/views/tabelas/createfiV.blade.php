@@ -57,9 +57,9 @@
                         <div class="form-group col-md-4">
                             <label>Fuso Horario</label>
                             <select class="custom-select" name="on" id="on">
-                                <option value="admin">Manhã</option>
-                                <option value="mod">Noturno</option>
-                                <option value="user">Dobrar</option>
+                                <option value="M">Manhã</option>
+                                <option value="N">Noturno</option>
+                                <option value="D">Dobrar</option>
                             </select>
                         </div>
                         <!--Setor01-->

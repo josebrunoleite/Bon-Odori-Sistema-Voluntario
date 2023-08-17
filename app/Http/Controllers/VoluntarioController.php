@@ -23,52 +23,54 @@ class VoluntarioController extends Controller
     public function create()
     {
         // Exibe o formulário para criar um novo usuário
-        
+
         return view('tabelas.createfiV');
     }
 
     public function store(Request $request)
-{
-    try {
-        // Validação dos campos do formulário
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => [
-                'required',
-                'email',
-                Rule::unique('users'),
-            ],
-            'role' => 'required|string|max:255',
-            'setor1' => 'required|string|max:255',
-            'subsetor1' => 'required|string|max:255',
-            'setor2' => 'required|string|max:255',
-            'subsetor2' => 'required|string|max:255',
-            'on' => 'nullable',
-            'password' => 'nullable|string|max:20', // Senha agora é opcional
-        ]);
+    {
+        try {
+            // Validação dos campos do formulário
+            $validatedData = $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => [
+                    'required',
+                    'email',
+                    Rule::unique('users'),
+                ],
+                'role' => 'required|string|max:255',
+                'setor1' => 'required|string|max:255',
+                'subsetor1' => 'required|string|max:255',
+                'setor2' => 'required|string|max:255',
+                'subsetor2' => 'required|string|max:255',
+                'on' => 'nullable',
+                'password' => 'required|string|max:20', // Agora a senha é obrigatória
+            ]);
 
-        // Cria um novo usuário com base nos dados do formulário, incluindo a senha, se fornecida
-        $user = User::create($request->all());
+            // Cria um novo usuário com base nos dados validados do formulário
+            $user = User::create($validatedData);
 
-        // Verifica se um novo valor de senha foi fornecido e atualiza-a no banco de dados, se necessário
-        if ($request->filled('password')) {
-            $user->password = bcrypt($request->password);
-            $user->save();
+            // Criptografa e atualiza a senha no banco de dados
+            $user->update([
+                'password' => bcrypt($request->password),
+            ]);
+
+            // Atualiza os dados do checkbox
+            $checkboxData = $request->input('checkbox_data', []);
+            $user->update([
+                'days' => json_encode($checkboxData),
+            ]);
+
+            // Redireciona para uma rota específica com uma mensagem de sucesso (caso deseje)
+            return redirect()->back()->with('success', 'Novo usuário criado com sucesso!');
+        } catch (ValidationException $e) {
+            return redirect()->back()->withErrors($e->errors())->withInput();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Ocorreu um erro ao criar o usuário. Por favor, tente novamente mais tarde.');
         }
-
-        // Atualiza os dados de checkbox
-        $checkboxData = $request->input('checkbox_data', []);
-        DB::table('users')
-            ->where('id', $user->id)
-            ->update(['days' => json_encode($checkboxData)]);
-        $user->days = json_encode($checkboxData);
-
-        // Redireciona para uma rota específica com uma mensagem de sucesso (caso deseje)
-        return redirect()->route('vontable')->with('success', 'Novo usuário criado com sucesso!');
-    } catch (\Exception $e) {
-        return redirect()->back()->with('error', 'Ocorreu um erro ao criar o usuário. Por favor, tente novamente mais tarde.');
     }
-}
+
+
     public function edit($id)
     {
         $user = DB::table('users')->find($id);
@@ -77,47 +79,47 @@ class VoluntarioController extends Controller
     }
 
     public function update(Request $request, $id)
-{
-    try {
-        $user = User::findOrFail($id);
-        
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => [
-                'required',
-                'email',
-                Rule::unique('users')->ignore($user->id),
-            ],
-            'role' => 'required|string|max:255',
-            'setor1' => 'required|string|max:255',
-            'subsetor1' => 'required|string|max:255',
-            'setor2' => 'required|string|max:255',
-            'subsetor2' => 'required|string|max:255',
-            'on' => 'nullable',
-            'password' => 'nullable|string|max:20',
-        ]);
+    {
+        try {
+            $user = User::findOrFail($id);
 
-        $data = $request->except('password', 'checkbox_data'); // Remover 'checkbox_data' para evitar conflitos
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => [
+                    'required',
+                    'email',
+                    Rule::unique('users')->ignore($user->id),
+                ],
+                'role' => 'required|string|max:255',
+                'setor1' => 'required|string|max:255',
+                'subsetor1' => 'required|string|max:255',
+                'setor2' => 'required|string|max:255',
+                'subsetor2' => 'required|string|max:255',
+                'on' => 'nullable',
+                'password' => 'nullable|string|max:20',
+            ]);
 
-        if ($request->filled('password')) {
-            $data['password'] = Hash::make($request->password);
-        }
+            $data = $request->except('password', 'checkbox_data'); // Remover 'checkbox_data' para evitar conflitos
 
-        $user->update($data);
+            if ($request->filled('password')) {
+                $data['password'] = Hash::make($request->password);
+            }
 
-        $checkboxData = $request->input('checkbox_data', []);
-                DB::table('users')
+            $user->update($data);
+
+            $checkboxData = $request->input('checkbox_data', []);
+            DB::table('users')
                 ->where('id', $id)
                 ->update(['days' => json_encode($checkboxData)]);
-                $user->days = json_encode($checkboxData);
+            $user->days = json_encode($checkboxData);
 
-        return redirect()->back()->with('success', 'Alterado com sucesso!');
-    } catch (ValidationException $e) {
-        return redirect()->back()->withErrors($e->errors())->withInput();
-    } catch (\Exception $e) {
-        return redirect()->back()->with('error', 'Ocorreu um erro ao atualizar o usuário. Por favor, tente novamente mais tarde.');
+            return redirect()->back()->with('success', 'Alterado com sucesso!');
+        } catch (ValidationException $e) {
+            return redirect()->back()->withErrors($e->errors())->withInput();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Ocorreu um erro ao atualizar o usuário. Por favor, tente novamente mais tarde.');
+        }
     }
-}
 
     /* public function changePassword(Request $request)
     {
@@ -143,7 +145,7 @@ class VoluntarioController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
-    
+
         if ($user) {
             $user->delete();
             return redirect()->route('vontable')->with('success', 'Usuário excluído com sucesso!');
