@@ -344,11 +344,11 @@ return [
             'icon' => 'fas fa-fw fa-question',
             'can'   =>''
         ],
-        [
+        /*[
             'text' => 'Funções',
             'url'  => '404',
             'icon' => 'fas fa-fw fa-at',
-        ],
+        ],*/
         [
             'text' => 'Palcos Horarios',
             'icon' => 'fa fa-fw fa-file-pdf',
