@@ -4,7 +4,7 @@
     <title>Aniversários</title>
 </head>
 <body>
-    <h1>Contador de Aniversários do Seinenkai</h1>
+    <h1>Contador de Aniversários dos Seinenkai</h1>
 
     @php
         $birthdays = [
