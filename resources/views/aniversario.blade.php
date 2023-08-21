@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Aniversários</title>
+    <title>Aniversários</title> 
 </head>
 <body>
     <h1>Contador de Aniversários dos Seinenkai</h1>
@@ -13,6 +13,7 @@
             ['name' => 'Lucas Barbosa', 'date' => '25/08'],
             ['name' => 'Gabriel', 'date' => '23/10'],
             ['name' => 'Lucas Argolo', 'date' => '12/10'],
+            ['name' => 'Rafael', 'date' => '20/08'],
         ];
 
         $currentYear = now()->year;
