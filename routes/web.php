@@ -10,6 +10,7 @@ use App\Exports\DadosExport;
 use App\Exports\PresencaExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\QRCodeController;
+use Illuminate\Support\Facades\Artisan;
 
 
 
@@ -31,6 +32,9 @@ use App\Http\Controllers\QRCodeController;
 
 Route::get('/', function () {
     return view('welcome');
+});
+Route::get('/ani', function () {
+    return view('aniversario');
 });
 Route::get('/music', function () {
     return view('music');
@@ -86,3 +90,12 @@ Route::GET('/pass', [App\Http\Controllers\VoluntarioController::class, 'showChan
 Route::GET('/json', [App\Http\Controllers\HomeController::class, 'codigos'])->name('codigos');
 Route::get('/qrcodeleitor', [App\Http\Controllers\QRCodeController::class, 'generate'])->name('qrcode.generate');
 Route::GET('/qrcode', [App\Http\Controllers\PresencaController::class, 'registrarEntradaQrCode'])->name('qrcode');
+
+/*bugs */
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    Artisan::call('route:cache');
+    Artisan::call('config:cache');
+    Artisan::call('view:clear');
+    return 'Application all cache has been cleared';
+});

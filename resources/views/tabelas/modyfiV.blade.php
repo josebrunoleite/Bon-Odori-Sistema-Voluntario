@@ -68,10 +68,10 @@
                                     <div class="form-group col-md-4">
                                         <label>Fuso Horario</label>
                                         <select class="custom-select" name="on" id="on">
-                                            <option value="admin" {{ $user->on === 'M' ? 'selected' : '' }}>Manhã</option>
-                                            <option value="mod" {{ $user->on === 'N' ? 'selected' : '' }}>Noturno
+                                            <option value="M" {{ $user->on === 'M' ? 'selected' : '' }}>Manhã</option>
+                                            <option value="N" {{ $user->on === 'N' ? 'selected' : '' }}>Noturno
                                             </option>
-                                            <option value="user" {{ $user->on === 'D' ? 'selected' : '' }}>Dobrar
+                                            <option value="D" {{ $user->on === 'D' ? 'selected' : '' }}>Dobrar
                                             </option>
                                         </select>
                                     </div>
@@ -79,6 +79,8 @@
                                     <div class="form-group col-md-4">
                                         <label>Setor</label>
                                         <select class="custom-select" name="setor1" id="setor1">
+                                            <option value="-" {{ $user->setor1 === '-' ? 'selected' : '' }}>Não é do turno
+                                            </option>
                                             <option value="Geral" {{ $user->setor1 === 'Geral' ? 'selected' : '' }}>Geral
                                             </option>
                                             <option value="Federação"
@@ -189,6 +191,8 @@
                                     <div class="form-group col-md-4">
                                         <label>Setor 2</label>
                                         <select class="custom-select" name="setor2" id="setor2">
+                                            <option value="-" {{ $user->setor2 === '-' ? 'selected' : '' }}>Não é do turno
+                                            </option>
                                             <option value="Geral" {{ $user->setor2 === 'Geral' ? 'selected' : '' }}>Geral
                                             </option>
                                             <option value="Federação"

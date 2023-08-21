@@ -66,6 +66,7 @@
                         <div class="form-group col-md-4">
                             <label>Setor</label>
                             <select class="custom-select" name="setor1" id="setor1">
+                                <option value="-">Não é do turno</option>
                                 <option value="Geral">Geral</option>
                                 <option value="Federação">Federação</option>
                                 <option value="Cultural">Cultural</option>
@@ -117,6 +118,7 @@
                         <div class="form-group col-md-4">
                             <label>Setor 2</label>
                             <select class="custom-select" name="setor2" id="setor2">
+                                <option value="-">Não é do turno</option>
                                 <option value="Geral">Geral</option>
                                 <option value="Federação">Federação</option>
                                 <option value="Cultural">Cultural</option>

@@ -159,11 +159,11 @@ class PresencaController extends Controller
         if ($entrada && $entrada->entrada !== null) {
             // Usuário já registrou a entrada hoje
             $presente = true;
-            return redirect()->route('json')->with('error', 'Você já registrou a entrada hoje.');
+            return redirect()->route('presenca.pontoflex')->with('error', 'Você já registrou a entrada hoje.');
         }
 
         if (!$this->codigoValido($codigoInserido)) {
-            return redirect()->route('json')->with('error', 'Código inválido. A presença não foi registrada.');
+            return redirect()->route('presenca.pontoflex')->with('error', 'Código inválido. A presença não foi registrada.');
         }
 
         // Registrar a entrada
@@ -180,7 +180,7 @@ class PresencaController extends Controller
         );
 
         $presente = true;
-        return redirect()->route('json')->with('success', 'Entrada registrada com sucesso.');
+        return redirect()->route('presenca.pontoflex')->with('success', 'Entrada registrada com sucesso.');
     }
     public function tabela()
     {   
@@ -208,7 +208,7 @@ class PresencaController extends Controller
     public function waringpres($id)
 {
     Presenca::where('id', $id)
-        ->update(['saida' => '2022-01-24 10:45']);
+        ->update(['saida' => '2000-01-01 03:00:00']);
        
         return Redirect::back()->with('success', 'Advertencia Administrada.');
 
