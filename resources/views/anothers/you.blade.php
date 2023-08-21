@@ -33,8 +33,8 @@
                         @endif
                         <h3>Parabéns! Você está designado para os seguintes dias:</h3>
                         <div>
-                            <h3>Ainda não Atualizado</h3>
-                           {{--  @if (in_array('sexta', $checkboxData))
+                            {{-- <h3>Ainda não Atualizado</h3> --}}
+                           @if (in_array('sexta', $checkboxData))
                                 <h4>Sexta</h4>
                             @endif
                             @if (in_array('sabado', $checkboxData))
@@ -42,7 +42,7 @@
                             @endif
                             @if (in_array('domingo', $checkboxData))
                                 <h4>Domingo</h4>
-                            @endif --}}
+                            @endif
                         </div>
                         {{-- <div>
                             <h5>Ultima atualização sua {{ $user->updated_at }}</h5>
@@ -69,8 +69,7 @@
                               </h2>
                               <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample" style="">
                                 <div class="accordion-body">
-                                Nós teremos o nosso próprio restaurante! O almoço e/ou o
-                                jantar será disponibilizado aos voluntários apenas neste restaurante, mediante apresentação
+                                Nós teremos o nosso próprio restaurante! O almoço e/ou o jantar será disponibilizado aos voluntários apenas neste restaurante, mediante apresentação
                                 do ticket! O ticket não dá acesso aos demais restaurantes do evento.
                                 </div>
                               </div>
@@ -83,9 +82,7 @@
                               </h2>
                               <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample" style="">
                                 <div class="accordion-body">
-                                Todos ganham crachá, entra mostrando documento de
-                                                          identificação com foto. Não pode perder o crachá de jeito nenhum !<br>
-                                                          - Só pode entrar no dia que se voluntariar.
+                                Todos ganham crachá, entra mostrando documento de identificação com foto. Não pode perder o crachá de jeito nenhum !<br>- Só pode entrar no dia que se voluntariar.
                                 </div>
                               </div>
                             </div>
@@ -97,10 +94,22 @@
                               </h2>
                               <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample" style="">
                                 <div class="accordion-body">
-                                Vamos relaxar e nos divertir no evento que gostamos
+                                Vamos relaxar e nos divertir no evento que gostamos!
                                 </div>
                               </div>
                             </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                  <button class="accordion-button collapsed text-bold text-danger text-bold text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
+                                    Tem dúvidas sobre o seu horário? Acesse a planilha.
+                                  </button>
+                                </h2>
+                                <div id="collapsefour" class="accordion-collapse collapse" data-bs-parent="#accordionExample" style="">
+                                  <div class="accordion-body">
+                                  <a href="https://docs.google.com/spreadsheets/d/1xuck4PjnDUFcRmQPdbBPjUWzfUFphddEhLRRSuK4Qv4/edit?usp=sharing" target="_blank" rel="noopener noreferrer"> Planilha </a>
+                                  </div>
+                                </div>
+                              </div>
                           </div>
                     </div>
                 </div>

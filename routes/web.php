@@ -39,6 +39,15 @@ Route::get('/ani', function () {
 Route::get('/music', function () {
     return view('music');
 }); 
+Route::get('/bonodori', function () {
+    return view('anothers.bonodori');
+}); 
+Route::get('/natsu', function () {
+    return view('anothers.natsu');
+}); 
+Route::get('/haru', function () {
+    return view('anothers.haru');
+}); 
 
 Auth::routes();
 /* Voluntario Padrão */

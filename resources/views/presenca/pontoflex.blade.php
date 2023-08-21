@@ -33,6 +33,10 @@
                         @endif
                         <br>
                         <br>
+                        <div>
+                            <a target="_blank" class="link-danger" href="https://docs.google.com/spreadsheets/d/1xuck4PjnDUFcRmQPdbBPjUWzfUFphddEhLRRSuK4Qv4/edit?usp=sharing"> Caso exista duvida aperter aqui </a>
+                        </div>
+                        <br>
                         @if (session('error'))
                             <div class="alert alert-danger">
                                 {{ session('error') }}

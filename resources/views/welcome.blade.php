@@ -202,7 +202,8 @@
         </main>
 
         <footer class="mt-auto px-auto text-white-50">
-          <p class="text-white m-auto">Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }}) <br> Versão 1.6.1 <br> Um Site Seinenkai/José Bruno!</p>
+          <h4 class="text-white m-auto">Agradecimento a todo o pessoal do Seinenkai pela colaboração no desenvolvimento do site.</h4>
+          <p class="text-white m-auto">Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }}) <br> Versão 1.6.2 <br> Um Site Seinenkai/José Bruno!</p>
 </footer>
 
     </div>

@@ -53,5 +53,4 @@ class HomeController extends Controller
             return view('json')->with('data', []); // Ou qualquer valor padrão que você queira usar
         }
     }
-    
 }

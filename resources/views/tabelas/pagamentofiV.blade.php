@@ -57,9 +57,9 @@
                                     <label>Comida</label>
                                     <input type="checkbox" name="checkbox_data[]" value="comida1"
                                         @if (in_array('comida1', $checkboxData)) checked @endif>
-                                    <label>&nbsp;Agua</label>
-                                    <input type="checkbox" name="checkbox_data[]" value="bebida1"
-                                        @if (in_array('bebida1', $checkboxData)) checked @endif>
+                                    <label>&nbsp;Transporte</label>
+                                    <input type="checkbox" name="checkbox_data[]" value="Transporte1"
+                                        @if (in_array('Transporte1', $checkboxData)) checked @endif>
                                 </div>
                                 <!--Setor01-->
                                 <!--Pagamento Tarde
@@ -77,9 +77,9 @@
                                     <label>Comida</label>
                                     <input type="checkbox" name="checkbox_data[]" value="comida3"
                                         @if (in_array('comida3', $checkboxData)) checked @endif>
-                                    <label>&nbsp;Agua</label>
-                                    <input type="checkbox" name="checkbox_data[]" value="bebida3"
-                                        @if (in_array('bebida3', $checkboxData)) checked @endif>
+                                    <label>&nbsp;Transporte</label>
+                                    <input type="checkbox" name="checkbox_data[]" value="Transporte3"
+                                        @if (in_array('Transporte3', $checkboxData)) checked @endif>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <h5>Extra</h5>

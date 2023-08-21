@@ -148,12 +148,12 @@ return [
     |
     */
 
-    'layout_topnav' => null,
-    'layout_boxed' => null,
-    'layout_fixed_sidebar' => null,
-    'layout_fixed_navbar' => null,
-    'layout_fixed_footer' => null,
-    'layout_dark_mode' => null,
+    'layout_topnav' => false,
+    'layout_boxed' => false,
+    'layout_fixed_sidebar' => false,
+    'layout_fixed_navbar' => false,
+    'layout_fixed_footer' => false,
+    'layout_dark_mode' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -355,21 +355,21 @@ return [
             'submenu' => [
                 [
                     'text' => 'Espaço Bon Odori',
-                    'url'  => 'http://www.bonodorisalvador.com.br/downloads/2023/Festival-Programacao-Espaco-bon-odori-2023-compressed.pdf',
+                    'url'  => 'bonodori',
                     'target' => '_blank',
                     'icon_color' => 'cyan',
                     'icon' => 'fa fa-fw fa-file-pdf',
                 ],
                 [
                     'text' => 'Palco Natsu',
-                    'url'  => 'http://www.bonodorisalvador.com.br/downloads/2023/Festival-Programacao-Palco-Natsu-2023-compressed.pdf',
+                    'url'  => 'natsu',
                     'target' => '_blank',
                     'icon_color' => 'cyan',
                     'icon' => 'fa fa-fw fa-file-pdf',
                 ],
                 [
                     'text' => 'Palco Haru',
-                    'url'  => 'http://www.bonodorisalvador.com.br/downloads/2023/Festival-Programacao-Palco-Haru-2023.pdf',
+                    'url'  => 'haru',
                     'target' => '_blank',
                     'icon_color' => 'cyan',
                     'icon' => 'fa fa-fw fa-file-pdf',

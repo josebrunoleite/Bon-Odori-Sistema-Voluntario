@@ -204,7 +204,7 @@
         </main>
 
         <footer class="mt-auto px-auto text-white-50">
-                    <p class="text-white m-auto">Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }}) <br> Versão 1.6.1 <br>Um Site Seinenkai/José Bruno!</p>
+                    <p class="text-white m-auto">Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }}) <br> Versão 1.6.2 <br>Um Site Seinenkai/José Bruno!</p>
         </footer>
     </div>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>

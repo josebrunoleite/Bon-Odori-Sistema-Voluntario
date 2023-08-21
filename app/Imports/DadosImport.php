@@ -15,7 +15,7 @@ class DadosImport implements ToModel, WithHeadingRow
         $usuario = User::where('email', $email)->first();
 
         if ($usuario) {
-            $setor1 = $row['setor1'];
+            /*$setor1 = $row['setor1'];
             $subsetor1 = $row['subsetor1'];
             $setor2 = $row['setor2'];
             $subsetor2 = $row['subsetor2'];
@@ -25,7 +25,7 @@ class DadosImport implements ToModel, WithHeadingRow
             $usuario->setor2 = $setor2;
             $usuario->subsetor2 = $subsetor2;
 
-            /*$days = [];
+            */$days = [];
 
             if (!empty($row['sexta'])) {
                 $days[] = 'sexta';
@@ -43,7 +43,7 @@ class DadosImport implements ToModel, WithHeadingRow
 
             $uniqueDays = array_values(array_unique($mergedDays));
 
-            $usuario->days = json_encode($uniqueDays);*/
+            $usuario->days = json_encode($uniqueDays);
 
             $usuario->save();
             //@dd($usuario);
@@ -60,7 +60,7 @@ class DadosImport implements ToModel, WithHeadingRow
                 $days[] = 'domingo';
             }*/
 
-            $usuario = new User([
+            /*$usuario = new User([
                 'name' => $row['nome'],
                 'email' =>  $row['email'],
                 'role' => $row['role'] ?? "user",
@@ -70,9 +70,9 @@ class DadosImport implements ToModel, WithHeadingRow
                 'subsetor2' => $row['subsetor2'],
                 'on' => $row['on'],
                 'password' => bcrypt($row['telefone']),
-                /*'days' => json_encode($days),*/
-            ]);
-
+                'days' => json_encode($days),
+            ]);*/
+            echo ('Error');
             /*$existingDays = json_decode($usuario->days, true) ?? [];
 
             $mergedDays = array_merge($existingDays, $days);
@@ -81,7 +81,7 @@ class DadosImport implements ToModel, WithHeadingRow
 
             $usuario->days = json_encode($uniqueDays);*/
             //@dd($days);
-            $usuario->save();
+            //$usuario->save();
         }
     }
 }
