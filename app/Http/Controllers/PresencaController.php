@@ -159,11 +159,11 @@ class PresencaController extends Controller
         if ($entrada && $entrada->entrada !== null) {
             // Usuário já registrou a entrada hoje
             $presente = true;
-            return redirect()->route('presenca.pontoflex')->with('error', 'Você já registrou a entrada hoje.');
+            return view('presenca.pontoflex', compact('presente')->with('error', 'Você já registrou a entrada hoje.');
         }
 
         if (!$this->codigoValido($codigoInserido)) {
-            return redirect()->route('presenca.pontoflex')->with('error', 'Código inválido. A presença não foi registrada.');
+            return view('presenca.pontoflex')->with('error', 'Código inválido. A presença não foi registrada.');
         }
 
         // Registrar a entrada
@@ -180,7 +180,7 @@ class PresencaController extends Controller
         );
 
         $presente = true;
-        return redirect()->route('presenca.pontoflex')->with('success', 'Entrada registrada com sucesso.');
+        return view('presenca.pontoflex', compact('presente')->with('success', 'Entrada registrada com sucesso.');
     }
     public function tabela()
     {   
