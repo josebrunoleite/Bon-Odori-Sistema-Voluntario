@@ -212,12 +212,22 @@ class PresencaController extends Controller
         return view('presenca.presencaTable', compact('users', 'usuariosSemSaida', 'usuariosComSaida', 'registrosSaidaOntem', 'usersdata'))
             ->with('success', 'Não abra pelo celular!.');
     }
+    public function atualizarCheckout(Request $request, Presenca $presenca)
+    {
+        $id = $request->route('id');
+
+        $presenca->where('id', $id)
+            ->update(['saida' => Carbon::now()]);
+
+        return Redirect::back()->with('success', 'Saída registrada com sucesso.');
+    }
+
     public function waringpres($id)
     {
         Presenca::where('id', $id)
             ->update(['saida' => '2000-01-01 03:00:00']);
 
-        return Redirect::back()->with('success', 'Advertencia Administrada.');
+            return Redirect::back()->with('success', 'Advertencia Administrada.');
     }
     private function pegarCodigoAleatorio()
 {
