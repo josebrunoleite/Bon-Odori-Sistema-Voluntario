@@ -52,7 +52,6 @@
     @if(Auth::check() and (Auth::user()->isAdmin() == true))
     <div class="qr-code-container">
         <div class="red-box">
-{{codigo}}
             {!! QrCode::size(600)->generate('https://seinenkai.com.br/qrcode?codigo='.$codigo) !!}
         </div>
         <hr>
