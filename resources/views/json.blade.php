@@ -55,7 +55,7 @@
                                             <td>{{ $item['codigo'] }}</td>
                                             <td>{{ $item['status'] }}</td>
                                             <td>{{-- {{ $item['status'] } --}}
-                                                 {!! QrCode::size(200)->generate('https://seinenkai.com.br/qrcode/' . $item['codigo']) !!}
+                                                 {!! QrCode::size(200)->generate('https://seinenkai.com.br/qrcode?codigo=' . $item['codigo']) !!}
                                              <div class="visible-print text-center">
                                                     <div class="item-details" style="display: ;"></div>
                                                 </div>

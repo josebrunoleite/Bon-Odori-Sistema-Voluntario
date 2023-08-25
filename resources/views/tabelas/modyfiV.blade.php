@@ -79,7 +79,8 @@
                                     <div class="form-group col-md-4">
                                         <label>Setor</label>
                                         <select class="custom-select" name="setor1" id="setor1">
-                                            <option value="-" {{ $user->setor1 === '-' ? 'selected' : '' }}>Não é do turno
+                                            <option value="-" {{ $user->setor1 === '-' ? 'selected' : '' }}>Não é do
+                                                turno
                                             </option>
                                             <option value="Geral" {{ $user->setor1 === 'Geral' ? 'selected' : '' }}>Geral
                                             </option>
@@ -185,13 +186,24 @@
                                             <option value="Passeio"
                                                 {{ $user->subsetor1 === 'Passeio' ? 'selected' : '' }}>Passeio
                                             </option>
+                                            <option value="Just Dance"
+                                                {{ $user->subsetor1 === 'Just Dance' ? 'selected' : '' }}>Just Dance
+                                            </option>
+                                            <option value="Podcast"{{ $user->subsetor1 ==='Podcast' ? 'selected': '' }}>
+                                                Podcast</option>
+                                            <option value="Rissa" {{ $user->subsetor1 === 'Rissa' ? 'selected' : '' }}>
+                                                Rissa</option>
+                                            <option value="Tecnologia"
+                                                {{ $user->subsetor1 === 'Tecnologia' ? 'selected' : '' }}>Tecnologia
+                                            </option>
                                         </select>
                                     </div>
                                     <!--Setor02-->
                                     <div class="form-group col-md-4">
                                         <label>Setor 2</label>
                                         <select class="custom-select" name="setor2" id="setor2">
-                                            <option value="-" {{ $user->setor2 === '-' ? 'selected' : '' }}>Não é do turno
+                                            <option value="-" {{ $user->setor2 === '-' ? 'selected' : '' }}>Não é do
+                                                turno
                                             </option>
                                             <option value="Geral" {{ $user->setor2 === 'Geral' ? 'selected' : '' }}>Geral
                                             </option>
@@ -214,7 +226,8 @@
                                                 {{ $user->setor2 === 'Espaço Pop' ? 'selected' : '' }}>Espaço Pop</option>
                                             <option value="Comercial"
                                                 {{ $user->setor2 === 'Comercial' ? 'selected' : '' }}>Comercial</option>
-                                                <option value="-" {{ $user->setor2 === '-' ? 'selected' : '' }}>-</option>
+                                            <option value="-" {{ $user->setor2 === '-' ? 'selected' : '' }}>-
+                                            </option>
                                         </select>
                                     </div>
                                     <!--SubSetor02-->
@@ -295,8 +308,18 @@
                                                 {{ $user->subsetor2 === 'Altar Budista' ? 'selected' : '' }}>Altar Budista
                                             </option>
                                             <option value="Passeio"
-                                                {{ $user->subsetor1 === 'Passeio' ? 'selected' : '' }}>Passeio
+                                                {{ $user->subsetor2 === 'Passeio' ? 'selected' : '' }}>Passeio
                                             </option>
+                                            <option value="Just Dance"
+                                            {{ $user->subsetor2 === 'Just Dance' ? 'selected' : '' }}>Just Dance
+                                        </option>
+                                        <option value="Podcast"{{ $user->subsetor2 ==='Podcast' ? 'selected': '' }}>
+                                            Podcast</option>
+                                        <option value="Rissa" {{ $user->subsetor2 === 'Rissa' ? 'selected' : '' }}>
+                                            Rissa</option>
+                                        <option value="Tecnologia"
+                                            {{ $user->subsetor2 === 'Tecnologia' ? 'selected' : '' }}>Tecnologia
+                                        </option>
                                         </select>
                                     </div>
 
@@ -329,22 +352,26 @@
                                                 class="form-control" aria-labelledby="passwordHelpInline">
                                         </div>
                                         <!-- <div class="col-auto">
-                                        <span id="passwordHelpInline" class="form-text">
-                                            
-                                        </span>-->
+                                            <span id="passwordHelpInline" class="form-text">
+                                                
+                                            </span>-->
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <!--<div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                                    <label class="form-check-label" for="gridCheck">
-                                        Check me out
-                                    </label>
-                                </div>-->
+                                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                                        <label class="form-check-label" for="gridCheck">
+                                            Check me out
+                                        </label>
+                                    </div>-->
                             </div>
                             <button type="submit" class="btn btn-primary">Atualizar</button>
                         </form>
+                        <form id="entrada" action="{{ route('atualizarManual', ['id' => $user->id]) }}" method="POST"> 
+                            @csrf
+                            <button type="submit" class="btn btn-info float-right">autorizar entrada!</button>
+                </form>
                     </div>
                 </div>
                 <form id="deleteForm" action="{{ route('deletefiV', ['id' => $user->id]) }}" method="POST">

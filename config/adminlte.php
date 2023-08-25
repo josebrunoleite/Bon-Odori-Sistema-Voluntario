@@ -434,7 +434,14 @@ return [
                     'icon_color' => 'yellow',
                 ],
                 [
-                    'text' => 'Presença Tabela. Não Recomendado abrir celular!',
+                    'text' => 'QRCODEGEN',
+                    'url'  => 'QRCODEGEN',
+                    'target'=> '_blank',
+                    'can'   =>['isAdmin',],
+                    'icon_color' => 'yellow',
+                ],
+                [
+                    'text' => 'Presença Tabela. Não Recomendado no abrir celular!',
                     'url'  => 'presen/tablea',
                     'can'   =>['isAdmin',],
                     'icon_color' => 'yellow',

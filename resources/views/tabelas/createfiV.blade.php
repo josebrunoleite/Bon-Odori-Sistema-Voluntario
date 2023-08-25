@@ -112,6 +112,11 @@
                                 <option value="Oshibana">Oshibana</option>
                                 <option value="Secretaria">Secretaria</option>
                                 <option value="Altar Budista">Altar Budista</option>
+                                <option value="Passeio">Passeio</option>
+                                <option value="Just Dance">Just Dance</option>
+                                <option value="Podcast">Podcast</option>
+                                <option value="Rissa">Rissa</option>
+                                <option value="Tecnologia">Tecnologia</option>
                             </select>
                         </div>
                         <!--Setor02-->
@@ -164,6 +169,11 @@
                                 <option value="Oshibana">Oshibana</option>
                                 <option value="Secretaria">Secretaria</option>
                                 <option value="Altar Budista">Altar Budista</option>
+                                <option value="Passeio">Passeio</option>
+                                <option value="Just Dance">Just Dance</option>
+                                <option value="Podcast">Podcast</option>
+                                <option value="Rissa">Rissa</option>
+                                <option value="Tecnologia">Tecnologia</option>
                             </select>
                         </div>
                         <div class="form-group col-md-12">
