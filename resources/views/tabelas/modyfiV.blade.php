@@ -196,6 +196,9 @@
                                             <option value="Tecnologia"
                                                 {{ $user->subsetor1 === 'Tecnologia' ? 'selected' : '' }}>Tecnologia
                                             </option>
+                                            <option value="Tanabata"
+                                                {{ $user->subsetor1 === 'Tanabata' ? 'selected' : '' }}>Tanabata
+                                            </option>
                                         </select>
                                     </div>
                                     <!--Setor02-->
@@ -320,6 +323,9 @@
                                         <option value="Tecnologia"
                                             {{ $user->subsetor2 === 'Tecnologia' ? 'selected' : '' }}>Tecnologia
                                         </option>
+                                        <option value="Tanabata"
+                                                {{ $user->subsetor2 === 'Tanabata' ? 'selected' : '' }}>Tanabata
+                                            </option>
                                         </select>
                                     </div>
 

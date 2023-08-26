@@ -54,7 +54,7 @@
                                             <td class="d-none d-md-table-cell">{{ $user->on ?? 'Error Contate José' }}</td>
                                             <td class="d-none d-md-table-cell">{{ $user->id ?? 'Error Contate José' }}</td>
                                             <td class="d-md-table-cell"><a
-                                                    href="{{ url('modyfiV/' . $user->id) }}">Editar</a>
+                                                    href="{{ url('modyfiV/' . $user->id) }}">Editar</a> //
                                                 <a href="{{ url('pagamentofiV/' . $user->id) }}">Pagmento</a>
                                                 <!-- <a href="#" class="text-danger" data-bs-toggle="modal"
                                                             data-bs-target="#confirmDeleteModal" id="deleteButton" data-bs-id="{{ $user->id }}">

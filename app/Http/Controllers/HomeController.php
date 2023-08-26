@@ -53,4 +53,21 @@ class HomeController extends Controller
             return view('json')->with('data', []); // Ou qualquer valor padrão que você queira usar
         }
     }
+    public function atualizarOptions()
+{
+    $registros = User::all();
+
+    foreach ($registros as $registro) {
+        $options = json_decode($registro->option);
+        
+        if (in_array('hapi', $options)) {
+            $options = ['hapi'];
+            $registro->option = json_encode($options);
+            $registro->save();
+        }
+        echo("sucesso");
+    }
+
+    return 'Atualização concluída.';
+}
 }
