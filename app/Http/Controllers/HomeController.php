@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -55,8 +56,8 @@ class HomeController extends Controller
     }
     public function atualizarOptions()
 {
-    $registros = User::all();
-
+    $registros = DB::table('users')->get();
+@dd($registros);
     foreach ($registros as $registro) {
         $options = json_decode($registro->option);
         

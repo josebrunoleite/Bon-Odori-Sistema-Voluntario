@@ -43,6 +43,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {{@dd$users}}
                                     @foreach ($users as $user)
                                         <tr>
 

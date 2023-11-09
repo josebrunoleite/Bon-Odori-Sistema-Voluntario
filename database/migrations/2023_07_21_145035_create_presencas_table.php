@@ -16,7 +16,7 @@ class CreatePresencasTable extends Migration
         Schema::create('presencas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('name')->nullable();
+            $table->string('name');
             $table->date('data_registro')->nullable();
             $table->string('codigoInserido')->nullable();
             $table->string('subsetor1')->nullable();
