@@ -48,13 +48,19 @@ Route::get('/natsu', function () {
 Route::get('/haru', function () {
     return view('anothers.haru');
 }); 
+Route::get('/excel', function () {
+    return redirect()->away('https://docs.google.com/spreadsheets');
+});
+Route::get('/nikkeiNet', function () {
+    return redirect()->away('https://drive.google.com/drive/folders/1YlgQ3xgudVvYPvaLGqcDJO1F5B3hfEaC?usp=drive_link');
+});
 
 Auth::routes();
 /* Voluntario Padrão */
 Route::GET('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::GET('/sobre-voce', [App\Http\Controllers\HomeController::class, 'sobreyou'])->name('Sobre voce');
-Route::GET('/info', [App\Http\Controllers\HomeController::class, 'info'])->name('info');
-Route::GET('/atualizarOptions', [App\Http\Controllers\HomeController::class, 'atualizarOptions'])->name('atualizarOptions');
+//Route::GET('/info', [App\Http\Controllers\HomeController::class, 'info'])->name('info');
+//Route::GET('/wsd', [App\Http\Controllers\QRCodeController::class, 'wsd'])->name('wsd');
 /* Route::GET('/upload', [App\Http\Controllers\HomeController::class, 'info'])->name('home');
 Route::GET('/down', [App\Http\Controllers\HomeController::class, 'info'])->name('home');
  *//* Voluntario Controller */

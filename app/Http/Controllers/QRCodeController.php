@@ -1,7 +1,8 @@
-<!-- 
+<?php
 
 namespace App\Http\Controllers;
 
+use App\Models\User; 
 use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Http\Request;
@@ -13,20 +14,8 @@ use Illuminate\Support\Facades\Response;
 
 class QRCodeController extends Controller
 {
-    public function generate()
+    public function wsd()
     {
-        $qrCode = new QrCode('Conteúdo que você deseja codificar no QR code');
+        return 'Atualização concluída.';
 
-        $renderer = new ImageRenderer(
-            new ImagickImageBackEnd()
-        );
-
-        $writer = new Writer($renderer);
-        $imageData = $writer->writeString($qrCode);
-
-        return Response::make($imageData, 200, [
-            'Content-Type' => 'image/png',
-            'Content-Disposition' => 'inline; filename="qrcode.png"'
-        ]);
-    }
-} -->
+}

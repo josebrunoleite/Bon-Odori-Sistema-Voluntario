@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="pt-BR" class="h-100">
-  sdjkjskjd
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -202,8 +202,8 @@
         </main>
 
         <footer class="mt-auto px-auto text-white-50">
+          <p class="text-white m-auto">Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }}) <br> Versão 1.6.1 <br> Um Site Seinenkai/José Bruno!</p>
           <h4 class="text-white m-auto">Agradecimento a todo o pessoal do Seinenkai pela colaboração no desenvolvimento do site.</h4>
-          <p class="text-white m-auto">Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }}) <br> Versão 1.6.4<br> Um Site Seinenkai/José Bruno!</p>
 </footer>
 
     </div>

@@ -43,7 +43,7 @@
                                 <h4>Domingo</h4>
                             @endif
                         </div>
-                        <h5>Ultima atualização sua {{ $usr->updated_at }}</h5>
+                        <h5>Ultima atualização sua {{ $user->updated_at }}</h5>
                         {{-- <div>
                             <h5>Ultima atualização sua {{ $user->updated_at }}</h5>
                             <br>

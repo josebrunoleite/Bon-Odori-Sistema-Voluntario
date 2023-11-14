@@ -9,7 +9,7 @@ use GuzzleHttp\Promise\Create;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
-
+use App\Models\Reserva;
 class PagamentoController extends Controller
 {
     public function __construct()
@@ -24,23 +24,43 @@ class PagamentoController extends Controller
         return view('tabelas.pagamentofiV', compact('user', 'checkboxData'));
         
     }
-    public function store(Request $request, $id)
-    {
-        try {
-            $user = DB::table('users')->find($id);
-    
-            $checkboxData = $request->input('checkbox_data', []);
-                DB::table('users')
-                ->where('id', $id)
-                ->update(['options' => json_encode($checkboxData)]);
-                $user->options = json_encode($checkboxData);
-    
-            return redirect()->back()->with('success', 'Dados do checkbox foram atualizados com sucesso!');
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Ocorreu um erro ao atualizar os dados do checkbox.');
-        }
+public function store(Request $request, $id)
+{
+    try {
+        $user = User::find($id); // Usar Eloquent para encontrar o usuário
+        $reservas = Reserva::get();
+       // @dd($reservas);
+        $checkboxData = $request->input('checkbox_data', []);
+        //@dd($checkboxData);
+        // Atualizar ou criar backup na tabela 'reservas'
+/*Reserva::updateOrCreate(
+  ['user_id' => $user->id],
+    [
+        'name' => $user->name,
+        'subsDay' => Carbon::today(),
+        'options' => json_encode($checkboxData),
+        'days' => json_encode([Carbon::today()]),
+    ]
+);*/
+Reserva::Create(
+    [
+        'name' => $user->name,
+        'subsDay' => Carbon::today(),
+        'options' => json_encode($checkboxData),
+        'days' => json_encode([Carbon::now()]),
+    ],
+); 
+
+        DB::table('users')
+            ->where('id', $id)
+            ->update(['options' => json_encode($checkboxData)]);
+
+        return redirect()->back()->with('success', 'Dados do checkbox foram atualizados com sucesso e backup foi criado/atualizado!');
+    } catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Ocorreu um erro ao atualizar os dados do checkbox e criar/atualizar backup.');
     }
-    
+}
+
     
     public function registrarSaida(Request $request)
     {

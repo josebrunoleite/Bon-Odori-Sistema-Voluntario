@@ -36,10 +36,12 @@ class HomeController extends Controller
 
         return view('anothers.you', compact('user', 'checkboxData'));
     }
-    public function info()
-    {
-        return view('anothers.info');
-    }
+public function info()
+{
+
+}
+
+    
     public function codigos()
     {
         $jsonFilePath = storage_path('app/codigos_presenca.json');
@@ -54,21 +56,4 @@ class HomeController extends Controller
             return view('json')->with('data', []); // Ou qualquer valor padrão que você queira usar
         }
     }
-    public function atualizarOptions()
-{
-    $registros = DB::table('users')->get();
-@dd($registros);
-    foreach ($registros as $registro) {
-        $options = json_decode($registro->option);
-        
-        if (in_array('hapi', $options)) {
-            $options = ['hapi'];
-            $registro->option = json_encode($options);
-            $registro->save();
-        }
-        echo("sucesso");
-    }
-
-    return 'Atualização concluída.';
-}
 }

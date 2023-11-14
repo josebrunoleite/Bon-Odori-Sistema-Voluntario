@@ -34,7 +34,7 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('voluntario.update', ['id' => $user->id]) }}">
                             @csrf
-                            @method('POST')
+                            @method('PUT')
                             <div class="form-row">
                                 <!--Nome-->
                                 <div class="form-group col-md-6">

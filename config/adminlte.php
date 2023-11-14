@@ -338,12 +338,6 @@ return [
             'icon' => 'fas fa-fw fa-user',
             'can'   =>''
         ],
-        [
-            'text' => 'Informações',
-            'url'  => 'info',
-            'icon' => 'fas fa-fw fa-question',
-            'can'   =>''
-        ],
         /*[
             'text' => 'Funções',
             'url'  => '404',
