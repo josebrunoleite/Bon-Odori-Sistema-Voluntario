@@ -4,8 +4,8 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <!--<div class="col-sm-6">
-                                    <h1>Tabela de Voluntarios</h1>
-                                </div>-->
+                                        <h1>Tabela de Voluntarios</h1>
+                                    </div>-->
             </div>
         </div><!-- /.container-fluid -->
     </section>
@@ -70,14 +70,15 @@
 
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>{{ $registrosSaidaOntem->count(); }}</h3>
+                        <h3>{{ $registrosSaidaOntem->count() }}</h3>
                         <p>Pessoas que não Registram Saida ontem</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-person-add"></i>
                     </div>
-{{--                     <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
- --}}                </div>
+                    {{--                     <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+ --}}
+                </div>
             </div>
 
             <div class="col-lg-3 col-6">
@@ -90,21 +91,22 @@
                     <div class="icon">
                         <i class="ion ion-pie-graph"></i>
                     </div>
-{{--                     <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
- --}}                </div>
+                    {{--                     <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+ --}}
+                </div>
             </div>
 
         </div>
     </section>
-     <!--
-        %
-        %
-        %
-        Tabela
-        %
-        %
-        %
-    -->
+    <!--
+            %
+            %
+            %
+            Tabela
+            %
+            %
+            %
+        -->
     <section class="content">
         <div class="container-fluid">
             <div class="row">
@@ -151,13 +153,14 @@
                                             <td class="d-none d-md-table-cell">{{ $user->entrada ?? 'Error Contate José' }}
                                             </td>
                                             <td class="d-none d-md-table-cell">
-                                                {{ $user->saida == '2000-01-01 00:00:00' ? 'Advertência: Não registrou saída!' : $user->saida ?? 'Pessoa não registrou saída' }}</td>
+                                                {{ $user->saida == '2000-01-01 00:00:00' ? 'Advertência: Não registrou saída!' : $user->saida ?? 'Pessoa não registrou saída' }}
+                                            </td>
                                             <td class="d-md-table-cell"><a
-                                                            href="{{ url('atualizarCheckout/' . $user->id) }}">Marca saida</a><!--
-                                                        <a href="{{ url('pagamentofiV/' . $user->id) }}">Pagmento</a>
-                                                         <a href="#" class="text-danger" data-bs-toggle="modal"
-                                                                    data-bs-target="#confirmDeleteModal" id="deleteButton" data-bs-id="{{ $user->id }}">
-                                                                    Excluir</a>-->
+                                                    href="{{ url('atualizarCheckout/' . $user->id) }}">Marca saida</a><!--
+                                                            <a href="{{ url('pagamentofiV/' . $user->id) }}">Pagmento</a>
+                                                             <a href="#" class="text-danger" data-bs-toggle="modal"
+                                                                        data-bs-target="#confirmDeleteModal" id="deleteButton" data-bs-id="{{ $user->id }}">
+                                                                        Excluir</a>-->
                                             </td>
 
                                         </tr>
@@ -187,14 +190,14 @@
     </section>
 
     <!--
-        %
-        %
-        %
-        Advertencia
-        %
-        %
-        %
-    -->
+            %
+            %
+            %
+            Advertencia
+            %
+            %
+            %
+        -->
 
 
 
@@ -236,11 +239,11 @@
                                             <td class="d-none d-md-table-cell">
                                                 {{ $user->saida ?? 'Pessoa não registrou saida ontem' }}</td>
                                             <td class="d-md-table-cell"><a
-                                                            href="{{ url('/presen/waringpres/' . $user->id) }}">Advertencia!</a><!--
-                                                        <a href="{{ url('pagamentofiV/' . $user->id) }}">Pagmento</a>
-                                                         <a href="#" class="text-danger" data-bs-toggle="modal"
-                                                                    data-bs-target="#confirmDeleteModal" id="deleteButton" data-bs-id="{{ $user->id }}">
-                                                                    Excluir</a>-->
+                                                    href="{{ url('/presen/waringpres/' . $user->id) }}">Advertencia!</a><!--
+                                                            <a href="{{ url('pagamentofiV/' . $user->id) }}">Pagmento</a>
+                                                             <a href="#" class="text-danger" data-bs-toggle="modal"
+                                                                        data-bs-target="#confirmDeleteModal" id="deleteButton" data-bs-id="{{ $user->id }}">
+                                                                        Excluir</a>-->
                                             </td>
 
                                         </tr>
@@ -317,10 +320,10 @@
     <script src="{{ asset('jsccs/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('public/jsccs/js/adminlte.min.js') }}"></script>
-     <style>
+    <style>
         #example1_filter {
             float: right
         }
-    </style> 
+    </style>
 
 @stop

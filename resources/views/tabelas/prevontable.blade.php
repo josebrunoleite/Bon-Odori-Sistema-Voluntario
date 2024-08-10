@@ -4,8 +4,8 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <!--<div class="col-sm-6">
-                            <h1>Tabela de Voluntarios</h1>
-                        </div>-->
+                                <h1>Tabela de Voluntarios</h1>
+                            </div>-->
             </div>
         </div><!-- /.container-fluid -->
     </section>
@@ -57,23 +57,13 @@
                                                     href="{{ url('modyfiV/' . $user->id) }}">Editar</a>
                                                 <a href="{{ url('pagamentofiV/' . $user->id) }}">Pagmento</a>
                                                 <!-- <a href="#" class="text-danger" data-bs-toggle="modal"
-                                                            data-bs-target="#confirmDeleteModal" id="deleteButton" data-bs-id="{{ $user->id }}">
-                                                            Excluir</a>-->
+                                                                data-bs-target="#confirmDeleteModal" id="deleteButton" data-bs-id="{{ $user->id }}">
+                                                                Excluir</a>-->
                                             </td>
 
                                         </tr>
                                     @endforeach
                                 </tbody>
-                                {{--                                 <tfoot>
-                                    <tr>
-                                        <th>Editar/Pagamento</th>
-                                        <th class="d-md-table-cell">Nome</th>
-                                        <th class="d-none d-md-table-cell">Setor Manhã</th>
-                                        <th class="d-none d-md-table-cell">Setor Noite</th>
-                                        <th class="d-none d-md-table-cell">Horarios</th>
-                                        <th class="d-none d-md-table-cell">Identificação</th>
-                                    </tr>
-                                </tfoot> --}}
                             </table>
                         </div>
                         <!-- /.card-body -->

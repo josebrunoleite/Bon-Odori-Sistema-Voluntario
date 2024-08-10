@@ -256,7 +256,7 @@ return [
     'dashboard_url' => 'home',
     'logout_url' => 'logout',
     'login_url' => 'login',
-    'register_url' => false,
+    'register_url' => null,
     'password_reset_url' => false,
     'password_email_url' => false,
     'profile_url' => false,

@@ -40,9 +40,8 @@ class VoluntarioController extends Controller
                 ],
                 'role' => 'required|string|max:255',
                 'setor1' => 'required|string|max:255',
-                'subsetor1' => 'required|string|max:255',
                 'setor2' => 'required|string|max:255',
-                'subsetor2' => 'required|string|max:255',
+                'setor3' => 'required|string|max:255',
                 'on' => 'nullable',
                 'password' => 'required|string|max:20', // Agora a senha é obrigatória
             ]);
@@ -92,9 +91,8 @@ class VoluntarioController extends Controller
                 ],
                 'role' => 'required|string|max:255',
                 'setor1' => 'required|string|max:255',
-                'subsetor1' => 'required|string|max:255',
                 'setor2' => 'required|string|max:255',
-                'subsetor2' => 'required|string|max:255',
+                'setor3' => 'required|string|max:255',
                 'on' => 'nullable',
                 'password' => 'nullable|string|max:20',
             ]);

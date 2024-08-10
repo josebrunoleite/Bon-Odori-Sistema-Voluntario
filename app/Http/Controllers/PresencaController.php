@@ -33,6 +33,115 @@ class PresencaController extends Controller
 
         return view('presenca.pontoflex', compact('presente', 'horarioEntrada'));
     }
+
+    public function tabela()
+    {
+        $dataAtual = Carbon::now();
+        $dataOntem = Carbon::yesterday();
+        $users = Presenca::all();
+        $usersdata = User::all()->count();
+        $usuariosSemSaida = Presenca::whereDate('entrada', $dataAtual)
+            ->whereNull('saida');
+
+        $usuariosComSaida = Presenca::whereDate('entrada', $dataAtual)
+            ->whereNotNull('saida');
+
+        //Filtro 1
+
+        //$registrosSaidaOntem = Presenca::whereDate('saida', $dataOntem)->get();
+        //FIltro 2
+        $registrosSaidaOntem = Presenca::whereDate('entrada', $dataOntem)
+            ->whereNull('saida')
+            ->get();
+
+        return view('presenca.presencaTable', compact('users', 'usuariosSemSaida', 'usuariosComSaida', 'registrosSaidaOntem', 'usersdata'))
+            ->with('success', 'Não abra pelo celular!.');
+    }
+    public function atualizarCheckout(Request $request, Presenca $presenca)
+    {
+        $id = $request->route('id');
+
+        $presenca->where('id', $id)
+            ->update(['saida' => Carbon::now()]);
+
+        return Redirect::back()->with('success', 'Saída registrada com sucesso.');
+    }
+
+
+    public function atualizarManual($id)
+    {
+        $usuario = User::find($id);
+
+        if (!$usuario) {
+            return response()->json(['error' => 'Usuário não encontrado'], 404);
+        }
+        $ADM = auth()->user();
+        $codeADM = $ADM->name;
+        $user_id = $usuario->id;
+        $name = $usuario->name ?? $usuario->email;
+        $setor1 = $usuario->setor1;
+        $setor2 = $usuario->setor2;
+        $setor3 = $usuario->setor3;
+
+
+        // Registrar a entrada
+        try {
+            Presenca::updateOrCreate(
+                [
+                    'user_id' => $user_id,
+                    'name' => $name,
+                    'setor1' => $setor1,
+                    'setor2' => $setor2,
+                    'setor3' => $setor3,
+                    'codigoInserido' => 'adm_' . $codeADM,
+                    'data_registro' => Carbon::today(),
+                ],
+                ['entrada' => Carbon::now()]
+            );
+
+            return redirect::back()->with('success', 'Entrada registrada com sucesso.');
+        } catch (Exception $e) {
+            echo 'Exceção capturada: ',  $e->getMessage(), "\n";
+        }
+    }
+    /*
+    public function waringpres($id)
+    {
+        Presenca::where('id', $id)
+            ->update(['saida' => '2000-01-01 03:00:00']);
+
+            return Redirect::back()->with('success', 'Advertencia Administrada.');
+    }
+public function QRCODEGEN()
+{
+    $codigo = $this->pegarCodigoAleatorio();
+
+    return view('presenca.pontoQRCODE', compact('codigo'));
+}
+    private function pegarCodigoAleatorio(){
+     $jsonFilePath = storage_path('app/codigos_presenca.json');
+
+    if (!file_exists($jsonFilePath)) {
+            return null; // Arquivo não encontrado, não é possível pegar um código
+    }
+
+    $jsonFile = file_get_contents($jsonFilePath);
+    $codigos = json_decode($jsonFile, true);
+
+    $codigosValidos = array_filter($codigos['codigos'], function ($cod) {
+        return $cod['status'] === 'valido';
+    });
+
+    if (empty($codigosValidos)) {
+        return null; // Não há códigos válidos disponíveis
+    }
+
+    $codigoAleatorio = $codigosValidos[array_rand($codigosValidos)];
+
+    return $codigoAleatorio['codigo'];
+    }
+    */
+    /*
     public function registrarEntrada(Request $request)
     {
         $user_id = auth()->id();
@@ -120,7 +229,6 @@ class PresencaController extends Controller
         $presente = false;
         return Redirect::back()->with('success', 'Saída registrada com sucesso.');
     }
-
     private function codigoValido($codigo)
     {
         $jsonFilePath = storage_path('app/codigos_presenca.json');
@@ -188,108 +296,5 @@ class PresencaController extends Controller
         return view('presenca.pontoflex', compact('presente'))
             ->with('success', 'Entrada registrada com sucesso.');
     }
-    
-    public function tabela()
-    {
-        $dataAtual = Carbon::now();
-        $dataOntem = Carbon::yesterday();
-        $users = Presenca::all();
-        $usersdata = User::all()->count();
-        $usuariosSemSaida = Presenca::whereDate('entrada', $dataAtual)
-            ->whereNull('saida');
-
-        $usuariosComSaida = Presenca::whereDate('entrada', $dataAtual)
-            ->whereNotNull('saida');
-
-        //Filtro 1
-
-        //$registrosSaidaOntem = Presenca::whereDate('saida', $dataOntem)->get();
-        //FIltro 2
-        $registrosSaidaOntem = Presenca::whereDate('entrada', $dataOntem)
-            ->whereNull('saida')
-            ->get();
-
-        return view('presenca.presencaTable', compact('users', 'usuariosSemSaida', 'usuariosComSaida', 'registrosSaidaOntem', 'usersdata'))
-            ->with('success', 'Não abra pelo celular!.');
-    }
-    public function atualizarCheckout(Request $request, Presenca $presenca)
-    {
-        $id = $request->route('id');
-
-        $presenca->where('id', $id)
-            ->update(['saida' => Carbon::now()]);
-
-        return Redirect::back()->with('success', 'Saída registrada com sucesso.');
-    }
-
-    public function waringpres($id)
-    {
-        Presenca::where('id', $id)
-            ->update(['saida' => '2000-01-01 03:00:00']);
-
-            return Redirect::back()->with('success', 'Advertencia Administrada.');
-    }
-    private function pegarCodigoAleatorio()
-{
-    $jsonFilePath = storage_path('app/codigos_presenca.json');
-
-    if (!file_exists($jsonFilePath)) {
-        return null; // Arquivo não encontrado, não é possível pegar um código
-    }
-
-    $jsonFile = file_get_contents($jsonFilePath);
-    $codigos = json_decode($jsonFile, true);
-
-    $codigosValidos = array_filter($codigos['codigos'], function ($cod) {
-        return $cod['status'] === 'valido';
-    });
-
-    if (empty($codigosValidos)) {
-        return null; // Não há códigos válidos disponíveis
-    }
-
-    $codigoAleatorio = $codigosValidos[array_rand($codigosValidos)];
-
-    return $codigoAleatorio['codigo'];
-}
-public function atualizarManual($id) {
-    $usuario = User::find($id);
-
-    if (!$usuario) {
-        return response()->json(['error' => 'Usuário não encontrado'], 404);
-    }
-    $ADM = auth()->user();
-    $codeADM = $ADM->name;
-    $user_id = $usuario->id;
-    $name = $usuario->name ?? $usuario->email;
-    $subsetor01 = $usuario->subsetor1;
-    $subsetor02 = $usuario->subsetor2;
-
-
-// Registrar a entrada
-try{
-Presenca::updateOrCreate(
-    [
-        'user_id' => $user_id,
-        'name' => $name,
-        'subsetor1' => $subsetor01,
-        'subsetor2' => $subsetor02,
-        'codigoInserido' => 'adm_'.$codeADM,
-        'data_registro' => Carbon::today(),
-    ],
-    ['entrada' => Carbon::now()]
-);
-
-return redirect::back()->with('success', 'Entrada registrada com sucesso.');
-} catch (Exception $e) {
-    echo 'Exceção capturada: ',  $e->getMessage(), "\n";
-}
-
-}
-public function QRCODEGEN()
-{
-    $codigo = $this->pegarCodigoAleatorio();
-
-    return view('presenca.pontoQRCODE', compact('codigo'));
-}
+    */
 }

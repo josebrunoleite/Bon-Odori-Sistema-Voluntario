@@ -4,8 +4,8 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <!--<div class="col-sm-6">
-                            <h1>Tabela de Voluntarios</h1>
-                        </div>-->
+                                <h1>Tabela de Voluntarios</h1>
+                            </div>-->
             </div>
         </div><!-- /.container-fluid -->
     </section>
@@ -57,8 +57,8 @@
                                                     href="{{ url('modyfiV/' . $user->id) }}">Editar</a> //
                                                 <a href="{{ url('pagamentofiV/' . $user->id) }}">Pagmento</a>
                                                 <!-- <a href="#" class="text-danger" data-bs-toggle="modal"
-                                                            data-bs-target="#confirmDeleteModal" id="deleteButton" data-bs-id="{{ $user->id }}">
-                                                            Excluir</a>-->
+                                                                data-bs-target="#confirmDeleteModal" id="deleteButton" data-bs-id="{{ $user->id }}">
+                                                                Excluir</a>-->
                                             </td>
 
                                         </tr>

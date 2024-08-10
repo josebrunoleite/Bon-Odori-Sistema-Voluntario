@@ -45,6 +45,55 @@
                     </div>
                     <!--Cargo-->
                     <div class="form-row">
+
+                        <!--Setor01-->
+                        <div class="form-group col-md-4">
+                            <label>Setor</label>
+                            <select class="custom-select" name="setor1" id="setor1">
+                                <option value="-">Não possui outro Setor</option>
+                                <option value="Geral">Geral</option>
+                                <option value="Federação">Federação</option>
+                                <option value="Cultural">Cultural</option>
+                                <option value="Alimentação">Alimentação</option>
+                                <option value="Conteúdo, Shows e Outros">Conteúdo, Shows e Outros</option>
+                                <option value="Oficinas de Culinária">Oficinas de Culinária</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Espaço Pop">Espaço Pop</option>
+                                <option value="Comercial">Comercial</option>
+                            </select>
+                        </div>
+                        <!--Setor02-->
+                        <div class="form-group col-md-4">
+                            <label>Setor 2</label>
+                            <select class="custom-select" name="setor2" id="setor2">
+                                <option value="-">Não possui outro Setor</option>
+                                <option value="Geral">Geral</option>
+                                <option value="Federação">Federação</option>
+                                <option value="Cultural">Cultural</option>
+                                <option value="Alimentação">Alimentação</option>
+                                <option value="Conteúdo, Shows e Outros">Conteúdo, Shows e Outros</option>
+                                <option value="Oficinas de Culinária">Oficinas de Culinária</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Espaço Pop">Espaço Pop</option>
+                                <option value="Comercial">Comercial</option>
+                            </select>
+                        </div>
+                        <!--Setor02-->
+                        <div class="form-group col-md-4">
+                            <label>Setor 3</label>
+                            <select class="custom-select" name="setor2" id="setor2">
+                                <option value="-">Não possui outro Setor</option>
+                                <option value="Geral">Geral</option>
+                                <option value="Federação">Federação</option>
+                                <option value="Cultural">Cultural</option>
+                                <option value="Alimentação">Alimentação</option>
+                                <option value="Conteúdo, Shows e Outros">Conteúdo, Shows e Outros</option>
+                                <option value="Oficinas de Culinária">Oficinas de Culinária</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Espaço Pop">Espaço Pop</option>
+                                <option value="Comercial">Comercial</option>
+                            </select>
+                        </div>
                         <div class="form-group col-md-4">
                             <label>Cargo</label>
                             <select class="custom-select" name="role" id="role">
@@ -62,120 +111,7 @@
                                 <option value="D">Dobrar</option>
                             </select>
                         </div>
-                        <!--Setor01-->
-                        <div class="form-group col-md-4">
-                            <label>Setor</label>
-                            <select class="custom-select" name="setor1" id="setor1">
-                                <option value="-">Não é do turno</option>
-                                <option value="Geral">Geral</option>
-                                <option value="Federação">Federação</option>
-                                <option value="Cultural">Cultural</option>
-                                <option value="Alimentação">Alimentação</option>
-                                <option value="Conteúdo, Shows e Outros">Conteúdo, Shows e Outros</option>
-                                <option value="Oficinas de Culinária">Oficinas de Culinária</option>
-                                <option value="Marketing">Marketing</option>
-                                <option value="Espaço Pop">Espaço Pop</option>
-                                <option value="Comercial">Comercial</option>
-                            </select>
-                        </div>
-                        <!--SubSetor01-->
-                        <div class="form-group col-md-4">
-                            <label>SubSetor</label>
-                            <select class="custom-select" name="subsetor1" id="subsetor1">
-                                <option value="Subsetor">Subsetor</option>
-                                <option value="Mochila">Mochila</option>
-                                <option value="Comercial">Comercial</option>
-                                <option value="Kirigami">Kirigami</option>
-                                <option value="Praça Anime">Praça Anime</option>
-                                <option value="Palco Haru">Palco Haru</option>
-                                <option value="Sustentabilidade">Sustentabilidade</option>
-                                <option value="Sumiê">Sumiê</option>
-                                <option value="Chá">Chá</option>
-                                <option value="EXPOSIÇÃO">EXPOSIÇÃO</option>
-                                <option value="Tabuleiro">Tabuleiro</option>
-                                <option value="Balcão">Balcão</option>
-                                <option value="Acessibilidade">Acessibilidade</option>
-                                <option value="Institucional">Institucional</option>
-                                <option value="Origami">Origami</option>
-                                <option value="Palco Natsu">Palco Natsu</option>
-                                <option value="Japan House">Japan House</option>
-                                <option value="Fundação Japão">Fundação Japão</option>
-                                <option value="Escola de Língua Japonesa">Escola de Língua Japonesa</option>
-                                <option value="Imprensa">Imprensa</option>
-                                <option value="Espaço Bon Odori">Espaço Bon Odori</option>
-                                <option value="Stand">Stand</option>
-                                <option value="Temari">Temari</option>
-                                <option value="Praça principal">Praça principal</option>
-                                <option value="Oriuno">Oriuno</option>
-                                <option value="E-Temari">E-Temari</option>
-                                <option value="Bonsai">Bonsai</option>
-                                <option value="Oshibana">Oshibana</option>
-                                <option value="Secretaria">Secretaria</option>
-                                <option value="Altar Budista">Altar Budista</option>
-                                <option value="Passeio">Passeio</option>
-                                <option value="Just Dance">Just Dance</option>
-                                <option value="Podcast">Podcast</option>
-                                <option value="Rissa">Rissa</option>
-                                <option value="Tecnologia">Tecnologia</option>
-                            </select>
-                        </div>
-                        <!--Setor02-->
-                        <div class="form-group col-md-4">
-                            <label>Setor 2</label>
-                            <select class="custom-select" name="setor2" id="setor2">
-                                <option value="-">Não é do turno</option>
-                                <option value="Geral">Geral</option>
-                                <option value="Federação">Federação</option>
-                                <option value="Cultural">Cultural</option>
-                                <option value="Alimentação">Alimentação</option>
-                                <option value="Conteúdo, Shows e Outros">Conteúdo, Shows e Outros</option>
-                                <option value="Oficinas de Culinária">Oficinas de Culinária</option>
-                                <option value="Marketing">Marketing</option>
-                                <option value="Espaço Pop">Espaço Pop</option>
-                                <option value="Comercial">Comercial</option>
-                            </select>
-                        </div>
-                        <!--SubSetor02-->
-                        <div class="form-group col-md-4">
-                            <label>SubSetor</label>
-                            <select class="custom-select" name="subsetor2" id="subsetor2">
-                                <option value="Subsetor">Subsetor</option>
-                                <option value="Mochila">Mochila</option>
-                                <option value="COMERCIAL">COMERCIAL</option>
-                                <option value="Kirigami">Kirigami</option>
-                                <option value="Praça Anime">Praça Anime</option>
-                                <option value="Palco Haru">Palco Haru</option>
-                                <option value="Sustentabilidade">Sustentabilidade</option>
-                                <option value="Sumiê">Sumiê</option>
-                                <option value="Chá">Chá</option>
-                                <option value="EXPOSIÇÃO">EXPOSIÇÃO</option>
-                                <option value="Tabuleiro">Tabuleiro</option>
-                                <option value="Balcão">Balcão</option>
-                                <option value="Acessibilidade">Acessibilidade</option>
-                                <option value="Institucional">Institucional</option>
-                                <option value="Origami">Origami</option>
-                                <option value="Palco Natsu">Palco Natsu</option>
-                                <option value="Japan House">Japan House</option>
-                                <option value="Fundação Japão">Fundação Japão</option>
-                                <option value="Escola de Língua Japonesa">Escola de Língua Japonesa</option>
-                                <option value="Imprensa">Imprensa</option>
-                                <option value="Espaço Bon Odori">Espaço Bon Odori</option>
-                                <option value="Stand">Stand</option>
-                                <option value="Temari">Temari</option>
-                                <option value="Praça principal">Praça principal</option>
-                                <option value="Oriuno">Oriuno</option>
-                                <option value="E-Temari">E-Temari</option>
-                                <option value="Bonsai">Bonsai</option>
-                                <option value="Oshibana">Oshibana</option>
-                                <option value="Secretaria">Secretaria</option>
-                                <option value="Altar Budista">Altar Budista</option>
-                                <option value="Passeio">Passeio</option>
-                                <option value="Just Dance">Just Dance</option>
-                                <option value="Podcast">Podcast</option>
-                                <option value="Rissa">Rissa</option>
-                                <option value="Tecnologia">Tecnologia</option>
-                            </select>
-                        </div>
+
                         <div class="form-group col-md-12">
                             <label>Sexta</label>
                             <input type="checkbox" name="checkbox_data[]" value="sexta">

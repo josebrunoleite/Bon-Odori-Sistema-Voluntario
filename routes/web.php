@@ -51,6 +51,7 @@ Route::get('/haru', function () {
 Route::get('/excel', function () {
     return redirect()->away('https://docs.google.com/spreadsheets');
 });
+
 Route::get('/nikkeiNet', function () {
     return redirect()->away('https://drive.google.com/drive/folders/1YlgQ3xgudVvYPvaLGqcDJO1F5B3hfEaC?usp=drive_link');
 });

@@ -54,27 +54,6 @@
                                 </div>
                                 <!--Cargo-->
                                 <div class="form-row">
-                                    <div class="form-group col-md-4">
-                                        <label>Cargo</label>
-                                        <select class="custom-select" name="role" id="role">
-                                            <option value="admin" {{ $user->role === 'admin' ? 'selected' : '' }}>admin
-                                            </option>
-                                            <option value="mod" {{ $user->role === 'mod' ? 'selected' : '' }}>mod
-                                            </option>
-                                            <option value="user" {{ $user->role === 'user' ? 'selected' : '' }}>user
-                                            </option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label>Fuso Horario</label>
-                                        <select class="custom-select" name="on" id="on">
-                                            <option value="M" {{ $user->on === 'M' ? 'selected' : '' }}>Manhã</option>
-                                            <option value="N" {{ $user->on === 'N' ? 'selected' : '' }}>Noturno
-                                            </option>
-                                            <option value="D" {{ $user->on === 'D' ? 'selected' : '' }}>Dobrar
-                                            </option>
-                                        </select>
-                                    </div>
                                     <!--Setor01-->
                                     <div class="form-group col-md-4">
                                         <label>Setor</label>
@@ -104,101 +83,6 @@
                                             <option value="Comercial"
                                                 {{ $user->setor1 === 'Comercial' ? 'selected' : '' }}>Comercial</option>
                                             <option value="-" {{ $user->setor1 === '-' ? 'selected' : '' }}>-</option>
-                                        </select>
-                                    </div>
-                                    <!--SubSetor01-->
-                                    <div class="form-group col-md-4">
-                                        <label>SubSetor</label>
-                                        <select class="custom-select" name="subsetor1" id="subsetor1">
-                                            <option value="Subsetor"
-                                                {{ $user->subsetor1 === 'Subsetor' ? 'selected' : '' }}>Subsetor</option>
-                                            <option value="Mochila" {{ $user->subsetor1 === 'Mochila' ? 'selected' : '' }}>
-                                                Mochila</option>
-                                            <option value="COMERCIAL"
-                                                {{ $user->subsetor1 === 'COMERCIAL' ? 'selected' : '' }}>COMERCIAL</option>
-                                            <option value="Kirigami"
-                                                {{ $user->subsetor1 === 'Kirigami' ? 'selected' : '' }}>Kirigami</option>
-                                            <option value="Praça Anime"
-                                                {{ $user->subsetor1 === 'Praça Anime' ? 'selected' : '' }}>Praça Anime
-                                            </option>
-                                            <option value="Palco Haru"
-                                                {{ $user->subsetor1 === 'Palco Haru' ? 'selected' : '' }}>Palco Haru
-                                            </option>
-                                            <option value="Sustentabilidade"
-                                                {{ $user->subsetor1 === 'Sustentabilidade' ? 'selected' : '' }}>
-                                                Sustentabilidade</option>
-                                            <option value="Sumiê" {{ $user->subsetor1 === 'Sumiê' ? 'selected' : '' }}>
-                                                Sumiê</option>
-                                            <option value="Chá" {{ $user->subsetor1 === 'Chá' ? 'selected' : '' }}>Chá
-                                            </option>
-                                            <option value="EXPOSIÇÃO"
-                                                {{ $user->subsetor1 === 'EXPOSIÇÃO' ? 'selected' : '' }}>EXPOSIÇÃO</option>
-                                            <option value="Tabuleiro"
-                                                {{ $user->subsetor1 === 'Tabuleiro' ? 'selected' : '' }}>Tabuleiro</option>
-                                            <option value="Balcão" {{ $user->subsetor1 === 'Balcão' ? 'selected' : '' }}>
-                                                Balcão</option>
-                                            <option value="Acessibilidade"
-                                                {{ $user->subsetor1 === 'Acessibilidade' ? 'selected' : '' }}>
-                                                Acessibilidade</option>
-                                            <option value="Institucional"
-                                                {{ $user->subsetor1 === 'Institucional' ? 'selected' : '' }}>Institucional
-                                            </option>
-                                            <option value="Origami" {{ $user->subsetor1 === 'Origami' ? 'selected' : '' }}>
-                                                Origami</option>
-                                            <option value="Palco Natsu"
-                                                {{ $user->subsetor1 === 'Palco Natsu' ? 'selected' : '' }}>Palco Natsu
-                                            </option>
-                                            <option value="Japan House"
-                                                {{ $user->subsetor1 === 'Japan House' ? 'selected' : '' }}>Japan House
-                                            </option>
-                                            <option value="Fundação Japão"
-                                                {{ $user->subsetor1 === 'Fundação Japão' ? 'selected' : '' }}>Fundação
-                                                Japão</option>
-                                            <option value="Escola de Língua Japonesa"
-                                                {{ $user->subsetor1 === 'Escola de Língua Japonesa' ? 'selected' : '' }}>
-                                                Escola de Língua Japonesa</option>
-                                            <option value="Imprensa"
-                                                {{ $user->subsetor1 === 'Imprensa' ? 'selected' : '' }}>Imprensa</option>
-                                            <option value="Espaço Bon Odori"
-                                                {{ $user->subsetor1 === 'Espaço Bon Odori' ? 'selected' : '' }}>Espaço Bon
-                                                Odori</option>
-                                            <option value="Stand" {{ $user->subsetor1 === 'Stand' ? 'selected' : '' }}>
-                                                Stand</option>
-                                            <option value="Temari" {{ $user->subsetor1 === 'Temari' ? 'selected' : '' }}>
-                                                Temari</option>
-                                            <option value="Praça principal"
-                                                {{ $user->subsetor1 === 'Praça principal' ? 'selected' : '' }}>Praça
-                                                principal</option>
-                                            <option value="Oriuno" {{ $user->subsetor1 === 'Oriuno' ? 'selected' : '' }}>
-                                                Oriuno</option>
-                                            <option value="E-Temari"
-                                                {{ $user->subsetor1 === 'E-Temari' ? 'selected' : '' }}>E-Temari</option>
-                                            <option value="Bonsai" {{ $user->subsetor1 === 'Bonsai' ? 'selected' : '' }}>
-                                                Bonsai</option>
-                                            <option value="Oshibana"
-                                                {{ $user->subsetor1 === 'Oshibana' ? 'selected' : '' }}>Oshibana</option>
-                                            <option value="Secretaria"
-                                                {{ $user->subsetor1 === 'Secretaria' ? 'selected' : '' }}>Secretaria
-                                            </option>
-                                            <option value="Altar Budista"
-                                                {{ $user->subsetor1 === 'Altar Budista' ? 'selected' : '' }}>Altar Budista
-                                            </option>
-                                            <option value="Passeio"
-                                                {{ $user->subsetor1 === 'Passeio' ? 'selected' : '' }}>Passeio
-                                            </option>
-                                            <option value="Just Dance"
-                                                {{ $user->subsetor1 === 'Just Dance' ? 'selected' : '' }}>Just Dance
-                                            </option>
-                                            <option value="Podcast"{{ $user->subsetor1 ==='Podcast' ? 'selected': '' }}>
-                                                Podcast</option>
-                                            <option value="Rissa" {{ $user->subsetor1 === 'Rissa' ? 'selected' : '' }}>
-                                                Rissa</option>
-                                            <option value="Tecnologia"
-                                                {{ $user->subsetor1 === 'Tecnologia' ? 'selected' : '' }}>Tecnologia
-                                            </option>
-                                            <option value="Tanabata"
-                                                {{ $user->subsetor1 === 'Tanabata' ? 'selected' : '' }}>Tanabata
-                                            </option>
                                         </select>
                                     </div>
                                     <!--Setor02-->
@@ -233,98 +117,57 @@
                                             </option>
                                         </select>
                                     </div>
-                                    <!--SubSetor02-->
+                                    <!--Setor03-->
                                     <div class="form-group col-md-4">
-                                        <label>SubSetor</label>
-                                        <select class="custom-select" name="subsetor2" id="subsetor2">
-                                            <option value="Subsetor"
-                                                {{ $user->subsetor2 === 'Subsetor2' ? 'selected' : '' }}>Subsetor</option>
-                                            <option value="Mochila"
-                                                {{ $user->subsetor2 === 'Mochila' ? 'selected' : '' }}>Mochila</option>
-                                            <option value="COMERCIAL"
-                                                {{ $user->subsetor2 === 'COMERCIAL' ? 'selected' : '' }}>COMERCIAL</option>
-                                            <option value="Kirigami"
-                                                {{ $user->subsetor2 === 'Kirigami' ? 'selected' : '' }}>Kirigami</option>
-                                            <option value="Praça Anime"
-                                                {{ $user->subsetor2 === 'Praça Anime' ? 'selected' : '' }}>Praça Anime
+                                        <label>Setor 3</label>
+                                        <select class="custom-select" name="setor3" id="setor3">
+                                            <option value="-" {{ $user->setor3 === '-' ? 'selected' : '' }}>
+                                                Não está alocado em outro lugar
                                             </option>
-                                            <option value="Palco Haru"
-                                                {{ $user->subsetor2 === 'Palco Haru' ? 'selected' : '' }}>Palco Haru
+                                            <option value="Geral" {{ $user->setor3 === 'Geral' ? 'selected' : '' }}>Geral
                                             </option>
-                                            <option value="Sustentabilidade"
-                                                {{ $user->subsetor2 === 'Sustentabilidade' ? 'selected' : '' }}>
-                                                Sustentabilidade</option>
-                                            <option value="Sumiê" {{ $user->subsetor2 === 'Sumiê' ? 'selected' : '' }}>
-                                                Sumiê</option>
-                                            <option value="Chá" {{ $user->subsetor2 === 'Chá' ? 'selected' : '' }}>Chá
+                                            <option value="Federação"
+                                                {{ $user->setor3 === 'Federação' ? 'selected' : '' }}>Federação</option>
+                                            <option value="Cultural" {{ $user->setor3 === 'Cultural' ? 'selected' : '' }}>
+                                                Cultural</option>
+                                            <option value="Alimentação"
+                                                {{ $user->setor3 === 'Alimentação' ? 'selected' : '' }}>
+                                                Alimentação
                                             </option>
-                                            <option value="EXPOSIÇÃO"
-                                                {{ $user->subsetor2 === 'EXPOSIÇÃO' ? 'selected' : '' }}>EXPOSIÇÃO</option>
-                                            <option value="Tabuleiro"
-                                                {{ $user->subsetor2 === 'Tabuleiro' ? 'selected' : '' }}>Tabuleiro</option>
-                                            <option value="Balcão" {{ $user->subsetor2 === 'Balcão' ? 'selected' : '' }}>
-                                                Balcão</option>
-                                            <option value="Acessibilidade"
-                                                {{ $user->subsetor2 === 'Acessibilidade' ? 'selected' : '' }}>
-                                                Acessibilidade</option>
-                                            <option value="Institucional"
-                                                {{ $user->subsetor2 === 'Institucional' ? 'selected' : '' }}>Institucional
+                                            <option value="Conteúdo, Shows e Outros"
+                                                {{ $user->setor3 === 'Conteúdo, Shows e Outros' ? 'selected' : '' }}>
+                                                Conteúdo, Shows e Outros</option>
+                                            <option value="Oficinas de Culinária"
+                                                {{ $user->setor3 === 'Oficinas de Culinária' ? 'selected' : '' }}>Oficinas
+                                                de Culinária</option>
+                                            <option value="Marketing"
+                                                {{ $user->setor3 === 'Marketing' ? 'selected' : '' }}>Marketing</option>
+                                            <option value="Espaço Pop"
+                                                {{ $user->setor3 === 'Espaço Pop' ? 'selected' : '' }}>Espaço Pop</option>
+                                            <option value="Comercial"
+                                                {{ $user->setor3 === 'Comercial' ? 'selected' : '' }}>Comercial</option>
+                                            <option value="-" {{ $user->setor3 === '-' ? 'selected' : '' }}>-
                                             </option>
-                                            <option value="Origami"
-                                                {{ $user->subsetor2 === 'Origami' ? 'selected' : '' }}>Origami</option>
-                                            <option value="Palco Natsu"
-                                                {{ $user->subsetor2 === 'Palco Natsu' ? 'selected' : '' }}>Palco Natsu
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label>Cargo</label>
+                                        <select class="custom-select" name="role" id="role">
+                                            <option value="admin" {{ $user->role === 'admin' ? 'selected' : '' }}>admin
                                             </option>
-                                            <option value="Japan House"
-                                                {{ $user->subsetor2 === 'Japan House' ? 'selected' : '' }}>Japan House
+                                            <option value="mod" {{ $user->role === 'mod' ? 'selected' : '' }}>mod
                                             </option>
-                                            <option value="Fundação Japão"
-                                                {{ $user->subsetor2 === 'Fundação Japão' ? 'selected' : '' }}>
-                                                Fundação Japão</option>
-                                            <option value="Escola de Língua Japonesa"
-                                                {{ $user->subsetor2 === 'Escola de Língua Japonesa' ? 'selected' : '' }}>
-                                                Escola de Língua Japonesa</option>
-                                            <option value="Imprensa"
-                                                {{ $user->subsetor2 === 'Imprensa' ? 'selected' : '' }}>Imprensa</option>
-                                            <option value="Espaço Bon Odori"
-                                                {{ $user->subsetor2 === 'Espaço Bon Odori' ? 'selected' : '' }}>Espaço Bon
-                                                Odori</option>
-                                            <option value="Stand" {{ $user->subsetor2 === 'Stand' ? 'selected' : '' }}>
-                                                Stand</option>
-                                            <option value="Temari" {{ $user->subsetor2 === 'Temari' ? 'selected' : '' }}>
-                                                Temari</option>
-                                            <option value="Praça principal"
-                                                {{ $user->subsetor2 === 'Praça principal' ? 'selected' : '' }}>Praça
-                                                principal</option>
-                                            <option value="Oriuno" {{ $user->subsetor2 === 'Oriuno' ? 'selected' : '' }}>
-                                                Oriuno</option>
-                                            <option value="E-Temari"
-                                                {{ $user->subsetor2 === 'E-Temari' ? 'selected' : '' }}>E-Temari</option>
-                                            <option value="Bonsai" {{ $user->subsetor2 === 'Bonsai' ? 'selected' : '' }}>
-                                                Bonsai</option>
-                                            <option value="Oshibana"
-                                                {{ $user->subsetor2 === 'Oshibana' ? 'selected' : '' }}>Oshibana</option>
-                                            <option value="Secretaria"
-                                                {{ $user->subsetor2 === 'Secretaria' ? 'selected' : '' }}>Secretaria
+                                            <option value="user" {{ $user->role === 'user' ? 'selected' : '' }}>user
                                             </option>
-                                            <option value="Altar Budista"
-                                                {{ $user->subsetor2 === 'Altar Budista' ? 'selected' : '' }}>Altar Budista
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label>Fuso Horario</label>
+                                        <select class="custom-select" name="on" id="on">
+                                            <option value="M" {{ $user->on === 'M' ? 'selected' : '' }}>Manhã</option>
+                                            <option value="N" {{ $user->on === 'N' ? 'selected' : '' }}>Noturno
                                             </option>
-                                            <option value="Passeio"
-                                                {{ $user->subsetor2 === 'Passeio' ? 'selected' : '' }}>Passeio
-                                            </option>
-                                            <option value="Just Dance"
-                                            {{ $user->subsetor2 === 'Just Dance' ? 'selected' : '' }}>Just Dance
-                                        </option>
-                                        <option value="Podcast"{{ $user->subsetor2 ==='Podcast' ? 'selected': '' }}>
-                                            Podcast</option>
-                                        <option value="Rissa" {{ $user->subsetor2 === 'Rissa' ? 'selected' : '' }}>
-                                            Rissa</option>
-                                        <option value="Tecnologia"
-                                            {{ $user->subsetor2 === 'Tecnologia' ? 'selected' : '' }}>Tecnologia
-                                        </option>
-                                        <option value="Tanabata"
-                                                {{ $user->subsetor2 === 'Tanabata' ? 'selected' : '' }}>Tanabata
+                                            <option value="D" {{ $user->on === 'D' ? 'selected' : '' }}>Dobrar
                                             </option>
                                         </select>
                                     </div>
@@ -358,26 +201,27 @@
                                                 class="form-control" aria-labelledby="passwordHelpInline">
                                         </div>
                                         <!-- <div class="col-auto">
-                                            <span id="passwordHelpInline" class="form-text">
-                                                
-                                            </span>-->
+                                                    <span id="passwordHelpInline" class="form-text">
+                                                        
+                                                    </span>-->
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <!--<div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="gridCheck">
-                                        <label class="form-check-label" for="gridCheck">
-                                            Check me out
-                                        </label>
-                                    </div>-->
+                                                <input class="form-check-input" type="checkbox" id="gridCheck">
+                                                <label class="form-check-label" for="gridCheck">
+                                                    Check me out
+                                                </label>
+                                            </div>-->
                             </div>
                             <button type="submit" class="btn btn-primary">Atualizar</button>
                         </form>
-                        <form id="entrada" action="{{ route('atualizarManual', ['id' => $user->id]) }}" method="POST"> 
+                        <form id="entrada" action="{{ route('atualizarManual', ['id' => $user->id]) }}"
+                            method="POST">
                             @csrf
                             <button type="submit" class="btn btn-info float-right">autorizar entrada!</button>
-                </form>
+                        </form>
                     </div>
                 </div>
                 <form id="deleteForm" action="{{ route('deletefiV', ['id' => $user->id]) }}" method="POST">

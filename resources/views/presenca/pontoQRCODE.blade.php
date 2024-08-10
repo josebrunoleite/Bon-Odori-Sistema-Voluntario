@@ -49,18 +49,18 @@
 <body>
     <button class="btn btn-primary reload-button mb-10" onclick="location.reload();">Atualizar</button>
 
-    @if(Auth::check() and (Auth::user()->isAdmin() == true))
-    <div class="qr-code-container">
-        <div class="red-box">
-            {!! QrCode::size(600)->generate('https://seinenkai.com.br/qrcode?codigo='.$codigo) !!}
+    @if (Auth::check() and Auth::user()->isAdmin() == true)
+        <div class="qr-code-container">
+            <div class="red-box">
+                {!! QrCode::size(600)->generate('https://seinenkai.com.br/qrcode?codigo=' . $codigo) !!}
+            </div>
+            <hr>
         </div>
-        <hr>
-    </div>
 
-    <!-- Scripts do Bootstrap (substitua pelos seus próprios links) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <!-- Scripts do Bootstrap (substitua pelos seus próprios links) -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     @endif
 </body>
 

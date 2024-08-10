@@ -53,4 +53,3 @@ class PedidoController extends Controller
         return redirect()->route('listar_pedidos')->with('success', 'Resposta enviada com sucesso!');
     }
 }
-

@@ -36,16 +36,13 @@ class HomeController extends Controller
 
         return view('anothers.you', compact('user', 'checkboxData'));
     }
-public function info()
-{
 
-}
 
-    
+
     public function codigos()
     {
         $jsonFilePath = storage_path('app/codigos_presenca.json');
-    
+
         if (File::exists($jsonFilePath)) {
             $jsonData = File::get($jsonFilePath);
             $data = json_decode($jsonData, true);

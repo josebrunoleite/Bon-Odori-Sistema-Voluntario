@@ -19,7 +19,7 @@
                             <form action="{{ route('presenca.entrada') }}" method="post">
                                 @csrf
                                 <div class="mb-3">
-                                    
+
                                     <label for="codiEnter" class="form-label">Código de entrada:</label>
                                     <input type="password" name="codiEnter" id="codiEnter result" class="form-control"
                                         aria-labelledby="passwordHelpInline">
@@ -34,7 +34,9 @@
                         <br>
                         <br>
                         <div>
-                            <a target="_blank" class="link-danger" href="https://docs.google.com/spreadsheets/d/1xuck4PjnDUFcRmQPdbBPjUWzfUFphddEhLRRSuK4Qv4/edit?usp=sharing"> Caso exista duvida aperter aqui </a>
+                            <a target="_blank" class="link-danger"
+                                href="https://docs.google.com/spreadsheets/d/1xuck4PjnDUFcRmQPdbBPjUWzfUFphddEhLRRSuK4Qv4/edit?usp=sharing">
+                                Caso exista duvida aperter aqui </a>
                         </div>
                         <br>
                         @if (session('error'))
@@ -49,23 +51,26 @@
                             </div>
                         @endif
                     </div>
-                    <div>            
+                    <div>
                         <video id="preview" style="display: none; z-index: 1;"></video>
                         <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
                         <script>
-                            const scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+                            const scanner = new Instascan.Scanner({
+                                video: document.getElementById('preview')
+                            });
                             const startButton = document.getElementById('startButton');
                             const videoPreview = document.getElementById('preview');
                             let currentCameraIndex = 0;
-                    
+
                             startButton.addEventListener('click', function() {
                                 videoPreview.style.display = 'block';
-                    
+
                                 Instascan.Camera.getCameras().then(function(cameras) {
                                     const frontCamera = cameras.find(camera => camera.name.toLowerCase().includes('front'));
-                    
+
                                     if (frontCamera) {
-                                        currentCameraIndex = (currentCameraIndex + 1) % cameras.length; // Alterna entre as câmeras disponíveis
+                                        currentCameraIndex = (currentCameraIndex + 1) % cameras
+                                        .length; // Alterna entre as câmeras disponíveis
                                         scanner.start(cameras[currentCameraIndex]);
                                     } else if (cameras.length > 0) {
                                         scanner.start(cameras[0]);

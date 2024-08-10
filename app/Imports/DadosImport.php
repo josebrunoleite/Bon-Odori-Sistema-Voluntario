@@ -16,14 +16,14 @@ class DadosImport implements ToModel, WithHeadingRow
 
         if ($usuario) {
             $setor1 = $row['setor1'];
-            $subsetor1 = $row['subsetor1'];
             $setor2 = $row['setor2'];
-            $subsetor2 = $row['subsetor2'];
+            $setor3 = $row['setor3'];
+
 
             $usuario->setor1 = $setor1;
-            $usuario->subsetor1 = $subsetor1;
             $usuario->setor2 = $setor2;
-            $usuario->subsetor2 = $subsetor2;
+            $usuario->setor3 = $setor3;
+
 
             /*$days = [];
 

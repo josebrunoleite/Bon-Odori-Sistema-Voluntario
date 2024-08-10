@@ -25,8 +25,9 @@ class PresencaExport implements FromCollection
             'Nome',
             'Email',
             'Data de Criação',
-            'setor',
-            'subsetor'
+            'setor1',
+            'setor2',
+            'setor3',
         ];
     }
 
