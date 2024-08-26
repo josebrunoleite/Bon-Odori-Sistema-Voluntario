@@ -156,11 +156,15 @@
                                                 {{ $user->saida == '2000-01-01 00:00:00' ? 'Advertência: Não registrou saída!' : $user->saida ?? 'Pessoa não registrou saída' }}
                                             </td>
                                             <td class="d-md-table-cell"><a
+                                                @if(!$user->saida)
                                                     href="{{ url('atualizarCheckout/' . $user->id) }}">Marca saida</a><!--
                                                             <a href="{{ url('pagamentofiV/' . $user->id) }}">Pagmento</a>
                                                              <a href="#" class="text-danger" data-bs-toggle="modal"
                                                                         data-bs-target="#confirmDeleteModal" id="deleteButton" data-bs-id="{{ $user->id }}">
                                                                         Excluir</a>-->
+                                                                        @else
+                                                                        <h2>já saiu</h2>
+                                                                        @endif
                                             </td>
 
                                         </tr>

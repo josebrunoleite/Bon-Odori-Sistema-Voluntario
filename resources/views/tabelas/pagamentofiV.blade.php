@@ -55,13 +55,13 @@
                                 <div class="form-group col-md-4">
                                     <h5>Pagamento Sexta</h5>
                                     <label>Comida Almoço </label>
-                                    <input type="checkbox" name="checkbox_data[]" value="comidaDia2"
+                                    <input type="checkbox" name="checkbox_data[]" value="comidaDia1"
                                         @if (in_array('comidaDia1', $checkboxData)) checked @endif>
                                     <label>&nbsp;/ Transporte </label>
-                                    <input type="checkbox" name="checkbox_data[]" value="Transporte2"
+                                    <input type="checkbox" name="checkbox_data[]" value="Transporte1"
                                         @if (in_array('Transporte1', $checkboxData)) checked @endif>
                                     <label>/ Comida Jantar</label>
-                                    <input type="checkbox" name="checkbox_data[]" value="comidaNoite2"
+                                    <input type="checkbox" name="checkbox_data[]" value="comidaNoite1"
                                         @if (in_array('comidaNoite1', $checkboxData)) checked @endif>
                                 </div>
                                 <div class="form-group col-md-4">
@@ -119,14 +119,23 @@
                                         @if (in_array('ausente', $checkboxData)) checked @endif>
                                 </div>
                             </div>
+                            <button type="submit" class="btn btn-primary">Atualizar</button>
+                        </form>
+                        @if ($presente == true)
+                            <p>Você está presente!</p>
+                            <form action="{{ url('atualizarCheckout/' . $user->id) }}" method="GET">
+                                @csrf
+                                <button type="submit" class="btn btn-warning float-right">Registrar Saída</button>
+                            </form>
+                        @elseif($presente == false)
+                            <p>Você não está presente ou já registrou a saída.</p>
                             <form id="entrada" action="{{ route('atualizarManual', ['id' => $user->id]) }}"
                                 method="POST">
                                 @csrf
                                 <button type="submit" class="btn btn-info float-right">autorizar entrada!</button>
                             </form>
-
-                            <button type="submit" class="btn btn-primary">Atualizar</button>
-                        </form>
+                            {{-- <button id="startButton">Iniciar Leitor</button> --}}
+                        @endif
                     </div>
                 </div>
             </div>

@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Reserva;
+use App\Models\Presenca;
 
 class PagamentoController extends Controller
 {
@@ -22,26 +23,21 @@ class PagamentoController extends Controller
         $user = DB::table('users')->find($id);
         $checkboxData = json_decode($user->options ?? '[]', true);
         //@dd($checkboxData);
-        return view('tabelas.pagamentofiV', compact('user', 'checkboxData'));
+
+        $presenca = Presenca::where('user_id', $user->id)
+        ->whereDate('data_registro', Carbon::today())
+        ->first();
+
+    $presente = $presenca && $presenca->entrada && !$presenca->saida;
+
+        return view('tabelas.pagamentofiV', compact('user', 'checkboxData', 'presente'));
     }
     public function store(Request $request, $id)
     {
         try {
             $user = User::find($id); // Usar Eloquent para encontrar o usuário
-            $reservas = Reserva::get();
-            // @dd($reservas);
             $checkboxData = $request->input('checkbox_data', []);
-            //@dd($checkboxData);
-            // Atualizar ou criar backup na tabela 'reservas'
-            /*Reserva::updateOrCreate(
-  ['user_id' => $user->id],
-    [
-        'name' => $user->name,
-        'subsDay' => Carbon::today(),
-        'options' => json_encode($checkboxData),
-        'days' => json_encode([Carbon::today()]),
-    ]
-);*/
+
             Reserva::Create(
                 [
                     'name' => $user->name,

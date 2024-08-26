@@ -38,23 +38,18 @@ class VoluntarioController extends Controller
                     'email',
                     Rule::unique('users'),
                 ],
+                'telefone' => 'required|string|max:255',
                 'role' => 'required|string|max:255',
-                'setor1' => 'required|string|max:255',
-                'setor2' => 'required|string|max:255',
-                'setor3' => 'required|string|max:255',
                 'on' => 'nullable',
-                'password' => 'required|string|max:20', // Agora a senha é obrigatória
+                'password' => 'required|string|max:20', 
             ]);
 
-            // Cria um novo usuário com base nos dados validados do formulário
             $user = User::create($validatedData);
 
-            // Criptografa e atualiza a senha no banco de dados
             $user->update([
                 'password' => bcrypt($request->password),
             ]);
 
-            // Atualiza os dados do checkbox
             $checkboxData = $request->input('checkbox_data', []);
             $user->update([
                 'days' => json_encode($checkboxData),
@@ -65,6 +60,7 @@ class VoluntarioController extends Controller
         } catch (ValidationException $e) {
             return redirect()->back()->withErrors($e->errors())->withInput();
         } catch (\Exception $e) {
+            return $e->getMessage();
             return redirect()->back()->with('error', 'Ocorreu um erro ao criar o usuário. Por favor, tente novamente mais tarde.');
         }
     }

@@ -43,6 +43,13 @@
                             <input type="email" name="email"class="form-control" id="inputEmail" placeholder="Email">
                         </div>
                     </div>
+                    <div class="form-row">
+                        <!--Nome-->
+                        <div class="form-group col-md-6">
+                            <label for="inputName">Telefone</label>
+                            <input type="text" name="telefone" class="form-control" id="inputName" placeholder="telefone">
+                        </div>
+                    </div>
                     <!--Cargo-->
                     <div class="form-row">
 
