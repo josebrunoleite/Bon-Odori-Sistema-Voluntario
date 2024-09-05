@@ -35,8 +35,8 @@
                                 <thead>
                                     <tr>
                                         <th class="">Nome</th>
-                                        <th class="d-none d-md-table-cell">Setor Manhã</th>
-                                        <th class="d-none d-md-table-cell">Setor Noite</th>
+                                        <th class="d-none d-md-table-cell">Setor</th>
+                                        <th class="d-none d-md-table-cell">Telefone</th>
                                         <th class="d-none d-md-table-cell">Horarios</th>
                                         {{-- <th class="d-none d-md-table-cell">Identificação</th> --}}
                                         <th class="d-md-table-cell">Editar/Pagamento</th>
@@ -49,7 +49,7 @@
                                             <td>{{ $user->name ?? 'Error Contate José' }}</td>
                                             <td class="d-none d-md-table-cell">{{ $user->setor1 ?? 'Error Contate José' }}
                                             </td>
-                                            <td class="d-none d-md-table-cell">{{ $user->setor2 ?? 'Error Contate José' }}
+                                            <td class="d-none d-md-table-cell">{{ $user->telefone ?? 'Error Contate José' }}
                                             </td>
                                             <td class="d-none d-md-table-cell">{{ $user->on ?? 'Error Contate José' }}</td>
                                             {{-- <td class="d-none d-md-table-cell">{{ $user->id ?? 'Error Contate José' }}</td> --}}

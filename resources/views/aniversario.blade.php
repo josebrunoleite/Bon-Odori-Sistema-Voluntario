@@ -1,14 +1,89 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <title>Aniversários</title> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aniversários dos Seinenkai</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        .birthday-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+        }
+
+        .birthday-item {
+            background-color: #fff;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            color: #34495e;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .gif-container {
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 1200px) {
+            .birthday-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .birthday-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .birthday-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Contador de Aniversários dos Seinenkai</h1>
+    <div class="container">
+        <h1>Contador de Aniversários dos Seinenkai</h1>
 
-    @php
-        $birthdays = [
-    ['name' => 'Rissa Sato', 'date' => '02/01'],
+        <div class="birthday-grid">
+            @php
+$birthdays = [
+    ['name' => 'Rissa Sato', 'date' => '02/01', 'note' => 'notehappy'],
     ['name' => 'Analu', 'date' => '06/01'],
     ['name' => 'José Gabriel', 'date' => '31/01'],
     ['name' => 'Marcel', 'date' => '05/02'],
@@ -18,9 +93,13 @@
     ['name' => 'Aécio', 'date' => '04/03'],
     ['name' => 'Diana Dias', 'date' => '04/03'],
     ['name' => 'Jhon Carlos', 'date' => '06/03'],
+    ['name' => 'Joyce Neri', 'date' => '23/03'],
+    ['name' => 'Raphael Maiffre', 'date' => '31/03'],
     ['name' => 'Iasmin', 'date' => '04/04'],
     ['name' => 'Alice Kimie', 'date' => '10/05'],
     ['name' => 'Marcela Almeida', 'date' => '20/05'],
+    ['name' => 'Marcelo Tanaka', 'date' => '02/06'],
+    ['name' => 'Juliana Tanaka', 'date' => '15/07'],
     ['name' => 'Maria', 'date' => '23/07'],
     ['name' => 'Lara', 'date' => '26/07'],
     ['name' => 'Anthony', 'date' => '28/07'],
@@ -44,36 +123,64 @@
 ];
 
 
-        $currentYear = now()->year;
+                $currentYear = now()->year;
 
-        foreach ($birthdays as $birthday) {
-            $birthdayThisYear = now()->year($currentYear)->month(explode('/', $birthday['date'])[1])->day(explode('/', $birthday['date'])[0]);
-            $nextBirthday = $birthdayThisYear->format('Y-m-d');
+                // Função para converter a data de aniversário para o formato Y-m-d
+                function getBirthdayDate($date, $year) {
+                    $parts = explode('/', $date);
+                    return now()->year($year)->month($parts[1])->day($parts[0]);
+                }
 
-            if ($nextBirthday < now()) {
-                $nextBirthday = $birthdayThisYear->addYear();
-            }
+                // Ordenar aniversários
+                usort($birthdays, function($a, $b) use ($currentYear) {
+                    $dateA = getBirthdayDate($a['date'], $currentYear);
+                    $dateB = getBirthdayDate($b['date'], $currentYear);
 
-            $diff = now()->diff($nextBirthday);
+                    if ($dateA < now()) {
+                        $dateA->addYear();
+                    }
 
-            $daysRemaining = $diff->format('%a');
-            $hoursRemaining = $diff->h;
-            $minutesRemaining = $diff->i;
-    @endphp
+                    if ($dateB < now()) {
+                        $dateB->addYear();
+                    }
 
-    <ul>
-        <li>
-            Próximo aniversário de {{ $birthday['name'] }} em {{ $nextBirthday }}:
-            Faltam {{ $daysRemaining }} dias,
-            {{ $hoursRemaining }} horas e
-            {{ $minutesRemaining }} minutos.
-        </li>
-    </ul>
-    @php
-        }
-    @endphp
-        <div class="tenor-gif-embed" data-postid="8075569" data-share-method="host" data-aspect-ratio="1.77778" data-width="75%"><a href="https://tenor.com/view/johncena-john-cena-fandango-dancing-gif-8075569">Johncena John GIF</a>from <a href="https://tenor.com/search/johncena-gifs">Johncena GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>       
+                    return $dateA <=> $dateB;
+                });
 
+                foreach ($birthdays as $birthday) {
+                    $birthdayThisYear = getBirthdayDate($birthday['date'], $currentYear);
+                    $nextBirthday = $birthdayThisYear->format('Y-m-d');
+
+                    if ($nextBirthday < now()) {
+                        $nextBirthday = $birthdayThisYear->addYear();
+                    }
+
+                    $diff = now()->diff($nextBirthday);
+
+                    $daysRemaining = $diff->format('%a');
+                    $hoursRemaining = $diff->h;
+                    $minutesRemaining = $diff->i;
+            @endphp
+
+            <div class="birthday-item">
+                Próximo aniversário de:<br> <span class="highlight">{{ $birthday['name'] }}</span> em <span class="highlight">{{ $nextBirthday }}</span>: 
+                faltam <span class="highlight">{{ $daysRemaining }}</span> dias,
+                <span class="highlight">{{ $hoursRemaining }}</span> horas e
+                <span class="highlight">{{ $minutesRemaining }}</span> minutos.
+            </div>
+
+            @php
+                }
+            @endphp
+        </div>
+
+        <div class="gif-container">
+            <div class="tenor-gif-embed" data-postid="8075569" data-share-method="host" data-aspect-ratio="1.77778" data-width="100%">
+                <a href="https://tenor.com/view/johncena-john-cena-fandango-dancing-gif-8075569">Johncena John GIF</a> from 
+                <a href="https://tenor.com/search/johncena-gifs">Johncena GIFs</a>
+            </div> 
+            <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+        </div>
+    </div>
 </body>
 </html>
-

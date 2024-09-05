@@ -8,79 +8,51 @@ use App\Models\User;
 
 class DadosImport implements ToModel, WithHeadingRow
 {
+    private static $lineNumber = 0;
+
     public function model(array $row)
     {
-        $email = $row['email'];
+        // Incrementa o número da linha
+        self::$lineNumber++;
 
+        // Verifica se a linha atual é a 184 e para a execução
+        if (self::$lineNumber >= 184) {
+            return; // Para a execução na linha 184
+        }
+
+        // Verifica se o nome é "00000" e para a execução
+        if (empty($row['nome']) || $row['nome'] === '00000') {
+            return;
+        }
+
+        $nome = $row['nome'] ?? 'Nome Padrão';
+
+        // Garante que o email não seja duplicado
+        $email = $row['email'] ?? strtolower(str_replace(' ', '', $nome)) . '@gmail.com';
+
+        // Verifica se o email já existe
+        if (User::where('email', $email)->exists()) {
+            return; // Evita inserir duplicados
+        }
+
+        // Criação ou atualização do usuário
         $usuario = User::where('email', $email)->first();
-
-        if ($usuario) {
-            $setor1 = $row['setor1'];
-            $setor2 = $row['setor2'];
-            $setor3 = $row['setor3'];
-
-
-            $usuario->setor1 = $setor1;
-            $usuario->setor2 = $setor2;
-            $usuario->setor3 = $setor3;
-
-
-            /*$days = [];
-
-            if (!empty($row['sexta'])) {
-                $days[] = 'sexta';
-            }
-            if (!empty($row['sabado'])) {
-                $days[] = 'sabado';
-            }
-            if (!empty($row['domingo'])) {
-                $days[] = 'domingo';
-            }
-
-            $existingDays = json_decode($usuario->days, true) ?? [];
-
-            $mergedDays = array_merge($existingDays, $days);
-
-            $uniqueDays = array_values(array_unique($mergedDays));
-
-            $usuario->days = json_encode($uniqueDays);*/
-
-            $usuario->save();
-            //@dd($usuario);
-        } else {
+        if (!$usuario) {
             $days = [];
-
-            if (!empty($row['sexta'])) {
-                $days[] = 'sexta';
-            }
-            if (!empty($row['sabado'])) {
-                $days[] = 'sabado';
-            }
-            if (!empty($row['domingo'])) {
-                $days[] = 'domingo';
-            }
-
+            $telefone = $row['telefone'] ?? "Sem Telefone";
             $usuario = new User([
-                'name' => $row['nome'],
-                'email' =>  $row['email'],
+                'name' => $nome,
+                'email' => $email,
                 'role' => $row['role'] ?? "user",
-                'setor1' => $row['setor1'],
-                'subsetor1' => $row['subsetor1'],
-                'setor2' => $row['setor2'],
-                'subsetor2' => $row['subsetor2'],
-                'on' => $row['on'],
-                'password' => bcrypt($row['telefone']),
-                'days' => json_encode($days),
+                'setor1' => $row['local'],
+                'on' => $row['on'] ?? "on",
+                'telefone' => $telefone,
+                'password' => bcrypt($nome),
             ]);
-            echo ('Error');
-            $existingDays = json_decode($usuario->days, true) ?? [];
-
-            $mergedDays = array_merge($existingDays, $days);
-
-            $uniqueDays = array_values(array_unique($mergedDays));
-
-            $usuario->days = json_encode($uniqueDays);
-            //@dd($days);
+            $usuario->save();
+        } else {
+            $setor1 = $row['Local'];
+            $usuario->setor1 = $setor1;
             $usuario->save();
         }
     }
