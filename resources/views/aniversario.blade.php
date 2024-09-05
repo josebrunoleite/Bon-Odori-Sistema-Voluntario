@@ -8,19 +8,41 @@
 
     @php
         $birthdays = [
-            ['name' => 'José Bruno', 'date' => '13/08'],
-            ['name' => 'Nath', 'date' => '08/08'],
-            ['name' => 'Lucas Barbosa', 'date' => '25/08'],
-            ['name' => 'Gabriel', 'date' => '23/10'],
-            ['name' => 'Lucas Argolo', 'date' => '12/10'],
-            ['name' => 'Rafael', 'date' => '20/08'],
-            ['name' => 'Ana ', 'date' => '14/10'],
-            ['name' => 'Leon ', 'date' => '04/03'],
-            ['name' => 'Aécio', 'date' => '04/03'],
-            ['name' => 'José gabriel', 'date' => '31/01'],
-            ['name' => 'Daniel habib', 'date' => '30/09'],
+    ['name' => 'Rissa Sato', 'date' => '02/01'],
+    ['name' => 'Analu', 'date' => '06/01'],
+    ['name' => 'José Gabriel', 'date' => '31/01'],
+    ['name' => 'Marcel', 'date' => '05/02'],
+    ['name' => 'Duda', 'date' => '24/02'],
+    ['name' => 'Luigi', 'date' => '24/02'],
+    ['name' => 'Leon', 'date' => '04/03'],
+    ['name' => 'Aécio', 'date' => '04/03'],
+    ['name' => 'Diana Dias', 'date' => '04/03'],
+    ['name' => 'Jhon Carlos', 'date' => '06/03'],
+    ['name' => 'Iasmin', 'date' => '04/04'],
+    ['name' => 'Alice Kimie', 'date' => '10/05'],
+    ['name' => 'Marcela Almeida', 'date' => '20/05'],
+    ['name' => 'Maria', 'date' => '23/07'],
+    ['name' => 'Lara', 'date' => '26/07'],
+    ['name' => 'Anthony', 'date' => '28/07'],
+    ['name' => 'Rafa Grassi', 'date' => '30/07'],
+    ['name' => 'Ananda', 'date' => '02/08'],
+    ['name' => 'Nath', 'date' => '08/08'],
+    ['name' => 'Isabella', 'date' => '09/08'],
+    ['name' => 'José Bruno', 'date' => '13/08'],
+    ['name' => 'Rafael', 'date' => '20/08'],
+    ['name' => 'Lucas Barbosa', 'date' => '25/08'],
+    ['name' => 'Clarice Eiko', 'date' => '18/09'],
+    ['name' => 'Daniel Habib', 'date' => '30/09'],
+    ['name' => 'Lucas Argolo', 'date' => '12/10'],
+    ['name' => 'Ana', 'date' => '14/10'],
+    ['name' => 'Leo', 'date' => '15/10'],
+    ['name' => 'Gabriel', 'date' => '23/10'],
+    ['name' => 'Jackson', 'date' => '27/10'],
+    ['name' => 'Felipe', 'date' => '29/10'],
+    ['name' => 'Hani', 'date' => '15/11'],
+    ['name' => 'Yuemei', 'date' => '29/11']
+];
 
-        ];
 
         $currentYear = now()->year;
 
