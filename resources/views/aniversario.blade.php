@@ -163,7 +163,7 @@ $birthdays = [
             @endphp
 
             <div class="birthday-item">
-                Próximo aniversário de:<br> <span class="highlight">{{ $birthday['name'] }}</span> em <span class="highlight">{{ $nextBirthday }}</span>: 
+                Próximo aniversário de:<br> <span class="highlight">{{ $birthday['name'] }}</span> em <span class="highlight">{{ $nextBirthday }}</span>:
                 faltam <span class="highlight">{{ $daysRemaining }}</span> dias,
                 <span class="highlight">{{ $hoursRemaining }}</span> horas e
                 <span class="highlight">{{ $minutesRemaining }}</span> minutos.
@@ -176,9 +176,9 @@ $birthdays = [
 
         <div class="gif-container">
             <div class="tenor-gif-embed" data-postid="8075569" data-share-method="host" data-aspect-ratio="1.77778" data-width="100%">
-                <a href="https://tenor.com/view/johncena-john-cena-fandango-dancing-gif-8075569">Johncena John GIF</a> from 
+                <a href="https://tenor.com/view/johncena-john-cena-fandango-dancing-gif-8075569">Johncena John GIF</a> from
                 <a href="https://tenor.com/search/johncena-gifs">Johncena GIFs</a>
-            </div> 
+            </div>
             <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
         </div>
     </div>

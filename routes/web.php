@@ -48,19 +48,12 @@ Route::get('/natsu', function () {
 Route::get('/haru', function () {
     return view('anothers.haru');
 }); 
-Route::get('/excel', function () {
-    return redirect()->away('https://docs.google.com/spreadsheets');
-});
-Route::get('/nikkeiNet', function () {
-    return redirect()->away('https://drive.google.com/drive/folders/1YlgQ3xgudVvYPvaLGqcDJO1F5B3hfEaC?usp=drive_link');
-});
 
 Auth::routes();
 /* Voluntario Padrão */
 Route::GET('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::GET('/sobre-voce', [App\Http\Controllers\HomeController::class, 'sobreyou'])->name('Sobre voce');
-//Route::GET('/info', [App\Http\Controllers\HomeController::class, 'info'])->name('info');
-//Route::GET('/wsd', [App\Http\Controllers\QRCodeController::class, 'wsd'])->name('wsd');
+Route::GET('/info', [App\Http\Controllers\HomeController::class, 'info'])->name('info');
 /* Route::GET('/upload', [App\Http\Controllers\HomeController::class, 'info'])->name('home');
 Route::GET('/down', [App\Http\Controllers\HomeController::class, 'info'])->name('home');
  *//* Voluntario Controller */
@@ -80,8 +73,6 @@ Route::POST('/presenca/saida', [App\Http\Controllers\PresencaController::class, 
 Route::GET('/presenca/{codigo}', [App\Http\Controllers\PresencaController::class, 'codigovalido'])->name('presenca error');
 Route::GET('/presen/tablea', [App\Http\Controllers\PresencaController::class, 'tabela'])->name('presenca.presencaTable');
 Route::GET('/presen/waringpres/{id}', [App\Http\Controllers\PresencaController::class, 'waringpres'])->name('presenca.waringpres');
-Route::GET('atualizarCheckout/{id}', [App\Http\Controllers\PresencaController::class, 'atualizarCheckout'])->name('atualizarCheckout');
-Route::POST('/presen/atualizarManual/{id}', [App\Http\Controllers\PresencaController::class, 'atualizarManual'])->name('atualizarManual');
 
 /* Pedido 
 Route::get('/listar-pedidos', [App\Http\Controllers\PedidoController::class, 'index'])->name('listar_pedidos');
@@ -108,7 +99,6 @@ Route::GET('/pass', [App\Http\Controllers\VoluntarioController::class, 'showChan
 Route::GET('/json', [App\Http\Controllers\HomeController::class, 'codigos'])->name('codigos');
 Route::get('/qrcodeleitor', [App\Http\Controllers\QRCodeController::class, 'generate'])->name('qrcode.generate');
 Route::GET('/qrcode', [App\Http\Controllers\PresencaController::class, 'registrarEntradaQrCode'])->name('qrcode');
-Route::GET('/QRCODEGEN', [App\Http\Controllers\PresencaController::class, 'QRCODEGEN'])->name('QRCODEGEN');
 
 /*bugs */
 Route::get('/clear-cache', function() {
