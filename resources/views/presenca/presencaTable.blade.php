@@ -136,7 +136,7 @@
                                         <th class="d-none d-md-table-cell">subsetor Noite</th>
                                         <th class="d-none d-md-table-cell">Entrada</th>
                                         <th class="d-none d-md-table-cell">Saida</th>
-                                        <th class="d-md-table-cell">Marca saida</th>
+                                        <th class="d-md-table-cell">Sistema em Implementação</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -153,18 +153,13 @@
                                             <td class="d-none d-md-table-cell">{{ $user->entrada ?? 'Error Contate José' }}
                                             </td>
                                             <td class="d-none d-md-table-cell">
-                                                {{ $user->saida == '2000-01-01 00:00:00' ? 'Advertência: Não registrou saída!' : $user->saida ?? 'Pessoa não registrou saída' }}
-                                            </td>
-                                            <td class="d-md-table-cell"><a
-                                                @if(!$user->saida)
-                                                    href="{{ url('atualizarCheckout/' . $user->id) }}">Marca saida</a><!--
-                                                            <a href="{{ url('pagamentofiV/' . $user->id) }}">Pagmento</a>
-                                                             <a href="#" class="text-danger" data-bs-toggle="modal"
-                                                                        data-bs-target="#confirmDeleteModal" id="deleteButton" data-bs-id="{{ $user->id }}">
-                                                                        Excluir</a>-->
-                                                                        @else
-                                                                        <h2>já saiu</h2>
-                                                                        @endif
+                                                {{ $user->saida == '2000-01-01 00:00:00' ? 'Advertência: Não registrou saída!' : $user->saida ?? 'Pessoa não registrou saída' }}</td>
+                                            <td class="d-md-table-cell"><!--<a
+                                                            href="{{ url('modyfiV/' . $user->id) }}">Editar</a>
+                                                        <a href="{{ url('pagamentofiV/' . $user->id) }}">Pagmento</a>
+                                                         <a href="#" class="text-danger" data-bs-toggle="modal"
+                                                                    data-bs-target="#confirmDeleteModal" id="deleteButton" data-bs-id="{{ $user->id }}">
+                                                                    Excluir</a>-->
                                             </td>
 
                                         </tr>
