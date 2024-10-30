@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class RpiMaquina extends Model
 {
     protected $fillable = [
+        "id",
         "nome",
         "localizacao",
     ];

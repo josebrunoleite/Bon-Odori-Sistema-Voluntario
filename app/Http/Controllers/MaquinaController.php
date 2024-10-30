@@ -11,9 +11,8 @@ class MaquinaController extends Controller
 {
     public function storeDado(Request $request)
     {
-
         $validator = Validator::make($request->all(), [
-            "maquina_id" => 'required|integer|',
+            "maquina_id" => 'required|string', 
             'temperatura' => 'required|numeric',
             'umidade' => 'required|numeric',
             'ruido' => 'required|numeric',
@@ -22,7 +21,7 @@ class MaquinaController extends Controller
         if ($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
-
+    
         $maquina = RpiMaquina::find($request->maquina_id);
 
         if (!$maquina) {
@@ -31,6 +30,7 @@ class MaquinaController extends Controller
                 'nome' => 'Maquina ' . $request->maquina_id,
                 'localizacao' => 'Local ' . $request->maquina_id,
             ]);
+            return response()->json(['message' => 'Maquina criada com sucesso!', 'data' => $maquina], 201);
         }
 
         $dado = RpiMaquinaDado::create([
@@ -40,9 +40,10 @@ class MaquinaController extends Controller
             'umidade' => $request->umidade,
             'ruido' => $request->ruido,
         ]);
-
+    
         return response()->json(['message' => 'Dado registrado com sucesso!', 'data' => $dado], 201);
     }
+    
 
     public function indexMaquinas()
     {
