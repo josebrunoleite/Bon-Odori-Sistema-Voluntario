@@ -9,7 +9,7 @@ class RpiMaquinaDado extends Model
 {
     
     protected $fillable = [
-    "rpi_maquina_id",
+    "maquina_id",
     "temperatura",
     "umidade",
     "ruido",

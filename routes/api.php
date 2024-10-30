@@ -18,6 +18,7 @@ use App\Http\Controllers\RpiMaquinaController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::post('/rpimaquinas', [MaquinaController::class, 'store']); 
-Route::post('/maquinas/{maquina_id}/dados', [MaquinaController::class, 'storeDado']);
+
+Route::post('/maquinas/dados', [MaquinaController::class, 'storeDado']);
+Route::post('/maquinasOnly/dados/{maquina_id}', [MaquinaController::class, 'indexMaquinasDados']);
 Route::get('/maquinas', [MaquinaController::class, 'index']);
