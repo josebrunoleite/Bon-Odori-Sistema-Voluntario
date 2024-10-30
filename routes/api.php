@@ -21,4 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/maquinas/dados', [MaquinaController::class, 'storeDado']);
 Route::post('/maquinasOnly/dados/{maquina_id}', [MaquinaController::class, 'indexMaquinasDados']);
-Route::get('/maquinas', [MaquinaController::class, 'index']);
+Route::get('/maquinas', [MaquinaController::class, 'indexMaquinas']);

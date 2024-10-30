@@ -40,13 +40,14 @@ class MaquinaController extends Controller
         return response()->json(['message' => 'Dado registrado com sucesso!', 'data' => $dado], 201);
     }
 
-    // Listar todas as máquinas com seus dados
     public function indexMaquinas()
     {
         $maquinas = RpiMaquina::with('rpiMaquinaDado')->get();
 
         return response()->json(['data' => $maquinas], 200);
     }
+
+    
     public function indexMaquinasDados($maquina_id)
     {
         $maquina = RpiMaquina::find($maquina_id);
