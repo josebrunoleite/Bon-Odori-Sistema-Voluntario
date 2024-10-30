@@ -26,7 +26,11 @@ class MaquinaController extends Controller
         $maquina = RpiMaquina::find($request->maquina_id);
 
         if (!$maquina) {
-            return response()->json(['message' => 'Maquina nao encontrada '.$request->maquina_id], 404);
+            $maquina = RpiMaquina::create([
+                'id' => $request->maquina_id,
+                'nome' => 'Maquina ' . $request->maquina_id,
+                'localizacao' => 'Local ' . $request->maquina_id,
+            ]);
         }
 
         $dado = RpiMaquinaDado::create([
@@ -47,7 +51,7 @@ class MaquinaController extends Controller
         return response()->json(['data' => $maquinas], 200);
     }
 
-    
+
     public function indexMaquinasDados($maquina_id)
     {
         $maquina = RpiMaquina::find($maquina_id);
