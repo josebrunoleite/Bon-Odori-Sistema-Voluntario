@@ -15,7 +15,7 @@ class CreateRpiMaquinaDadosTable extends Migration
     {
         Schema::create('rpi_maquina_dados', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('maquina_id')->constrained('rpi_maquinas');
+            $table->string('maquina_id')->constrained('rpi_maquinas');
             $table->float('temperatura'); 
             $table->float('umidade');
             $table->float('ruido');

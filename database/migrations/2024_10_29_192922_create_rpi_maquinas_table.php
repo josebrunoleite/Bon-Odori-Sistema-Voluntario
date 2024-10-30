@@ -14,7 +14,7 @@ class CreateRpiMaquinasTable extends Migration
     public function up()
     {
         Schema::create('rpi_maquinas', function (Blueprint $table) {
-            $table->id();
+            $table->string('id')->primary();
             $table->string('nome');
             $table->string('localizacao')->nullable();
             $table->timestamps();
