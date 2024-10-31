@@ -72,10 +72,9 @@ class MaquinaController extends Controller
         $maquinasLimit = RpiMaquina::take(1)->first();
 
         $maquinasLimit2 = RpiMaquina::with(['rpiMaquinaDado' => function($query) {
-            $query->orderBy('created_at'); // Ordena por created_at
+            $query->orderBy('created_at');
         }])->first();
 
-        // Inicializando a estrutura de dados
         $maquinasdata = [
             'maquina_id' => $maquinasLimit2->id,
             'created_at' => [],
@@ -84,11 +83,9 @@ class MaquinaController extends Controller
             'ruido' => [],
         ];
 
-        // Verifica se existem dados
         if ($maquinasLimit2 && $maquinasLimit2->rpiMaquinaDado) {
             foreach ($maquinasLimit2->rpiMaquinaDado as $dado) {
-                // Preenche os arrays com os dados de cada registro
-                $maquinasdata['created_at'][] = Carbon::parse($dado->created_at)->format('Y-m-d'); // Formata a data
+                $maquinasdata['created_at'][] = Carbon::parse($dado->created_at)->format('Y-m-d');
                 $maquinasdata['temperatura'][] = $dado->temperatura;
                 $maquinasdata['umidade'][] = $dado->umidade;
                 $maquinasdata['ruido'][] = $dado->ruido;
