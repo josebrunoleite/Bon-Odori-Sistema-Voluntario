@@ -73,7 +73,7 @@ class MaquinaController extends Controller
 
         $maquinasLimit2 = RpiMaquina::with(['rpiMaquinaDado' => function($query) {
             $query->orderBy('created_at'); // Ordena por created_at
-        }])->find(3);
+        }])->first();
 
         // Inicializando a estrutura de dados
         $maquinasdata = [
