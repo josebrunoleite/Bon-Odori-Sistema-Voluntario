@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\RpiMaquina;
 use App\Models\RpiMaquinaDado;
 use Illuminate\Support\Facades\Validator;
-
+use Carbon\Carbon;
 class MaquinaController extends Controller
 {
     public function storeDado(Request $request)
@@ -65,4 +65,37 @@ class MaquinaController extends Controller
 
         return response()->json(['data' => $dados], 200);
     }
+
+    public function tabela()
+    {
+        $maquinasTotal = RpiMaquina::find(3);
+        $maquinasLimit = RpiMaquina::find(3)->take(1)->first();
+
+        $maquinasLimit2 = RpiMaquina::with(['rpiMaquinaDado' => function($query) {
+            $query->orderBy('created_at'); // Ordena por created_at
+        }])->find(3);
+
+        // Inicializando a estrutura de dados
+        $maquinasdata = [
+            'maquina_id' => $maquinasLimit2->id,
+            'created_at' => [],
+            'temperatura' => [],
+            'umidade' => [],
+            'ruido' => [],
+        ];
+
+        // Verifica se existem dados
+        if ($maquinasLimit2 && $maquinasLimit2->rpiMaquinaDado) {
+            foreach ($maquinasLimit2->rpiMaquinaDado as $dado) {
+                // Preenche os arrays com os dados de cada registro
+                $maquinasdata['created_at'][] = Carbon::parse($dado->created_at)->format('Y-m-d'); // Formata a data
+                $maquinasdata['temperatura'][] = $dado->temperatura;
+                $maquinasdata['umidade'][] = $dado->umidade;
+                $maquinasdata['ruido'][] = $dado->ruido;
+            }
+        }
+        return view('presenca.RPiTable', compact('maquinasTotal', 'maquinasdata', 'maquinasLimit', 'maquinasdata'));
+    }
+
+
 }

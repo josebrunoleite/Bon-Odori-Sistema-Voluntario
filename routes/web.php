@@ -99,6 +99,8 @@ Route::GET('/pass', [App\Http\Controllers\VoluntarioController::class, 'showChan
 Route::GET('/json', [App\Http\Controllers\HomeController::class, 'codigos'])->name('codigos');
 Route::get('/qrcodeleitor', [App\Http\Controllers\QRCodeController::class, 'generate'])->name('qrcode.generate');
 Route::GET('/qrcode', [App\Http\Controllers\PresencaController::class, 'registrarEntradaQrCode'])->name('qrcode');
+/*RPI*/
+Route::GET('/rpi', [App\Http\Controllers\MaquinaController::class, 'tabela'])->name('rpi');
 
 /*bugs */
 Route::get('/clear-cache', function() {

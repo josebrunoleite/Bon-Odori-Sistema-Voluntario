@@ -11,6 +11,7 @@ class RpiMaquina extends Model
         "id",
         "nome",
         "localizacao",
+        "created_at",
     ];
 
     public function rpiMaquinaDado()
