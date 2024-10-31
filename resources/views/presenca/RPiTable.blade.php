@@ -37,7 +37,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($maquinasLimit->rpiMaquinaDado as $dado)
+                                    @foreach ($maquinasLimit as $dado)
                                         <tr>
                                             <td>{{ $dado->id ?? 'Error Contate José' }}</td>
                                             <td class="d-none d-md-table-cell">
@@ -53,6 +53,9 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                        </div>
+                        <div class="pagination">
+                            {{ $maquinasLimit->links() }}
                         </div>
                     </div>
                 </div>

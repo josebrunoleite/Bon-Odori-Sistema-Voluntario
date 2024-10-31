@@ -101,6 +101,7 @@ Route::get('/qrcodeleitor', [App\Http\Controllers\QRCodeController::class, 'gene
 Route::GET('/qrcode', [App\Http\Controllers\PresencaController::class, 'registrarEntradaQrCode'])->name('qrcode');
 /*RPI*/
 Route::GET('/rpi', [App\Http\Controllers\MaquinaController::class, 'tabela'])->name('rpi');
+Route::GET('/rpi', [App\Http\Controllers\MaquinaController::class, 'tabela'])->name('rpi');
 
 /*bugs */
 Route::get('/clear-cache', function() {

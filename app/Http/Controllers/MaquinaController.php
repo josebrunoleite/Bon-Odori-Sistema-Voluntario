@@ -65,11 +65,23 @@ class MaquinaController extends Controller
 
         return response()->json(['data' => $dados], 200);
     }
+    public function deleteDado($id)
+    {
+        $dado = RpiMaquinaDado::find($id);
 
+        if (!$dado) {
+            return response()->json(['message' => 'Dado nao encontrado'], 404);
+        }
+
+        $dado->delete();
+
+        return response()->json(['message' => 'Dado deletado com sucesso!'], 200);
+    }
+    
     public function tabela()
     {
         $maquinasTotal = RpiMaquina::first();
-        $maquinasLimit = RpiMaquina::take(1)->first();
+        $maquinasLimit = RpiMaquinaDado::where('maquina_id', $maquinasTotal->id)->orderBy('created_at', 'desc')->paginate(15);
 
         $maquinasLimit2 = RpiMaquina::with(['rpiMaquinaDado' => function($query) {
             $query->orderBy('created_at');
