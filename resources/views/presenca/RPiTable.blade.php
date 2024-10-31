@@ -54,7 +54,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="pagination">
+                        <div    >
                             {{ $maquinasLimit->links() }}
                         </div>
                     </div>
