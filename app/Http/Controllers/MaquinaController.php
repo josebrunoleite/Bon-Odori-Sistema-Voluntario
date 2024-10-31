@@ -68,8 +68,8 @@ class MaquinaController extends Controller
 
     public function tabela()
     {
-        $maquinasTotal = RpiMaquina::find(3);
-        $maquinasLimit = RpiMaquina::find(3)->take(1)->first();
+        $maquinasTotal = RpiMaquina::first();
+        $maquinasLimit = RpiMaquina::take(1)->first();
 
         $maquinasLimit2 = RpiMaquina::with(['rpiMaquinaDado' => function($query) {
             $query->orderBy('created_at'); // Ordena por created_at
