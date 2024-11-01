@@ -7,21 +7,22 @@ use App\Models\RpiMaquina;
 use App\Models\RpiMaquinaDado;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
+
 class MaquinaController extends Controller
 {
     public function storeDado(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            "maquina_id" => 'required|string', 
+            "maquina_id" => 'required|string',
             'temperatura' => 'required|numeric',
             'umidade' => 'required|numeric',
             'ruido' => 'required|numeric',
         ]);
-    
+
         if ($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
-    
+
         $maquina = RpiMaquina::find($request->maquina_id);
 
         if (!$maquina) {
@@ -40,10 +41,10 @@ class MaquinaController extends Controller
             'umidade' => $request->umidade,
             'ruido' => $request->ruido,
         ]);
-    
+
         return response()->json(['message' => 'Dado registrado com sucesso!', 'data' => $dado], 201);
     }
-    
+
 
     public function indexMaquinas()
     {
@@ -83,7 +84,7 @@ class MaquinaController extends Controller
         $maquinasTotal = RpiMaquina::first();
         $maquinasLimit = RpiMaquinaDado::where('maquina_id', $maquinasTotal->id)->orderBy('created_at', 'desc')->paginate(15);
 
-        $maquinasLimit2 = RpiMaquina::with(['rpiMaquinaDado' => function($query) {
+        $maquinasLimit2 = RpiMaquina::with(['rpiMaquinaDado' => function ($query) {
             $query->orderBy('created_at');
         }])->first();
 
@@ -95,21 +96,20 @@ class MaquinaController extends Controller
             'ruido' => [],
         ];
 
-    if ($maquinasLimit2 && $maquinasLimit2->rpiMaquinaDado) {
-        $groupedData = $maquinasLimit2->rpiMaquinaDado->groupBy(function($item) {
-            return Carbon::parse($item->created_at)->format('Y-m-d H:i');
-        });
+        if ($maquinasLimit2 && $maquinasLimit2->rpiMaquinaDado) {
+            $groupedData = $maquinasLimit2->rpiMaquinaDado->groupBy(function ($item) {
+                return Carbon::parse($item->created_at)->format('Y-m-d H:i');
+            });
 
-        foreach ($groupedData as $minute => $dados) {
-            $dado = $dados->last();
+            foreach ($groupedData as $minute => $dados) {
+                $dado = $dados->last();
 
-            $maquinasdata['created_at'][] = $minute;
-            $maquinasdata['temperatura'][] = $dado->temperatura;
-            $maquinasdata['umidade'][] = $dado->umidade;
-            $maquinasdata['ruido'][] = $dado->ruido;
-        }}
+                $maquinasdata['created_at'][] = $minute;
+                $maquinasdata['temperatura'][] = $dado->temperatura;
+                $maquinasdata['umidade'][] = $dado->umidade;
+                $maquinasdata['ruido'][] = $dado->ruido;
+            }
+        }
         return view('presenca.RPiTable', compact('maquinasTotal', 'maquinasdata', 'maquinasLimit', 'maquinasdata'));
     }
-
-
 }

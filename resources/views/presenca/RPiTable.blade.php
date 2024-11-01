@@ -87,7 +87,8 @@
         colors: ["#0d6efd", "#20c997", "#ffc107"],
         dataLabels: { enabled: false },
         stroke: { curve: "smooth" },
-        xaxis: { type: "datetime", categories: maquinas.created_at },
+        xaxis: { type: "datetime", categories: maquinas.created_at,  },
+        yaxis: { min: 0, max: 100  },
         tooltip: { x: { format: "dd/MM" } },
     };
 
