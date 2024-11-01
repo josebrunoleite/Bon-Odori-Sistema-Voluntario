@@ -77,7 +77,7 @@ class MaquinaController extends Controller
 
         return response()->json(['message' => 'Dado deletado com sucesso!'], 200);
     }
-    
+
     public function tabela()
     {
         $maquinasTotal = RpiMaquina::first();
@@ -95,14 +95,19 @@ class MaquinaController extends Controller
             'ruido' => [],
         ];
 
-        if ($maquinasLimit2 && $maquinasLimit2->rpiMaquinaDado) {
-            foreach ($maquinasLimit2->rpiMaquinaDado as $dado) {
-                $maquinasdata['created_at'][] = Carbon::parse($dado->created_at)->format('Y-m-d');
-                $maquinasdata['temperatura'][] = $dado->temperatura;
-                $maquinasdata['umidade'][] = $dado->umidade;
-                $maquinasdata['ruido'][] = $dado->ruido;
-            }
-        }
+    if ($maquinasLimit2 && $maquinasLimit2->rpiMaquinaDado) {
+        $groupedData = $maquinasLimit2->rpiMaquinaDado->groupBy(function($item) {
+            return Carbon::parse($item->created_at)->format('Y-m-d H:i');
+        });
+
+        foreach ($groupedData as $minute => $dados) {
+            $dado = $dados->last();
+
+            $maquinasdata['created_at'][] = $minute;
+            $maquinasdata['temperatura'][] = $dado->temperatura;
+            $maquinasdata['umidade'][] = $dado->umidade;
+            $maquinasdata['ruido'][] = $dado->ruido;
+        }}
         return view('presenca.RPiTable', compact('maquinasTotal', 'maquinasdata', 'maquinasLimit', 'maquinasdata'));
     }
 
