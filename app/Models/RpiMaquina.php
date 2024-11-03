@@ -10,6 +10,9 @@ class RpiMaquina extends Model
     protected $fillable = [
         "id",
         "nome",
+        "dado1",
+        "dado2",
+        "dado3",
         "localizacao",
         "created_at",
     ];
