@@ -79,7 +79,7 @@ class MaquinaController extends Controller
         return response()->json(['message' => 'Dado deletado com sucesso!'], 200);
     }
 
-    public function tabela()
+    public function Only()
     {
         $maquinasTotal = RpiMaquina::first();
         $maquinasLimit = RpiMaquinaDado::where('maquina_id', $maquinasTotal->id)->orderBy('created_at', 'desc')->paginate(15);
@@ -110,6 +110,44 @@ class MaquinaController extends Controller
                 $maquinasdata['ruido'][] = $dado->ruido;
             }
         }
-        return view('presenca.RPiTable', compact('maquinasTotal', 'maquinasdata', 'maquinasLimit', 'maquinasdata'));
+        return view('presenca.RPiOnly', compact('maquinasTotal', 'maquinasdata', 'maquinasLimit', 'maquinasdata'));
+    }
+    public function OnlyKnows(RpiMaquina $maquinasTotal)
+    {
+        $maquinasLimit = RpiMaquinaDado::where('maquina_id', $maquinasTotal->id)->orderBy('created_at', 'desc')->paginate(15);
+
+        $maquinasLimit2 = RpiMaquina::with(['rpiMaquinaDado' => function ($query) {
+            $query->orderBy('created_at');
+        }])->first();
+
+        $maquinasdata = [
+            'maquina_id' => $maquinasLimit2->id,
+            'created_at' => [],
+            'temperatura' => [],
+            'umidade' => [],
+            'ruido' => [],
+        ];
+
+        if ($maquinasLimit2 && $maquinasLimit2->rpiMaquinaDado) {
+            $groupedData = $maquinasLimit2->rpiMaquinaDado->groupBy(function ($item) {
+                return Carbon::parse($item->created_at)->format('Y-m-d H:i');
+            });
+
+            foreach ($groupedData as $minute => $dados) {
+                $dado = $dados->last();
+
+                $maquinasdata['created_at'][] = $minute;
+                $maquinasdata['temperatura'][] = $dado->temperatura;
+                $maquinasdata['umidade'][] = $dado->umidade;
+                $maquinasdata['ruido'][] = $dado->ruido;
+            }
+        }
+        return view('presenca.RPiOnly', compact('maquinasTotal', 'maquinasdata', 'maquinasLimit', 'maquinasdata'));
+    }
+    public function tabela()
+    {
+        $maquinasTotal = RpiMaquina::get();
+ 
+        return view('presenca.RPiTable', compact('maquinasTotal'));
     }
 }

@@ -319,24 +319,43 @@ return [
             'label'       => 4,
             'label_color' => 'success',
         ],*/
-        ['header' => 'Bon odori Vonluntario'],
+        ['header' => 'Sistema RPI',
+        ],
+        [
+            'text' => 'RPi Tabela',
+            'url'  => 'tabela',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'Only',
+            'url'  => 'Only',
+            'icon' => 'fas fa-fw fa-user',
+        ],
         [
             'text' => 'Yoasobi?',
             'url'  => 'music',
             'icon' => 'fas fa-fw fa-user',
-            'can'   =>''
+        ],
+        ['header' => 'Bon odori Vonluntario',
+        'can'   =>['isAdmin', 'isModer'],
+        ],
+        [
+            'text' => 'Yoasobi?',
+            'url'  => 'music',
+            'icon' => 'fas fa-fw fa-user',
+            'can'   =>['isAdmin', 'isModer'],
         ],
         [
             'text' => 'Ponto Online',
             'url'  => 'presenca',
             'icon' => 'fas fa-fw fa-business-time',
-            'can'   =>''
+            'can'   =>['isAdmin', 'isModer'],
         ],
         [
             'text' => 'Sobre Você',
             'url'  => 'sobre-voce',
             'icon' => 'fas fa-fw fa-user',
-            'can'   =>''
+            'can'   =>['isAdmin', 'isModer'],
         ],
         /*[
             'text' => 'Funções',
@@ -346,6 +365,7 @@ return [
         [
             'text' => 'Palcos Horarios',
             'icon' => 'fa fa-fw fa-file-pdf',
+            'can'   =>['isAdmin', 'isModer'],
             'submenu' => [
                 [
                     'text' => 'Espaço Bon Odori',

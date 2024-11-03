@@ -100,9 +100,10 @@ Route::GET('/json', [App\Http\Controllers\HomeController::class, 'codigos'])->na
 Route::get('/qrcodeleitor', [App\Http\Controllers\QRCodeController::class, 'generate'])->name('qrcode.generate');
 Route::GET('/qrcode', [App\Http\Controllers\PresencaController::class, 'registrarEntradaQrCode'])->name('qrcode');
 /*RPI*/
-Route::GET('/rpi', [App\Http\Controllers\MaquinaController::class, 'tabela'])->name('rpi');
-Route::GET('/rpi', [App\Http\Controllers\MaquinaController::class, 'tabela'])->name('rpi');
+Route::GET('/Only', [App\Http\Controllers\MaquinaController::class, 'Only'])->name('rpi');
+Route::GET('/Only/{maquinasTotal}', [App\Http\Controllers\MaquinaController::class, 'OnlyKnows'])->name('rpi.OnlyKnows');
 
+Route::GET('/tabela', [App\Http\Controllers\MaquinaController::class, 'tabela'])->name('rpi.tabela');
 /*bugs */
 Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');
