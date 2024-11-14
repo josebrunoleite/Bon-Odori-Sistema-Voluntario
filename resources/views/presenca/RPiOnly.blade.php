@@ -1,5 +1,6 @@
 @extends('adminlte::page')
 @section('content')
+@dd($maquinasdata)
     <section class="content-header">
         <div class="container-fluid">
             <div class="mb-2">
@@ -87,7 +88,7 @@
         colors: ["#0d6efd", "#20c997", "#ffc107"],
         dataLabels: { enabled: false },
         stroke: { curve: "smooth" },
-        xaxis: { type: "datetime", categories: maquinas.created_at.map(date => new Date(date).toLocaleDateString('en-GB')),  },
+        xaxis: { type: "datetime", categories: maquinas.created_at,  },
         yaxis: { min: 0, max: 100  },
         tooltip: { x: { format: "dd/MM" } },
     };
