@@ -7,7 +7,7 @@ use App\Models\RpiMaquina;
 use App\Models\RpiMaquinaDado;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
-
+use Illuminate\Support\Str;
 class MaquinaController extends Controller
 {
     public function storeDado(Request $request)
@@ -23,11 +23,13 @@ class MaquinaController extends Controller
             return response()->json($validator->errors(), 400);
         }
 
-        $maquina = RpiMaquina::find($request->maquina_id);
+        $maquina_idSlug = Str::slug($request->maquina_id);
+
+        $maquina = RpiMaquina::find($maquina_idSlug);
 
         if (!$maquina) {
             $maquina = RpiMaquina::create([
-                'id' => $request->maquina_id,
+                'id' => $maquina_idSlug ,
                 'nome' => 'Maquina ' . $request->maquina_id,
                 'localizacao' => 'Local ' . $request->maquina_id,
             ]);
@@ -35,7 +37,7 @@ class MaquinaController extends Controller
         }
 
         $dado = RpiMaquinaDado::create([
-            'maquina_id' => $request->maquina_id,
+            'maquina_id' => $maquina_idSlug,
             'timestamp' => $request->timestamp,
             'temperatura' => $request->temperatura,
             'umidade' => $request->umidade,
