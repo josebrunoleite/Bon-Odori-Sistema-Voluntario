@@ -21,4 +21,8 @@ class RpiMaquina extends Model
     {
         return $this->hasMany(RpiMaquinaDado::class, 'maquina_id');
     }
+    public function rpiMaquinaDado2()
+    {
+        return $this->hasMany(RpiMaquinaDado::class, 'maquina_id')->sortByDesc('created_at')->take(100);
+    }
 }

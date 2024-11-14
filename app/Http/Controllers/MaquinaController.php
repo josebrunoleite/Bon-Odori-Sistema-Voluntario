@@ -98,8 +98,8 @@ class MaquinaController extends Controller
             'ruido' => [],
         ];
 
-        if ($maquinasLimit2 && $maquinasLimit2->rpiMaquinaDado) {
-            $groupedData = $maquinasLimit2->rpiMaquinaDado->groupBy(function ($item) {
+        if ($maquinasLimit2 && $maquinasLimit2->rpiMaquinaDado2) {
+            $groupedData = $maquinasLimit2->rpiMaquinaDado2->groupBy(function ($item) {
                 return Carbon::parse($item->created_at)->format('Y-m-d H:i');
             });
 

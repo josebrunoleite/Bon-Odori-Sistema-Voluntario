@@ -1,6 +1,5 @@
 @extends('adminlte::page')
 @section('content')
-@dd($maquinasdata)
     <section class="content-header">
         <div class="container-fluid">
             <div class="mb-2">
