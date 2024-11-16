@@ -112,9 +112,10 @@ class MaquinaController extends Controller
                 $maquinasdata['ruido'][] = $dado->ruido;
             }
         }
+        dd($maquinasdata);
         return view('presenca.RPiOnly', compact('maquinasTotal', 'maquinasdata', 'maquinasLimit', 'maquinasdata'));
     }
-    public function OnlyKnows(RpiMaquina $maquinasTotal)
+    public function ShowMaquina(RpiMaquina $maquinasTotal)
     {
         $maquinasLimit = RpiMaquinaDado::where('maquina_id', $maquinasTotal->id)->orderBy('created_at', 'desc')->paginate(15);
 
@@ -129,9 +130,8 @@ class MaquinaController extends Controller
             'umidade' => [],
             'ruido' => [],
         ];
-
-        if ($maquinasLimit2 && $maquinasLimit2->rpiMaquinaDado) {
-            $groupedData = $maquinasLimit2->rpiMaquinaDado->groupBy(function ($item) {
+        if ($maquinasLimit2 && $maquinasLimit2->rpiMaquinaDado2) {
+            $groupedData = $maquinasLimit2->rpiMaquinaDado2->groupBy(function ($item) {
                 return Carbon::parse($item->created_at)->format('Y-m-d H:i');
             });
 
@@ -144,7 +144,8 @@ class MaquinaController extends Controller
                 $maquinasdata['ruido'][] = $dado->ruido;
             }
         }
-        return view('presenca.RPiOnly', compact('maquinasTotal', 'maquinasdata', 'maquinasLimit', 'maquinasdata'));
+
+        return view('presenca.RPiOnly', compact('maquinasTotal', 'maquinasdata', 'maquinasLimit'));
     }
     public function tabela()
     {
@@ -152,4 +153,5 @@ class MaquinaController extends Controller
  
         return view('presenca.RPiTable', compact('maquinasTotal'));
     }
+
 }

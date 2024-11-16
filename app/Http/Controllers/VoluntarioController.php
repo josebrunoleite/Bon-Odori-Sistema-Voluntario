@@ -30,7 +30,6 @@ class VoluntarioController extends Controller
     public function store(Request $request)
     {
         try {
-            // Validação dos campos do formulário
             $validatedData = $request->validate([
                 'name' => 'required|string|max:255',
                 'email' => [
@@ -57,9 +56,7 @@ class VoluntarioController extends Controller
 
             // Redireciona para uma rota específica com uma mensagem de sucesso (caso deseje)
             return redirect()->back()->with('success', 'Novo usuário criado com sucesso!');
-        } catch (ValidationException $e) {
-            return redirect()->back()->withErrors($e->errors())->withInput();
-        } catch (\Exception $e) {
+            } catch (\Exception $e) {
             return $e->getMessage();
             return redirect()->back()->with('error', 'Ocorreu um erro ao criar o usuário. Por favor, tente novamente mais tarde.');
         }
