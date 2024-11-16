@@ -23,7 +23,7 @@ class MaquinaController extends Controller
             return response()->json($validator->errors(), 400);
         }
 
-        $maquina_idSlug = Str::slug($request->maquina_id);
+        $maquina_idSlug = preg_replace('/[^0-9]/', '', $request->maquina_id);
 
         $maquina = RpiMaquina::find($maquina_idSlug);
 
@@ -42,6 +42,7 @@ class MaquinaController extends Controller
             'temperatura' => $request->temperatura,
             'umidade' => $request->umidade,
             'ruido' => $request->ruido,
+            'created_at' => Carbon::now()->Locale('pt_BR')->format('Y-m-d H:i:s'),
         ]);
 
         return response()->json(['message' => 'Dado registrado com sucesso!', 'data' => $dado], 201);
@@ -80,48 +81,13 @@ class MaquinaController extends Controller
 
         return response()->json(['message' => 'Dado deletado com sucesso!'], 200);
     }
-
-    public function Only()
-    {
-        $maquinasTotal = RpiMaquina::first();
-        $maquinasLimit = RpiMaquinaDado::where('maquina_id', $maquinasTotal->id)->orderBy('created_at', 'desc')->paginate(15);
-
-        $maquinasLimit2 = RpiMaquina::with(['rpiMaquinaDado' => function ($query) {
-            $query->orderBy('created_at');
-        }])->first();
-
-        $maquinasdata = [
-            'maquina_id' => $maquinasLimit2->id,
-            'created_at' => [],
-            'temperatura' => [],
-            'umidade' => [],
-            'ruido' => [],
-        ];
-
-        if ($maquinasLimit2 && $maquinasLimit2->rpiMaquinaDado2) {
-            $groupedData = $maquinasLimit2->rpiMaquinaDado2->groupBy(function ($item) {
-                return Carbon::parse($item->created_at)->format('Y-m-d H:i');
-            });
-
-            foreach ($groupedData as $minute => $dados) {
-                $dado = $dados->last();
-
-                $maquinasdata['created_at'][] = $minute;
-                $maquinasdata['temperatura'][] = $dado->temperatura;
-                $maquinasdata['umidade'][] = $dado->umidade;
-                $maquinasdata['ruido'][] = $dado->ruido;
-            }
-        }
-        dd($maquinasdata);
-        return view('presenca.RPiOnly', compact('maquinasTotal', 'maquinasdata', 'maquinasLimit', 'maquinasdata'));
-    }
     public function ShowMaquina(RpiMaquina $maquinasTotal)
     {
         $maquinasLimit = RpiMaquinaDado::where('maquina_id', $maquinasTotal->id)->orderBy('created_at', 'desc')->paginate(15);
 
-        $maquinasLimit2 = RpiMaquina::with(['rpiMaquinaDado' => function ($query) {
+        $maquinasLimit2 = RpiMaquina::with(['rpiMaquinaDado2' => function ($query) {
             $query->orderBy('created_at');
-        }])->first();
+        }])->where('id', $maquinasTotal->id)->first();
 
         $maquinasdata = [
             'maquina_id' => $maquinasLimit2->id,
