@@ -80,6 +80,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($maquinasTotal as $maquina)
+                                        @if($maquina->rpiMaquinaDado2->count() > 0)
                                         <tr>
                                             <td>{{ $maquina->id ?? 'Error Contate José' }}</td>
 
@@ -87,11 +88,12 @@
                                             <td class="d-none d-md-table-cell">
                                                 {{ $maquina->localizacao ?? 'Error Contate José' }}
                                             </td>
-                                            <td><a href="{{ route('rpi.OnlyKnows', preg_replace('/^Maquina\s*/', '', $maquina->nome)) }}">Visualizar</a></td>
+                                            <td><a href="{{ route('rpi.OnlyKnows', $maquina->id) }}">Visualizar</a></td>
                                             <td><a class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
                                                     href="{{ route('rpi.OnlyKnows', $maquina->id) }}">Editar</a></td>
 
                                         </tr>
+                                        @endif
                                     @endforeach
                                 </tbody>
                             </table>
