@@ -8,7 +8,7 @@ class CompilerController extends Controller
 {
     public function index()
     {
-        return view('faculdade.compiler');
+        return view('faculdade.Compiler');
     }
     public function compileLexarForC(Request $request)
     {
