@@ -6,9 +6,10 @@ require('./bootstrap');
  */
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-    typeof define === 'function' && define.amd ? define(['exports'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.adminlte = {}));
-})(this, (function (exports) { 'use strict';
+        typeof define === 'function' && define.amd ? define(['exports'], factory) :
+            (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.adminlte = {}));
+})(this, (function (exports) {
+    'use strict';
 
     const domContentLoadedCallbacks = [];
     const onDOMContentLoaded = (callback) => {
@@ -686,6 +687,19 @@ require('./bootstrap');
             }
         }
     }
+    function toggleInput() {
+        const inputType = document.getElementById('inputType').value;
+        const textInputGroup = document.getElementById('textInputGroup');
+        const fileInputGroup = document.getElementById('fileInputGroup');
+    
+        if (inputType === 'text') {
+            textInputGroup.classList.remove('hidden');
+            fileInputGroup.classList.add('hidden');
+        } else {
+            textInputGroup.classList.add('hidden');
+            fileInputGroup.classList.remove('hidden');
+        }
+    }
     /**
      * Data Api implementation
      * ============================================================================
@@ -714,3 +728,4 @@ require('./bootstrap');
 
 }));
 //# sourceMappingURL=adminlte.js.map
+

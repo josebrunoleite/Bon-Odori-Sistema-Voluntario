@@ -319,7 +319,8 @@ return [
             'label'       => 4,
             'label_color' => 'success',
         ],*/
-        ['header' => 'Sistema RPI',
+        [
+            'header' => 'Sistema RPI',
         ],
         [
             'text' => 'RPi Tabela',
@@ -327,35 +328,37 @@ return [
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'Only',
-            'url'  => 'Only',
+            'header' => 'Compilador',
+        ],
+        [
+            'text' => 'Compilador lexico em C',
+            'url'  => 'lexar',
             'icon' => 'fas fa-fw fa-user',
+            'label_color' => 'success',
+        ],
+
+
+        [
+            'header' => 'Bon odori Vonluntario',
+            'can'   => ['isAdmin', 'isModer'],
         ],
         [
             'text' => 'Yoasobi?',
             'url'  => 'music',
             'icon' => 'fas fa-fw fa-user',
-        ],
-        ['header' => 'Bon odori Vonluntario',
-        'can'   =>['isAdmin', 'isModer'],
-        ],
-        [
-            'text' => 'Yoasobi?',
-            'url'  => 'music',
-            'icon' => 'fas fa-fw fa-user',
-            'can'   =>['isAdmin', 'isModer'],
+            'can'   => ['isAdmin', 'isModer'],
         ],
         [
             'text' => 'Ponto Online',
             'url'  => 'presenca',
             'icon' => 'fas fa-fw fa-business-time',
-            'can'   =>['isAdmin', 'isModer'],
+            'can'   => ['isAdmin', 'isModer'],
         ],
         [
             'text' => 'Sobre Você',
             'url'  => 'sobre-voce',
             'icon' => 'fas fa-fw fa-user',
-            'can'   =>['isAdmin', 'isModer'],
+            'can'   => ['isAdmin', 'isModer'],
         ],
         /*[
             'text' => 'Funções',
@@ -365,7 +368,7 @@ return [
         [
             'text' => 'Palcos Horarios',
             'icon' => 'fa fa-fw fa-file-pdf',
-            'can'   =>['isAdmin', 'isModer'],
+            'can'   => ['isAdmin', 'isModer'],
             'submenu' => [
                 [
                     'text' => 'Espaço Bon Odori',
@@ -390,7 +393,7 @@ return [
                 ],
             ],
         ],
-        
+
         /*['header' => 'Vonluntario Chamado_Desativado',
         'can'   =>'isAdmin'
          ],
@@ -400,25 +403,26 @@ return [
             'icon' => 'fas fa-fw fa-headset',
             'class' => 'hidden',    
         ],*/
-        ['header' => 'Vonluntario ADMIN',
-        'can'   =>['isAdmin', 'isModer'],
+        [
+            'header' => 'Vonluntario ADMIN',
+            'can'   => ['isAdmin', 'isModer'],
         ],
         [
             'text' => 'Planilha',
             'icon' => 'fa fa-fw fa-file-excel',
-            'can'   =>'isAdmin',
+            'can'   => 'isAdmin',
             'submenu' => [
                 [
                     'text' => 'Planilha Importa',
                     'url'  => 'import_excel',
-                    'can'   =>'isAdmin',
+                    'can'   => 'isAdmin',
                     'icon_color' => 'cyan',
                     'icon' => 'fa fa-fw fa-file-excel',
                 ],
                 [
                     'text' => 'Planilha Exporta',
                     'url'  => 'export_excel',
-                    'can'   =>'isAdmin',
+                    'can'   => 'isAdmin',
                     'icon_color' => 'cyan',
                     'icon' => 'fa fa-fw fa-file-excel',
                 ],
@@ -427,43 +431,43 @@ return [
         [
             'text'    => 'Opção Voluntários',
             'icon'    => 'fas fa-fw fa-share',
-            'can'   =>['isAdmin', 'isModer'],
+            'can'   => ['isAdmin', 'isModer'],
             'submenu' => [
                 [
                     'text' => 'Todos Voluntários',
                     'url'  => 'vontable',
-                    'can'   =>'isAdmin',
+                    'can'   => 'isAdmin',
                     'icon_color' => 'yellow',
                 ],
                 [
                     'text' => 'Criar Voluntário',
                     'url'  => 'createfiV',
-                    'can'   =>'isAdmin',
+                    'can'   => 'isAdmin',
                     'icon_color' => 'yellow',
                 ],
                 [
                     'text' => 'Codigos',
                     'url'  => 'json',
-                    'can'   =>['isAdmin', 'isModer'],
+                    'can'   => ['isAdmin', 'isModer'],
                     'icon_color' => 'yellow',
                 ],
                 [
                     'text' => 'QRCODEGEN',
                     'url'  => 'QRCODEGEN',
-                    'target'=> '_blank',
-                    'can'   =>['isAdmin',],
+                    'target' => '_blank',
+                    'can'   => ['isAdmin',],
                     'icon_color' => 'yellow',
                 ],
                 [
                     'text' => 'Presença Tabela. Não Recomendado no abrir celular!',
                     'url'  => 'presen/tablea',
-                    'can'   =>['isAdmin',],
+                    'can'   => ['isAdmin',],
                     'icon_color' => 'yellow',
                 ],
                 [
                     'text'    => 'Chamado_Desativado',
                     'url'     => 'x',
-                    'can'   =>'isAdmin',
+                    'can'   => 'isAdmin',
                     'icon' => 'fas fa-fw fa-headset',
                     'icon_color' => 'yellow'
 

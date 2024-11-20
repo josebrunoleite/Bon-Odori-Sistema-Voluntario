@@ -104,6 +104,10 @@ Route::GET('/Only', [App\Http\Controllers\MaquinaController::class, 'Only'])->na
 Route::GET('/Only/{maquinasTotal}', [App\Http\Controllers\MaquinaController::class, 'ShowMaquina'])->name('rpi.OnlyKnows');
 
 Route::GET('/tabela', [App\Http\Controllers\MaquinaController::class, 'tabela'])->name('rpi.tabela');
+
+/* */
+Route::GET('/lexar', [App\Http\Controllers\CompilerController::class, 'index'])->name('lexar');
+Route::POST('/lexar', [App\Http\Controllers\CompilerController::class, 'compileLexarForC'])->name('lexar.compile');
 /*bugs */
 Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');
