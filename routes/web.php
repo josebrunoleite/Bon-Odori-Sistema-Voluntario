@@ -12,7 +12,9 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\QRCodeController;
 use Illuminate\Support\Facades\Artisan;
 
-
+use App\Http\Controllers\PagamentoController;
+use App\Http\Controllers\CodeController;
+use App\Http\Controllers\VoteController;
 
 
 /*
@@ -121,3 +123,10 @@ Route::GET('/maps', [App\Http\Controllers\MapsController::class, 'view'])->name(
 Route::GET('/maps2', [App\Http\Controllers\MapsController::class, 'index'])->name('maps');
 
 Route::post('/clients/store', [App\Http\Controllers\MapsController::class, 'store'])->name('client.store');
+Route::get('/code', [CodeController::class, 'index'])->name('code.index');
+Route::post('/code', [CodeController::class, 'generateCode'])->name('code.store');
+
+Route::get('/vote', [VoteController::class, 'index'])->name('vote.index');
+Route::post('/vote', [VoteController::class, 'store'])->name('vote.store');
+
+Route::get('/certificate', [VoteController::class, 'certificate'])->name('vote.certificate');

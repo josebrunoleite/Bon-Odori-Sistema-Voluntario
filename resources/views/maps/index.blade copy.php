@@ -73,7 +73,7 @@
         </div>
     </div>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCo5Vu0Ggw0VA5CMB3sZRU7l0bGUhvgE8U"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ 222 }}"></script>
     <script>
         // Configurações globais
         const config = {
