@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class CodeController extends Controller
 {
@@ -14,6 +15,20 @@ class CodeController extends Controller
 
     public function generateCode(Request $request)
     {
+        $currentDateTime = Carbon::now();
+        $startDateTime = Carbon::parse('2025-01-11 09:00:00');
+        $endDateTime = Carbon::parse('2025-01-11 16:00:00');
+
+        if ($currentDateTime->lessThan($startDateTime)) {
+            $remainingTime = $currentDateTime->diffForHumans($startDateTime, [
+            'parts' => 3,
+            'short' => true,
+            'syntax' => Carbon::DIFF_ABSOLUTE,
+            ]);
+            return redirect()->route('vote.index')->with('error', 'A votação começará em ' . $remainingTime);
+        } elseif ($currentDateTime->greaterThan($endDateTime)) {
+            return redirect()->route('vote.index')->with('error', 'A votação já terminou.');
+        }
         $request->validate([
             'email' => 'required|email',
         ]);

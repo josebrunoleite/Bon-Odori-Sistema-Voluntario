@@ -103,6 +103,7 @@
                     <option value="Ananda">Ananda Ikishima</option>
                     <option value="Diana">Diana Dias</option>
                     <option value="Lucas">Lucas Barbosa</option>
+                    <option value="Nulo">Voto Nulo</option>
                 </select>
             </div>
             <button type="submit">Votar</button>

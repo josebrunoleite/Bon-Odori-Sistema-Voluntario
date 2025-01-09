@@ -80,7 +80,7 @@ class VoteController extends Controller
     public function resultado()
     {
         $currentDateTime = Carbon::now();
-        $releaseDateTime = Carbon::parse('2025-01-09 19:46:00');
+        $releaseDateTime = Carbon::parse('2025-01-11 17:00:00');
 
         if ($currentDateTime->lessThan($releaseDateTime)) {
             $remainingTime = $currentDateTime->diffForHumans($releaseDateTime, [
@@ -88,7 +88,7 @@ class VoteController extends Controller
                 'short' => true,
                 'syntax' => Carbon::DIFF_ABSOLUTE,
             ]);
-            return redirect()->route('vote.index')->with('error', 'Results will be available in ' . $remainingTime);
+            return redirect()->route('vote.index')->with('error', 'Os resultados estarão disponíveis em ' . $remainingTime);
         }
 
         $results = Vote::select('choice', DB::raw('count(*) as total'))
