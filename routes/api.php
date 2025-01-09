@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MaquinaController;
 use App\Http\Controllers\RpiMaquinaController;
+use App\Http\Controllers\MapsController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,6 +20,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/maquinas/dados', [MaquinaController::class, 'storeDado']);
-Route::post('/maquinasOnly/dados/{maquina_id}', [MaquinaController::class, 'indexMaquinasDados']);
-Route::get('/maquinas', [MaquinaController::class, 'indexMaquinas']);
+Route::prefix('maquinas')->group(function () {
+    Route::post('/dados', [MaquinaController::class, 'storeDado']);
+    Route::post('/dados/{maquina_id}', [MaquinaController::class, 'indexMaquinasDados']);
+    Route::get('/', [MaquinaController::class, 'indexMaquinas']);
+});
+
+Route::prefix('points')->group(function () {
+    Route::get('/', [MapsController::class, 'index']);
+    Route::post('/create', [MapsController::class, 'store']);
+    Route::put('/{id}', [MapsController::class, 'update']);
+    Route::delete('/{id}', [MapsController::class, 'destroy']);
+});

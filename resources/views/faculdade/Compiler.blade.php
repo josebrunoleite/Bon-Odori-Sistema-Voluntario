@@ -64,6 +64,7 @@
                                         <tr>
                                             <th>Tipo</th>
                                             <th>Valor</th>
+                                            <th>Tabela Simbolo</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -71,17 +72,47 @@
                                             <tr>
                                                 <td>{{ $token['type'] }}</td>
                                                 <td>{{ $token['value'] }}</td>
+                                                @if(isset($token['ID']))
+                                                    <td>{{ $token['ID'] }}</td>
+                                                @else
+                                                    <td></td>
+                                                @endif
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
                             </div>
-                        @elseif(session('error'))
+                        <hr>
+                       
+                        <div class="mt-5">
+                            <h3>Resultado</h3>
+                            <p><strong>Total de sibolos:</strong> {{ count(session('simbols')) }}</p>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Tipo</th>
+                                        <th>Valor</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (session('tokens') as $simbol)
+                                    <tr>
+                                        @if(isset($simbol['ID']) && !isset($printedSimbols[$simbol['ID']]))
+                                            <td>{{ $simbol['ID'] }}</td>
+                                            <td>{{ $simbol['value'] }}</td>
+                                            @php $printedSimbols[$simbol['ID']] = true; @endphp
+                                        @endif
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        @elseif(session('errorLexar'))
                             <div class="alert alert-danger mt-5">
                                 {{ session('error') }}
                             </div>
                         @endif
-
+                        <!-- Table simbols -->
 
                     </div>
                 </div>

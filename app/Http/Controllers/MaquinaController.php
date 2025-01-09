@@ -7,55 +7,15 @@ use App\Models\RpiMaquina;
 use App\Models\RpiMaquinaDado;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
-use Illuminate\Support\Str;
+
 class MaquinaController extends Controller
 {
-    public function storeDado(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            "maquina_id" => 'required|string',
-            'temperatura' => 'required|numeric',
-            'umidade' => 'required|numeric',
-            'ruido' => 'required|numeric',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 400);
-        }
-
-        $maquina_idSlug = preg_replace('/[^0-9]/', '', $request->maquina_id);
-
-        $maquina = RpiMaquina::find($maquina_idSlug);
-
-        if (!$maquina) {
-            $maquina = RpiMaquina::create([
-                'id' => $maquina_idSlug ,
-                'nome' => 'Maquina ' . $request->maquina_id,
-                'localizacao' => 'Local ' . $request->maquina_id,
-            ]);
-            return response()->json(['message' => 'Maquina criada com sucesso!', 'data' => $maquina], 201);
-        }
-
-        $dado = RpiMaquinaDado::create([
-            'maquina_id' => $maquina_idSlug,
-            'timestamp' => $request->timestamp,
-            'temperatura' => $request->temperatura,
-            'umidade' => $request->umidade,
-            'ruido' => $request->ruido,
-            'created_at' => Carbon::now()->Locale('pt_BR')->format('Y-m-d H:i:s'),
-        ]);
-
-        return response()->json(['message' => 'Dado registrado com sucesso!', 'data' => $dado], 201);
-    }
-
-
     public function indexMaquinas()
     {
         $maquinas = RpiMaquina::with('rpiMaquinaDado')->get();
 
         return response()->json(['data' => $maquinas], 200);
     }
-
 
     public function indexMaquinasDados($maquina_id)
     {
@@ -69,6 +29,7 @@ class MaquinaController extends Controller
 
         return response()->json(['data' => $dados], 200);
     }
+
     public function deleteDado($id)
     {
         $dado = RpiMaquinaDado::find($id);
@@ -81,6 +42,45 @@ class MaquinaController extends Controller
 
         return response()->json(['message' => 'Dado deletado com sucesso!'], 200);
     }
+
+    public function storeDado(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'maquina_id'  => 'required|string',
+            'temperatura' => 'required|numeric',
+            'umidade'     => 'required|numeric',
+            'ruido'       => 'required|numeric',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        $maquina_idSlug = preg_replace('/[^0-9]/', '', $request->maquina_id);
+
+        $maquina = RpiMaquina::find($maquina_idSlug);
+
+        if (!$maquina) {
+            $maquina = RpiMaquina::create([
+                'id'          => $maquina_idSlug,
+                'nome'        => 'Maquina ' . $request->maquina_id,
+                'localizacao' => 'Local ' . $request->maquina_id,
+            ]);
+            return response()->json(['message' => 'Maquina criada com sucesso!', 'data' => $maquina], 201);
+        }
+
+        $dado = RpiMaquinaDado::create([
+            'maquina_id'  => $maquina_idSlug,
+            'timestamp'   => $request->timestamp,
+            'temperatura' => $request->temperatura,
+            'umidade'     => $request->umidade,
+            'ruido'       => $request->ruido,
+            'created_at'  => Carbon::now()->locale('pt_BR')->format('Y-m-d H:i:s'),
+        ]);
+
+        return response()->json(['message' => 'Dado registrado com sucesso!', 'data' => $dado], 201);
+    }
+
     public function ShowMaquina(RpiMaquina $maquinasTotal)
     {
         $maquinasLimit = RpiMaquinaDado::where('maquina_id', $maquinasTotal->id)->orderBy('created_at', 'desc')->paginate(15);
@@ -90,12 +90,13 @@ class MaquinaController extends Controller
         }])->where('id', $maquinasTotal->id)->first();
 
         $maquinasdata = [
-            'maquina_id' => $maquinasLimit2->id,
-            'created_at' => [],
+            'maquina_id'  => $maquinasLimit2->id,
+            'created_at'  => [],
             'temperatura' => [],
-            'umidade' => [],
-            'ruido' => [],
+            'umidade'     => [],
+            'ruido'       => [],
         ];
+
         if ($maquinasLimit2 && $maquinasLimit2->rpiMaquinaDado2) {
             $groupedData = $maquinasLimit2->rpiMaquinaDado2->groupBy(function ($item) {
                 return Carbon::parse($item->created_at)->format('Y-m-d H:i');
@@ -104,20 +105,20 @@ class MaquinaController extends Controller
             foreach ($groupedData as $minute => $dados) {
                 $dado = $dados->last();
 
-                $maquinasdata['created_at'][] = $minute;
+                $maquinasdata['created_at'][]  = $minute;
                 $maquinasdata['temperatura'][] = $dado->temperatura;
-                $maquinasdata['umidade'][] = $dado->umidade;
-                $maquinasdata['ruido'][] = $dado->ruido;
+                $maquinasdata['umidade'][]     = $dado->umidade;
+                $maquinasdata['ruido'][]       = $dado->ruido;
             }
         }
 
         return view('presenca.RPiOnly', compact('maquinasTotal', 'maquinasdata', 'maquinasLimit'));
     }
+
     public function tabela()
     {
         $maquinasTotal = RpiMaquina::get();
- 
+
         return view('presenca.RPiTable', compact('maquinasTotal'));
     }
-
 }

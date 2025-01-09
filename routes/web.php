@@ -99,6 +99,14 @@ Route::GET('/pass', [App\Http\Controllers\VoluntarioController::class, 'showChan
 Route::GET('/json', [App\Http\Controllers\HomeController::class, 'codigos'])->name('codigos');
 Route::get('/qrcodeleitor', [App\Http\Controllers\QRCodeController::class, 'generate'])->name('qrcode.generate');
 Route::GET('/qrcode', [App\Http\Controllers\PresencaController::class, 'registrarEntradaQrCode'])->name('qrcode');
+/*bugs */
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    Artisan::call('route:cache');
+    Artisan::call('config:cache');
+    Artisan::call('view:clear');
+    return 'Application all cache has been cleared';
+});
 /*RPI*/
 Route::GET('/Only', [App\Http\Controllers\MaquinaController::class, 'Only'])->name('rpi.only');
 Route::GET('/Only/{maquinasTotal}', [App\Http\Controllers\MaquinaController::class, 'ShowMaquina'])->name('rpi.OnlyKnows');
@@ -108,11 +116,8 @@ Route::GET('/tabela', [App\Http\Controllers\MaquinaController::class, 'tabela'])
 /* */
 Route::GET('/lexar', [App\Http\Controllers\CompilerController::class, 'index'])->name('lexar');
 Route::POST('/lexar', [App\Http\Controllers\CompilerController::class, 'compileLexarForC'])->name('lexar.compile');
-/*bugs */
-Route::get('/clear-cache', function() {
-    Artisan::call('cache:clear');
-    Artisan::call('route:cache');
-    Artisan::call('config:cache');
-    Artisan::call('view:clear');
-    return 'Application all cache has been cleared';
-});
+//Maps
+Route::GET('/maps', [App\Http\Controllers\MapsController::class, 'view'])->name('maps');
+Route::GET('/maps2', [App\Http\Controllers\MapsController::class, 'index'])->name('maps');
+
+Route::post('/clients/store', [App\Http\Controllers\MapsController::class, 'store'])->name('client.store');
