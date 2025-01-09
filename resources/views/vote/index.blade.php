@@ -100,9 +100,9 @@
             <div class="form-group">
                 <label for="option">Escolha em quem deseja votar:</label>
                 <select id="option" name="option" required>
-                    <option value="Ananda_Ikishima">Ananda Ikishima</option>
-                    <option value="Diana_Dias">Diana Dias</option>
-                    <option value="Lucas_Barbosa">Lucas Barbosa</option>
+                    <option value="Ananda">Ananda Ikishima</option>
+                    <option value="Diana">Diana Dias</option>
+                    <option value="Lucas">Lucas Barbosa</option>
                 </select>
             </div>
             <button type="submit">Votar</button>

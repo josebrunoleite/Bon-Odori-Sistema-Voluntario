@@ -12,5 +12,6 @@ class Vote extends Model
     protected $fillable = [
         'user_code',
         'choice',
+        'ip_address',
     ];
 }

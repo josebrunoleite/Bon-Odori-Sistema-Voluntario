@@ -30,7 +30,7 @@ class VoteController extends Controller
     {
         $request->validate([
             'code' => 'required|string',
-            'option' => 'required|string|in:option1,option2,option3',
+            'option' => 'required|string|in:Ananda,Diana,Lucas',
         ]);
 
         if (Vote::where('user_code', $request->code)->exists()) {
@@ -38,6 +38,19 @@ class VoteController extends Controller
         }
 
         // Logic to validate the code and store the vote
+        $data = json_decode(Storage::get('codigos_presenca.json'), true);
+        $email = null;
+        foreach ($data['codigos'] as $codigo) {
+            if ($codigo['codigo'] == $request->code) {
+                $email = $codigo['email'];
+                break;
+            }
+        }
+
+        if (!$email) {
+            return back()->with('error', 'Invalid code!');
+        }
+
         $vote = new Vote();
         $vote->user_code = $request->code;
         $vote->choice = $request->option;
