@@ -40,7 +40,7 @@ class CodeController extends Controller
 
         if ($codigoValido) {
             Storage::put('codigos_presenca.json', json_encode($data));
-            return back()->with('success', 'Seu código é: ' . $codigoValido);
+            return back()->with('success', $codigoValido);
         } else {
             return back()->with('error', 'Nenhum código válido disponível!');
         }

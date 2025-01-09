@@ -130,3 +130,10 @@ Route::get('/vote', [VoteController::class, 'index'])->name('vote.index');
 Route::post('/vote', [VoteController::class, 'store'])->name('vote.store');
 
 Route::get('/certificate', [VoteController::class, 'certificate'])->name('vote.certificate');
+Route::get('/certificate/{code}', [VoteController::class, 'showCertificate'])->name('certificate.show');
+Route::get('/resultado', [VoteController::class, 'resultado'])->name('vote.resultado');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/manage-votes', [VoteController::class, 'manageVotes'])->name('votes.manage');
+    Route::delete('/manage-votes/{id}', [VoteController::class, 'destroyVote'])->name('votes.destroy');
+});
