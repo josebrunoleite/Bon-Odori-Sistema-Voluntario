@@ -32,9 +32,12 @@ class VoteController extends Controller
             'code' => 'required|string',
             'option' => 'required|string|in:Ananda,Diana,Lucas',
         ]);
-
         if (Vote::where('user_code', $request->code)->exists()) {
-            return back()->with('error', 'You have already voted!');
+            return back()->with('error', 'Você já votou!');
+        }
+
+        if (Vote::where('ip_address', $request->ip())->exists()) {
+            return back()->with('error', 'Você já votou deste endereço IP!');
         }
 
         // Logic to validate the code and store the vote
