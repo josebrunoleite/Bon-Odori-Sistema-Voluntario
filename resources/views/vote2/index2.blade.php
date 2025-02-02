@@ -98,21 +98,21 @@
                 <input type="text" id="code" name="code" value="{{ request('code') }}" required>
             </div>
             <div class="form-group">
-                <label for="rissa">Rissa:</label>
+                <label for="rissa">Rissa - Marketing:</label>
                 <select id="rissa" name="rissa" required>
                     <option value="Nao">Não</option>
                     <option value="Sim">Sim</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="aecio">Aecio:</label>
+                <label for="aecio">Aécio - Financeiro:</label>
                 <select id="aecio" name="aecio" required>
                     <option value="Nao">Não</option>
                     <option value="Sim">Sim</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="jhon">Jhon</label>
+                <label for="jhon">Jhon - Administrativo</label>
                 <select id="jhon" name="jhon" required>
                     <option value="Nao">Não</option>
                     <option value="Sim">Sim</option>
