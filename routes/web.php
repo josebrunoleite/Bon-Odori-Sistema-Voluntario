@@ -15,8 +15,7 @@ use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\PagamentoController;
 use App\Http\Controllers\CodeController;
 use App\Http\Controllers\VoteController;
-
-
+use App\Http\Controllers\Vote2Controller;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -126,14 +125,15 @@ Route::post('/clients/store', [App\Http\Controllers\MapsController::class, 'stor
 Route::get('/code', [CodeController::class, 'index'])->name('code.index');
 Route::post('/code', [CodeController::class, 'generateCode'])->name('code.store');
 
-Route::get('/vote', [VoteController::class, 'index'])->name('vote.index');
-Route::post('/vote', [VoteController::class, 'store'])->name('vote.store');
 
-Route::get('/certificate', [VoteController::class, 'certificate'])->name('vote.certificate');
-Route::get('/certificate/{code}', [VoteController::class, 'showCertificate'])->name('certificate.show');
-Route::get('/resultado', [VoteController::class, 'resultado'])->name('vote.resultado');
+Route::get('/vote', [Vote2Controller::class, 'index'])->name('vote.index');
+Route::post('/vote', [Vote2Controller::class, 'store'])->name('vote.store');
+
+Route::get('/certificate', [Vote2Controller::class, 'certificate'])->name('vote.certificate');
+Route::get('/certificate/{code}', [Vote2Controller::class, 'showCertificate'])->name('certificate.show');
+Route::get('/resultado', [Vote2Controller::class, 'resultado'])->name('vote.resultado');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/manage-votes', [VoteController::class, 'manageVotes'])->name('votes.manage');
-    Route::delete('/manage-votes/{id}', [VoteController::class, 'destroyVote'])->name('votes.destroy');
+    Route::get('/manage-votes', [Vote2Controller::class, 'manageVotes'])->name('votes.manage');
+    Route::delete('/manage-votes/{id}', [Vote2Controller::class, 'destroyVote'])->name('votes.destroy');
 });
