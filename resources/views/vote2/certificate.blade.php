@@ -61,11 +61,26 @@
         }
     </style>
 </head>
+{{-- @dd($option)     --}}
 <body>
     <div class="container">
         <h1>Certificado de Votação</h1>
         <p>Obrigado por votar! Seu código é: <strong class="highlight">{{ $code }}</strong></p>
-        <p>Você votou em: <strong class="highlight">{{ $option }}</strong></p>
+        @if(is_array($option))
+            @php
+            $selectedOptions = array_filter($option, function($vote) {
+            return $vote === 'Sim';
+            });
+            @endphp
+            <p>Você votou em: <strong class="highlight">{{ implode(', ', array_keys($selectedOptions)) }}</strong></p>
+        @else
+            @php
+            $selectedOptions = collect($option->getAttributes())->filter(function($vote) {
+            return $vote === 'Sim';
+            });
+            @endphp
+            <p>Você votou em: <strong class="highlight">{{ implode(', ', $selectedOptions->keys()->toArray()) }}</strong></p>
+        @endif
         <button onclick="downloadCertificate()">Baixar Certificado</button>
     </div>
 

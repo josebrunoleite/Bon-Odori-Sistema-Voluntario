@@ -84,7 +84,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Vote para o próximo presidente</h1>
+        <h1>Vote para a diretoria</h1>
         @if (session('success'))
             <p class="success">{{ session('success') }}</p>
         @endif

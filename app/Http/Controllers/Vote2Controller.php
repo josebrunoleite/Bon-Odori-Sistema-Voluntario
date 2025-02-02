@@ -77,7 +77,8 @@ class Vote2Controller extends Controller
     public function showCertificate($code)
     {
         $vote = Vote2::where('user_code', $code)->firstOrFail();
-        return view('vote2.certificate', ['code' => $code, 'option' => $vote->choice]);
+
+        return view('vote2.certificate', ['code' => $code, 'option' => $vote]);
     }
 
     /**
