@@ -118,6 +118,13 @@
                     <option value="Sim">Sim</option>
                 </select>
             </div>
+            <div class="form-group">
+                <label for="lucas">Lucas Barbosa - Diretor de Eventos</label>
+                <select id="lucas" name="lucas" required>
+                    <option value="Nao">Não</option>
+                    <option value="Sim">Sim</option>
+                </select>
+            </div>
             <button type="submit">Votar</button>
         </form>
     </div>

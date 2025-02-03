@@ -19,6 +19,7 @@ class CreateVote2sTable extends Migration
             $table->string('rissa');
             $table->string('aecio');
             $table->string('jhon');
+            $table->string('lucas');
             $table->text('ip_address');
             $table->timestamps();
         });

@@ -63,6 +63,7 @@ class Vote2Controller extends Controller
         $vote->Rissa = $request->rissa;
         $vote->Aecio = $request->aecio;
         $vote->Jhon = $request->jhon;
+        $vote->Lucas = $request->lucas;
         $vote->ip_address = $request->ip(); // Save the IP address
         $vote->save();
     
@@ -89,7 +90,7 @@ class Vote2Controller extends Controller
     public function resultado()
     {
         $currentDateTime = Carbon::now();
-        $releaseDateTime = Carbon::parse('2024-02-03 12:00:00');
+        $releaseDateTime = Carbon::parse('2025-02-03 12:00:00');
     
         if ($currentDateTime->lessThan($releaseDateTime)) {
             $remainingTime = $currentDateTime->diffForHumans($releaseDateTime, [
@@ -109,6 +110,9 @@ class Vote2Controller extends Controller
                             ->get(),
             'Jhon' => Vote2::select('Jhon', DB::raw('count(*) as total'))
                             ->groupBy('Jhon')
+                            ->get(),
+            'Lucas' => Vote2::select('Lucas', DB::raw('count(*) as total'))
+                            ->groupBy('Lucas')
                             ->get(),
         ];
     

@@ -78,6 +78,12 @@
                     <li>{{ $result->Jhon }}: {{ $result->total }}</li>
                 @endforeach
             </ul>
+            <h2>Lucas Barbosa - Diretor de Eventos</h2>
+            <ul>
+                @foreach ($results['Lucas'] as $result)
+                    <li>{{ $result->Lucas }}: {{ $result->total }}</li>
+                @endforeach
+            </ul>
         </div>
     </div>
 </body>
