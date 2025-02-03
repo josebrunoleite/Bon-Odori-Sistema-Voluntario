@@ -128,6 +128,7 @@ class Vote2Controller extends Controller
     {
         $votes = Vote2::all();
         $data = json_decode(Storage::get('codigos_presenca.json'), true);
+        $options = ['Rissa', 'Aecio', 'Jhon', 'Lucas'];
     
         foreach ($votes as $vote) {
             foreach ($data['codigos'] as $codigo) {
@@ -138,7 +139,7 @@ class Vote2Controller extends Controller
             }
         }
     
-        return view('vote.manage_votes', ['votes' => $votes]);
+        return view('vote.manage_votes', ['votes' => $votes, 'options' => $options]);
     }
 
     /**

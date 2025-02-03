@@ -96,11 +96,19 @@
                 </tr>
             </thead>
             <tbody>
+                {{-- @dd($votes) --}}
                 @foreach ($votes as $vote)
                     <tr>
                         <td>{{ $vote->email }}</td>
                         <td>{{ $vote->user_code }}</td>
-                        <td>{{ $vote->choice }}</td>
+                        <td>
+                            @php
+                                $selectedOptions = collect($vote->getAttributes())->filter(function($value, $key) {
+                                    return $value === 'Sim' && !in_array($key, ['id', 'user_code', 'ip_address', 'created_at', 'updated_at', 'email']);
+                                });
+                            @endphp
+                            <p>Você votou em: <strong class="highlight">{{ implode(', ', $selectedOptions->keys()->toArray()) }}</strong></p>
+                        </td>
                         <td>{{ $vote->ip_address }}</td>
                         <td>
                             <form action="{{ route('votes.destroy', $vote->id) }}" method="POST">
