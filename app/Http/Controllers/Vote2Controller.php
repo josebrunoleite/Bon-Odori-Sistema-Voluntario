@@ -89,7 +89,7 @@ class Vote2Controller extends Controller
     public function resultado()
     {
         $currentDateTime = Carbon::now();
-        $releaseDateTime = Carbon::parse('2024-02-03 22:00:00');
+        $releaseDateTime = Carbon::parse('2024-02-03 12:00:00');
     
         if ($currentDateTime->lessThan($releaseDateTime)) {
             $remainingTime = $currentDateTime->diffForHumans($releaseDateTime, [

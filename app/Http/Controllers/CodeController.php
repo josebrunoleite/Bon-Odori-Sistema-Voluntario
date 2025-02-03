@@ -16,8 +16,8 @@ class CodeController extends Controller
     public function generateCode(Request $request)
     {
         $currentDateTime = Carbon::now();
-        $startDateTime = Carbon::parse('2025-02-03 09:00:00');
-        $endDateTime = Carbon::parse('2025-02-03 18:00:00');
+        $startDateTime = Carbon::parse('2025-02-02 22:00:00');
+        $endDateTime = Carbon::parse('2025-02-03 11:59:00');
 
         if ($currentDateTime->lessThan($startDateTime)) {
             $remainingTime = $currentDateTime->diffForHumans($startDateTime, [
