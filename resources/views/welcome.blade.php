@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Voluntarios</title>
+    <title>Voluntarios Painel</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/cover/">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -174,41 +174,36 @@
             <div>
                 <nav class="nav nav-masthead justify-content-center float-center">
                     <div class="na d-inline-flex">
-                    @if (Route::has('login'))
-                        @auth
-                            <a href="{{ url('/home') }}"
-                                class="nav-link fw-bold py-1 px-0 link-light mx-2">Home</a>
-                        @else
-                            <a href="{{ route('login') }}" class="nav-link fw-bold py-1 px-0 mx-2 link-light">Login</a>
+                        @if (Route::has('login'))
+                            @auth
+                                <a href="{{ url('/home') }}" class="nav-link fw-bold py-1 px-0 link-light mx-2">Home</a>
+                            @else
+                                <a href="{{ route('login') }}" class="nav-link fw-bold py-1 px-0 mx-2 link-light">Login</a>
 
-                            {{-- @if (Route::has('register'))
+                                {{-- @if (Route::has('register'))
                                 <a href="{{ route('register') }}"
                                     class="nav-link fw-bold py-1 px-0 mx-2 link-light">Registrar</a>
                             @endif --}}
-                        @endauth
-                    @endif
-                </div>
+                            @endauth
+                        @endif
+                    </div>
                 </nav>
-                
+
             </div>
         </header>
 
         <main class="px-3">
             <h1>Bem-vindo, Voluntário!</h1>
-            <p class="lead">Bem-vindos a mais um ano de Bon Odori! Espero que possamos nos ajudar a fazer mais um Excelente EVENTO!!.</p>
-            <!--<p class="lead">
-                <a href="#" class="btn btn-lg btn-light fw-bold border-white bg-white">Learn more</a>
-            </p>00-->
+            <p class="lead">Bem-vindos a mais um ano de Bon Odori! Espero que possamos nos ajudar a fazer mais um
+                Excelente EVENTO!!.</p>
         </main>
 
         <footer class="mt-auto px-auto text-white-50">
-<<<<<<< HEAD
-          <p class="text-white m-auto">Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }}) <br> Versão 1.6.1 <br> Um Site Seinenkai/José Bruno!</p>
-=======
-          <h4 class="text-white m-auto">Agradecimento a todo o pessoal do Seinenkai pela colaboração no desenvolvimento do site.</h4>
-          <p class="text-white m-auto">Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }}) <br> Versão 1.6.2 <br> Um Site Seinenkai/José Bruno!</p>
->>>>>>> ceb2948ca05020405a285daf970bba0112b0fe22
-</footer>
+            <h4 class="text-white m-auto">Agradecimento a todo o pessoal do Seinenkai pela colaboração no
+                desenvolvimento do site.</h4>
+            <p class="text-white m-auto">Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP
+                v{{ PHP_VERSION }}) <br> Versão 1.8.5 <br> Um Site Seinenkai/José Bruno!</p>
+        </footer>
 
     </div>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
