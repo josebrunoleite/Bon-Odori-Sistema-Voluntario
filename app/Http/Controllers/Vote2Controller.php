@@ -29,11 +29,27 @@ class Vote2Controller extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
+        $currentDateTime = Carbon::now();
+        $startDateTime = Carbon::parse('2025-07-04 13:00:00');
+        $endDateTime = Carbon::parse('2025-07-04 19:00:00');
+
+        if ($currentDateTime->lessThan($startDateTime)) {
+            $remainingTime = $currentDateTime->diffForHumans($startDateTime, [
+                'parts' => 3,
+                'short' => true,
+                'syntax' => Carbon::DIFF_ABSOLUTE,
+            ]);
+            return redirect()->route('vote.index')->with('error', 'A votação começará em ' . $remainingTime);
+        } elseif ($currentDateTime->greaterThan($endDateTime)) {
+            return redirect()->route('vote.index')->with('error', 'A votação já terminou.');
+        }
+
         $request->validate([
             'code' => 'required|string',
-            'rissa' => 'required|string|in:Sim,Nao',
-            'aecio' => 'required|string|in:Sim,Nao',
-            'jhon' => 'required|string|in:Sim,Nao',
+            'fernanda' => 'required|string|in:Sim,Nao',
+            'alice' => 'required|string|in:Sim,Nao',
+            'giovanna' => 'required|string|in:Sim,Nao',
+            'felipe' => 'required|string|in:Sim,Nao',
         ]);
     
         if (Vote2::where('user_code', $request->code)->exists()) {
@@ -60,10 +76,10 @@ class Vote2Controller extends Controller
     
         $vote = new Vote2();
         $vote->user_code = $request->code;
-        $vote->Rissa = $request->rissa;
-        $vote->Aecio = $request->aecio;
-        $vote->Jhon = $request->jhon;
-        $vote->Lucas = $request->lucas;
+        $vote->Fernanda = $request->fernanda;
+        $vote->Alice = $request->alice;
+        $vote->Giovanna = $request->giovanna;
+        $vote->Felipe = $request->felipe;
         $vote->ip_address = $request->ip(); // Save the IP address
         $vote->save();
     
@@ -90,7 +106,7 @@ class Vote2Controller extends Controller
     public function resultado()
     {
         $currentDateTime = Carbon::now();
-        $releaseDateTime = Carbon::parse('2025-02-03 12:00:00');
+        $releaseDateTime = Carbon::parse('2025-07-04 20:00:00');
     
         if ($currentDateTime->lessThan($releaseDateTime)) {
             $remainingTime = $currentDateTime->diffForHumans($releaseDateTime, [
@@ -102,17 +118,17 @@ class Vote2Controller extends Controller
         }
     
         $results = [
-            'Rissa' => Vote2::select('Rissa', DB::raw('count(*) as total'))
-                            ->groupBy('Rissa')
+            'Fernanda' => Vote2::select('Fernanda', DB::raw('count(*) as total'))
+                            ->groupBy('Fernanda')
                             ->get(),
-            'Aecio' => Vote2::select('Aecio', DB::raw('count(*) as total'))
-                            ->groupBy('Aecio')
+            'Alice' => Vote2::select('Alice', DB::raw('count(*) as total'))
+                            ->groupBy('Alice')
                             ->get(),
-            'Jhon' => Vote2::select('Jhon', DB::raw('count(*) as total'))
-                            ->groupBy('Jhon')
+            'Giovanna' => Vote2::select('Giovanna', DB::raw('count(*) as total'))
+                            ->groupBy('Giovanna')
                             ->get(),
-            'Lucas' => Vote2::select('Lucas', DB::raw('count(*) as total'))
-                            ->groupBy('Lucas')
+            'Felipe' => Vote2::select('Felipe', DB::raw('count(*) as total'))
+                            ->groupBy('Felipe')
                             ->get(),
         ];
     
@@ -128,7 +144,7 @@ class Vote2Controller extends Controller
     {
         $votes = Vote2::all();
         $data = json_decode(Storage::get('codigos_presenca.json'), true);
-        $options = ['Rissa', 'Aecio', 'Jhon', 'Lucas'];
+        $options = ['Fernanda', 'Alice', 'Giovanna', 'Felipe'];
     
         foreach ($votes as $vote) {
             foreach ($data['codigos'] as $codigo) {
