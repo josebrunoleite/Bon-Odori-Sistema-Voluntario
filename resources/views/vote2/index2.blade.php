@@ -27,8 +27,8 @@
         }
 
         .container {
-            width: 80%;
-            max-width: 600px;
+            width: 90%;
+            max-width: 800px;
             text-align: center;
             background-color: #fff;
             padding: 2rem;
@@ -37,8 +37,27 @@
         }
 
         .form-group {
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
             text-align: left;
+            border: 1px solid #e0e0e0;
+            padding: 1rem;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+
+        .candidate-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .candidate-text {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #555;
+            margin-bottom: 1rem;
+            text-align: justify;
         }
 
         label {
@@ -80,6 +99,15 @@
         .error {
             color: red;
         }
+
+        .code-group {
+            margin-bottom: 2rem;
+            text-align: left;
+            background-color: #fff;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 2px solid #3498db;
+        }
     </style>
 </head>
 <body>
@@ -93,38 +121,59 @@
         @endif
         <form action="{{ route('vote.store') }}" method="POST">
             @csrf
-            <div class="form-group">
+            <div class="code-group">
                 <label for="code">Insira o código:</label>
                 <input type="text" id="code" name="code" value="{{ request('code') }}" required>
             </div>
+            
             <div class="form-group">
-                <label for="rissa">Rissa - Marketing:</label>
-                <select id="rissa" name="rissa" required>
+                <div class="candidate-name">Fernanda Nascimento Borges Caldas ✈🇧🇷🇯🇵</div>
+                <div class="candidate-text">
+                    Tenho me dedicado ao Seinenkai de forma ativa e responsável, e acredito que posso representar nossa comunidade com comprometimento e atitude. Não fico esperando as coisas acontecerem, faço acontecer. Estou sempre presente e engajada nos projetos do Seinenkai, aprendendo com diretores e mentores, pronta para transformar todo esse conhecimento em ação real. Dediquei tempo, energia e coração para chegar até aqui, e agora é hora de mostrar que minha voz e minha força podem levar nossa comunidade mais longe. Quero representar o Seinenkai mostrando que nós, jovens, somos ativos, engajados e merecemos esse lugar de destaque.
+                </div>
+                <label for="fernanda">Seu voto:</label>
+                <select id="fernanda" name="fernanda" required>
                     <option value="Nao">Não</option>
                     <option value="Sim">Sim</option>
                 </select>
             </div>
+            
             <div class="form-group">
-                <label for="aecio">Aécio - Financeiro:</label>
-                <select id="aecio" name="aecio" required>
+                <div class="candidate-name">Alice Kimie Nakagawa Costa ✈🇧🇷🇯🇵</div>
+                <div class="candidate-text">
+                    Atuo no Seinenkai e participo da ANISA há mais de dez anos. Nos últimos anos, venho me aproximando cada vez mais das atividades do Seinenkai, conciliando com outras responsabilidades. Vejo no FIB uma chance única de aprendizado e troca com outras lideranças nikkeis, que pode fortalecer nosso trabalho local. Tenho certeza de que os conhecimentos e vivências proporcionados pelo FIB me permitirão atuar de forma ainda mais efetiva na condução do Seinenkai e, futuramente, contribuir com a formação de novas lideranças, mantendo viva a essência e os valores que nos unem enquanto nikkeis.
+                </div>
+                <label for="alice">Seu voto:</label>
+                <select id="alice" name="alice" required>
                     <option value="Nao">Não</option>
                     <option value="Sim">Sim</option>
                 </select>
             </div>
+            
             <div class="form-group">
-                <label for="jhon">Jhon - Administrativo</label>
-                <select id="jhon" name="jhon" required>
+                <div class="candidate-name">Giovanna Kamimura Mendes ✈🇧🇷🇯🇵</div>
+                <div class="candidate-text">
+                    Em pouco tempo de participação no Seinenkai, dediquei-me ao crescimento e fortalecimento do grupo, sempre com responsabilidade, boa conduta e disposição para colaborar em tudo o que fosse necessário, ganhando reconhecimento e mais oportunidades para ajudar a Associação e nosso grupo. Tenho facilidade em me comunicar de forma respeitosa, o que me permite dialogar com diferentes perfis e construir pontes com segurança e empatia. Além disso, sou uma pessoa criativa, com ideias voltadas para projetos que visam o engajamento e a valorização da comunidade nikkei. Acredito que minha experiência anterior em uma comunidade nikkei de fora me proporcionou um olhar crítico e ao mesmo tempo admirado sobre o que vivemos em Salvador, com uma visão que pode enriquecer ainda mais nossa representação no FIB. Estou pronta para somar com postura, escuta ativa e iniciativa.
+                </div>
+                <label for="giovanna">Seu voto:</label>
+                <select id="giovanna" name="giovanna" required>
                     <option value="Nao">Não</option>
                     <option value="Sim">Sim</option>
                 </select>
             </div>
+            
             <div class="form-group">
-                <label for="lucas">Lucas Barbosa - Diretor de Eventos</label>
-                <select id="lucas" name="lucas" required>
+                <div class="candidate-name">Felipe Pinheiro ✈🇧🇷🇯🇵</div>
+                <div class="candidate-text">
+                    Desejo representar da melhor forma o grupo com o objetivo de melhorar a relação do seinenkai com demais associações e parcerias mútuas, além de aumentar nossa visibilidade perante autoridades, demonstrando nossa força e engajamento.
+                </div>
+                <label for="felipe">Seu voto:</label>
+                <select id="felipe" name="felipe" required>
                     <option value="Nao">Não</option>
                     <option value="Sim">Sim</option>
                 </select>
             </div>
+            
             <button type="submit">Votar</button>
         </form>
     </div>
