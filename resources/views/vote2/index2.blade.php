@@ -112,7 +112,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Vote para a diretoria</h1>
+        <h1>Vote para quem ira na viagem do FIB!</h1>
         @if (session('success'))
             <p class="success">{{ session('success') }}</p>
         @endif
@@ -127,7 +127,7 @@
             </div>
             
             <div class="form-group">
-                <div class="candidate-name">Fernanda Nascimento Borges Caldas ✈🇧🇷🇯🇵</div>
+                <div class="candidate-name">Fernanda Nascimento Borges Caldas SSA✈GRU</div>
                 <div class="candidate-text">
                     Tenho me dedicado ao Seinenkai de forma ativa e responsável, e acredito que posso representar nossa comunidade com comprometimento e atitude. Não fico esperando as coisas acontecerem, faço acontecer. Estou sempre presente e engajada nos projetos do Seinenkai, aprendendo com diretores e mentores, pronta para transformar todo esse conhecimento em ação real. Dediquei tempo, energia e coração para chegar até aqui, e agora é hora de mostrar que minha voz e minha força podem levar nossa comunidade mais longe. Quero representar o Seinenkai mostrando que nós, jovens, somos ativos, engajados e merecemos esse lugar de destaque.
                 </div>
@@ -139,7 +139,7 @@
             </div>
             
             <div class="form-group">
-                <div class="candidate-name">Alice Kimie Nakagawa Costa ✈🇧🇷🇯🇵</div>
+                <div class="candidate-name">Alice Kimie Nakagawa Costa SSA✈GRU</div>
                 <div class="candidate-text">
                     Atuo no Seinenkai e participo da ANISA há mais de dez anos. Nos últimos anos, venho me aproximando cada vez mais das atividades do Seinenkai, conciliando com outras responsabilidades. Vejo no FIB uma chance única de aprendizado e troca com outras lideranças nikkeis, que pode fortalecer nosso trabalho local. Tenho certeza de que os conhecimentos e vivências proporcionados pelo FIB me permitirão atuar de forma ainda mais efetiva na condução do Seinenkai e, futuramente, contribuir com a formação de novas lideranças, mantendo viva a essência e os valores que nos unem enquanto nikkeis.
                 </div>
@@ -151,7 +151,7 @@
             </div>
             
             <div class="form-group">
-                <div class="candidate-name">Giovanna Kamimura Mendes ✈🇧🇷🇯🇵</div>
+                <div class="candidate-name">Giovanna Kamimura Mendes SSA✈GRU</div>
                 <div class="candidate-text">
                     Em pouco tempo de participação no Seinenkai, dediquei-me ao crescimento e fortalecimento do grupo, sempre com responsabilidade, boa conduta e disposição para colaborar em tudo o que fosse necessário, ganhando reconhecimento e mais oportunidades para ajudar a Associação e nosso grupo. Tenho facilidade em me comunicar de forma respeitosa, o que me permite dialogar com diferentes perfis e construir pontes com segurança e empatia. Além disso, sou uma pessoa criativa, com ideias voltadas para projetos que visam o engajamento e a valorização da comunidade nikkei. Acredito que minha experiência anterior em uma comunidade nikkei de fora me proporcionou um olhar crítico e ao mesmo tempo admirado sobre o que vivemos em Salvador, com uma visão que pode enriquecer ainda mais nossa representação no FIB. Estou pronta para somar com postura, escuta ativa e iniciativa.
                 </div>
@@ -163,7 +163,7 @@
             </div>
             
             <div class="form-group">
-                <div class="candidate-name">Felipe Pinheiro ✈🇧🇷🇯🇵</div>
+                <div class="candidate-name">Felipe Pinheiro SSA✈GRU</div>
                 <div class="candidate-text">
                     Desejo representar da melhor forma o grupo com o objetivo de melhorar a relação do seinenkai com demais associações e parcerias mútuas, além de aumentar nossa visibilidade perante autoridades, demonstrando nossa força e engajamento.
                 </div>
