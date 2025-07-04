@@ -60,28 +60,28 @@
     <div class="container">
         <h1>Resultados da Votação</h1>
         <div class="results">
-            <h2>Rissa - Marketing</h2>
+            <h2>Fernanda Nascimento Borges Caldas SSA✈GRU</h2>
             <ul>
-                @foreach ($results['Rissa'] as $result)
-                    <li>{{ $result->Rissa }}: {{ $result->total }}</li>
+                @foreach ($results['Fernanda'] as $result)
+                    <li>{{ $result->Fernanda }}: {{ $result->total }}</li>
                 @endforeach
             </ul>
-            <h2>Aecio - Financeiro</h2>
+            <h2>Alice Kimie Nakagawa Costa SSA✈GRU</h2>
             <ul>
-                @foreach ($results['Aecio'] as $result)
-                    <li>{{ $result->Aecio }}: {{ $result->total }}</li>
+                @foreach ($results['Alice'] as $result)
+                    <li>{{ $result->Alice }}: {{ $result->total }}</li>
                 @endforeach
             </ul>
-            <h2>Jhon - Administrativo</h2>
+            <h2>Giovanna Kamimura Mendes SSA✈GRU</h2>
             <ul>
-                @foreach ($results['Jhon'] as $result)
-                    <li>{{ $result->Jhon }}: {{ $result->total }}</li>
+                @foreach ($results['Giovanna'] as $result)
+                    <li>{{ $result->Giovanna }}: {{ $result->total }}</li>
                 @endforeach
             </ul>
-            <h2>Lucas Barbosa - Diretor de Eventos</h2>
+            <h2>Felipe Pinheiro SSA✈GRU</h2>
             <ul>
-                @foreach ($results['Lucas'] as $result)
-                    <li>{{ $result->Lucas }}: {{ $result->total }}</li>
+                @foreach ($results['Felipe'] as $result)
+                    <li>{{ $result->Felipe }}: {{ $result->total }}</li>
                 @endforeach
             </ul>
         </div>
