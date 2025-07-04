@@ -129,7 +129,7 @@
                             </form>
                         @elseif($presente == false)
                             <p>Você não está presente ou já registrou a saída.</p>
-                            <form id="entrada" action="{{ route('atualizarManual', ['id' => $user->id]) }}"
+                            <form id="entrada" action=""
                                 method="POST">
                                 @csrf
                                 <button type="submit" class="btn btn-info float-right">autorizar entrada!</button>

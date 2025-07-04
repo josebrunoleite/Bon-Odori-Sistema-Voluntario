@@ -83,7 +83,8 @@
         <div class="birthday-grid">
             @php
 $birthdays = [
-    ['name' => 'Rissa Sato', 'date' => '02/01', 'note' => 'notehappy'],
+    ['name' => 'Rissa Sato', 'date' => '02/01'],
+    ['name' => 'Andre Portela', 'date' => '30/09'],
     ['name' => 'Analu', 'date' => '06/01'],
     ['name' => 'José Gabriel', 'date' => '31/01'],
     ['name' => 'Marcel', 'date' => '05/02'],
@@ -108,12 +109,10 @@ $birthdays = [
     ['name' => 'Nath', 'date' => '08/08'],
     ['name' => 'Isabella', 'date' => '09/08'],
     ['name' => 'José Bruno', 'date' => '13/08'],
-    ['name' => 'Rafael', 'date' => '20/08'],
     ['name' => 'Lucas Barbosa', 'date' => '25/08'],
     ['name' => 'Clarice Eiko', 'date' => '18/09'],
     ['name' => 'Daniel Habib', 'date' => '30/09'],
     ['name' => 'Lucas Argolo', 'date' => '12/10'],
-    ['name' => 'Ana', 'date' => '14/10'],
     ['name' => 'Leo', 'date' => '15/10'],
     ['name' => 'Gabriel', 'date' => '23/10'],
     ['name' => 'Jackson', 'date' => '27/10'],
